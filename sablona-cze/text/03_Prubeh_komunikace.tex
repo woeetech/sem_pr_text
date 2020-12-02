@@ -51,3 +51,17 @@ eUDP.endPacket();
 \section{Rozpoznání zařízení na síti}
 V případě přijetí zprávy \texttt{beacon} je rozpoznána IP adresa odesílatele a vytvořen nový záznam do databáze \texttt{sub\-scrip\-tions}. 
 
+\begin{lstlisting}
+switch(_incomingUDP[0])
+{
+    //...
+    case 0xFF:
+        addSubscription(1, eUDP.remoteIP(), 1);
+    break;
+    //...
+}
+\end{lstlisting}
+
+\section{Přijetí \acs{MIDI} zprávy}
+
+
