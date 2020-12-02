@@ -63,5 +63,7 @@ switch(_incomingUDP[0])
 \end{lstlisting}
 
 \section{Přijetí \acs{MIDI} zprávy}
-Při přijímání \acs{MIDI} zpráv je nejdříve třeba rozlišit, jedná-li se o zprávou dvoubajtovou, nebo tříbajtovou. Toto lze vyřešit jednoduchým větvením \texttt{switch}. V dalším kroku je třeba zjistit cílový kanál \acs{MIDI} zprávy z \texttt{DATA BAJTU}~-- tuto \uv{extrakci} lze vyřešit pomocí bitového maskování.
+Při přijímání \acs{MIDI} zpráv je nejdříve třeba rozlišit, jedná-li se o zprávou dvoubajtovou, nebo tříbajtovou. Toto lze vyřešit jednoduchým větvením \texttt{switch}. V dalším kroku je nutné dekódovat kanál \acs{MIDI} zprávy z \texttt{DATA BAJTU}~-- tuto \uv{extrakci} lze vyřešit pomocí bitového maskování. Takto získaný kanál je pak porovnáván s prvním nibblem bajtu \texttt{srcdstChannel} každého záznamu databáze \texttt{sub\-scrip\-tions}.
 
+
+Nyní je procházena databáze připojení \texttt{sub\-scrip\-tions} a porovnáván první nibble bajtu \texttt{srcdstChannel} každého záznamu s 
