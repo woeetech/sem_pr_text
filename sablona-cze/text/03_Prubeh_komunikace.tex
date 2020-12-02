@@ -56,12 +56,12 @@ switch(_incomingUDP[0])
 {
     //...
     case 0xFF:
-        addSubscription(1, eUDP.remoteIP(), 1);
+        addSubscription(1, eUDP.remoteIP()[3], 1);
     break;
     //...
 }
 \end{lstlisting}
 
 \section{Přijetí \acs{MIDI} zprávy}
-
+Při přijímání \acs{MIDI} zpráv je nejdříve třeba rozlišit, jedná-li se o zprávou dvoubajtovou, nebo tříbajtovou. Toto lze vyřešit jednoduchým větvením \texttt{switch}. V dalším kroku je třeba zjistit cílový kanál \acs{MIDI} zprávy z \texttt{DATA BAJTU}~-- tuto \uv{extrakci} lze vyřešit pomocí bitového maskování.
 
