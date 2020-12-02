@@ -1,0 +1,59 @@
+\begin{circuitikz}[]
+    \draw (0,0) circle(0.5cm) ++ (0,-0.9) node {MIDI IN};
+    \draw (0,0.3) circle(0.07cm) node(m1p2){} ++(0,0.35) node {\tiny 2};
+    \draw (-0.3,0) circle(0.07cm) node(m1p3){} ++(-0.35,0) node {\tiny 3};
+    \draw (0.3,0) circle(0.07cm) node(m1p1){} ++(0.35,0) node {\tiny 1};
+    \draw (0.22,0.22) circle(0.07cm) node(m1p4){} ++(0.32,0.15) node {\tiny 4};
+    \draw (-0.22, 0.22) circle(0.07cm) node(m1p5){} ++(-0.32,0.15) node {\tiny 5};
+    
+    \draw (9,0) circle(0.5cm) ++ (0,-0.9) node {MIDI OUT};
+    \draw (9,0.3) circle(0.07cm) node(m2p2){} ++(0.1,0.35) node {\tiny 2};
+    \draw (8.7,0) circle(0.07cm) node(m23){} ++(-0.35,0) node {\tiny 3};
+    \draw (9.3,0) circle(0.07cm) node(m2p1){} ++(0.35,0) node {\tiny 1};
+    \draw (9.22,0.22) circle(0.07cm) node(m2p4){} ++(0.32,0.15) node {\tiny 4};
+    \draw (8.78, 0.22) circle(0.07cm) node(m2p5){} ++(-0.32,0.15) node {\tiny 5};
+    
+    \ctikzset{resistors/scale=0.7}
+    \ctikzset{diodes/scale=0.5}
+    
+    \draw (m1p5) -- (-0.7,0.7) -- (-0.7,4) -- (3,4) to[short, *-] ++(0,0) to[D*] ++(down: 1) to[short, -*] ++(0,0); 
+    \draw (m1p4) -- (0.7,0.7) -- (0.7,3) -- (1,3) to[R, l= \small $R_1$] ++(right: 2);
+
+    \draw (5,3.5) node[dipchip, 
+        num pins = 8](OptoIsol){\small 6N138};
+
+    \draw (3,4) -| (OptoIsol.pin 2);
+    \draw (3,3) -| (OptoIsol.pin 3);
+    
+    \draw (9,3.5) node[dipchip,
+        num pins = 10,
+        external pins width = 0,
+        hide numbers, no topmark](Arduino){\small Arduino};
+    
+    \draw (Arduino.north) node[above right]{\tiny 5\,V};
+    \coordinate (h1) at (7.3,3.5);
+    \draw (Arduino.north) -- ++(up: 0.5) coordinate (h2);
+    \draw (h2) to[short, -*] (h2 -| h1) coordinate (middle_top);
+    \draw (OptoIsol.pin 8) coordinate (h3) -- (h3 |- h2) -- (middle_top);
+    \draw (OptoIsol.pin 6) coordinate (hp6) to[short,-*] (hp6 -| middle_top);
+    \draw (middle_top) to[R, l=\footnotesize $R_2$] (middle_top |- hp6);
+    \draw (Arduino.pin 5) node[right]{\tiny 2 (RX)} coordinate (ArP6) -| (middle_top |- hp6);
+
+    \coordinate (h9) at (6.6,3.5);
+    \draw (Arduino.south) node[below right]{\tiny GND} -- ++(down: 0.5) coordinate (ArPG) -- (ArPG -| OptoIsol.pin 5) -- (OptoIsol.pin 5);
+    
+    \draw (OptoIsol.pin 7) -- (OptoIsol.pin 7 -| h9) -- (h9 |- OptoIsol.pin 6) to[R,l=\footnotesize$R_3$,-*] (h9 |- ArPG); 
+
+    \draw (m2p4) -- (9.7,0.7) -- ++(right: 0.7) coordinate (h10);
+    \draw (h2) to[short,*-] (h2 -| h10) to[R, l=\footnotesize$R_4$] (h10);
+
+    \draw (m2p2) -- ++(up: 0.8) coordinate (m2p2up) -- (m2p2up -| Arduino.south) to[short,-*] (Arduino.south |- ArPG);
+    
+    \draw (m2p5) -- (8.3,0.7) -- ++(left: 0.6) coordinate(h11) -- (h11 |- Arduino.pin 4) -- (Arduino.pin 4) node[right]{\tiny 3 (TX)};
+    %\draw (OptoIsol.pin 8) -- (h1 |- h2);
+    
+    
+
+\end{circuitikz}
+
+

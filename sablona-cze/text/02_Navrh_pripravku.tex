@@ -1,0 +1,25 @@
+\chapter{Návrh přípravku}
+V~rámci semestrální práce byl vytvořen prototyp zařízení na platformě Arduino~UNO, která disponuje čipem ATMEL ATmega 328P. Arduinu sekunduje \linebreak Ethernet~Shield~V1, který je osazen čipem WizNet W5100. 
+
+Přípravek umožňuje výměnu \acs{MIDI} příkazů přes lokální síť, využívá první čtyři vrstvy ISO/OSI modelu. Zároveň poskytuje pokročilé možnosti směrování jednotlivých \acs{MIDI} kanálů.
+
+\section{Schéma}\label{chpt:Schema}
+\begin{figure}[h]
+    \centering
+    \input{schemata/schPrototype}
+    \begin{tabular}{l c l c}
+        \small
+        $R_1$ & $220\,\mathrm{\Omega}$ & $R_2$ & $470\,\mathrm{\Omega}$ \\
+        $R_3$ & $10\,\mathrm{k\Omega}$ & $R_4$ & $220\,\mathrm{\Omega}$
+    \end{tabular}
+    \caption{Schéma prototypu \cite{Indest}} 
+    \label{fig:schPrototype}
+\end{figure}
+
+Z obr. \ref{fig:schPrototype} je patrné zapojení přípravku. Je využito standardní zapojení \acs{MIDI} vstupu a~výstupu v souladu se schématy na obr.~\ref{fig:schMIDIout} a~\ref{fig:schMIDIin}. Jak již bylo řečeno v kapitole~\ref{chpt:MIDI}, \acs{MIDI} využívá pro komunikaci sériovou linku. V tomto případě je vstupní linka zapojena k~Arduinu na \texttt{pinu~2} a výstupní k~\texttt{pinu~3}\footnote{Arduino umožňuje softwarové přepnutí \texttt{pinů} z režimu výstupu na režim vstup a naopak.}. 
+
+Ve schématu na obr.~\ref{fig:schPrototype} je pro zjednodušení značka \uv{Arduino} chápána jako \uv{Arduino\,+\,Wiznet Shield}.
+
+Přípravek je v této fázi vývoje napájen skrz \acs{USB} sběrnici Arduina napětím 5\,\unit{V}.
+
+
