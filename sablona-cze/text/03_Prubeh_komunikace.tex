@@ -1,10 +1,10 @@
 \chapter{Průběh komunikace}
-V~této kapitole bude skrz ukázkový příklad popsáno automatické rozpoznání přípravků na lokální síti, směrování \acs{MIDI} zpráv a konstrukce UDP datagramů.
+V~této kapitole bude popsán průběh připojení přípravku k síti, automatické rozpoznání a zacházení s přijatými \acs{MIDI} a UDP zprávami.
 
 \section{Připojení k lokální síti}
 Každému přípravku byla do prvních šesti bajtů \texttt{EEPROM} paměti uložena unikátní MAC adresa. Při zapnutí a následné inicializaci je adresa načtena a přiřazena. Nejprve proběhne pokus o získání IP adresy pomocí DHCP serveru sítě. V případě neúspěchu použije přípravek uživatelem napevno nastavenou IP adresu. 
 
-Díky knihovně \texttt{EthernetUdp.h} jsou tyto výše zmíněné operace otázkou pouze několika málo řádků:
+Díky knihovně \texttt{EthernetUdp.h} jsou výše zmíněné operace otázkou pouze několika málo řádků:
 \lstset{
     frame=single,
     keywordstyle=\color{blue},
@@ -50,7 +50,7 @@ eUDP.endPacket();
 \end{lstlisting}
 
 \section{Rozpoznání zařízení na síti}
-V případě přijetí zprávy \texttt{beacon} je rozpoznána IP adresa odesílatele a vytvořen nový záznam do databáze \texttt{sub\-scrip\-tions}. 
+V případě přijetí zprávy \texttt{beacon} je rozpoznána IP adresa odesílatele a vytvořen nový záznam do databáze spojení \texttt{sub\-scrip\-tions}. V této fázi projektu přípravek napevno přiřazuje kanál 1  lokální příchozí \acs{MIDI} sběrnice kanálu 1 výstupní \acs{MIDI} sběrnice cílového zařízení. V další fázi bude operace přiřazení uskutečňována pravděpodobně přes kontrolní SW na PC připojeného do též sítě.
 
 \begin{lstlisting}
 switch(_incomingUDP[0])
@@ -67,7 +67,7 @@ switch(_incomingUDP[0])
 Při přijímání \acs{MIDI} zpráv je nejdříve třeba rozlišit, jedná-li se o zprávou dvoubajtovou, nebo tříbajtovou. Toto lze vyřešit jednoduchým větvením \texttt{switch}. V dalším kroku je nutné dekódovat kanál \acs{MIDI} zprávy z \texttt{DATA BAJTU}~-- tuto \uv{extrakci} lze vyřešit pomocí bitového maskování. Takto získaný bajt je pak porovnáván s prvním nibblem bajtu \texttt{srcdstChannel} každého záznamu databáze \texttt{sub\-scrip\-tions}. Dojde-li ke shodě, začíná konstrukce odchozí zprávy podle dalších informací v odpovídajícím záznamu databáze spojení. Výpis kódu je k dispozici jako příloha \ref{code:handleMIDI}
 
 \section{Přijetí UDP zprávy}
-Díky architektuře odesílané zprávy (viz podkapitolu \ref{chpt:PrijMIDI})
+Díky architektuře odesílané zprávy (viz podkapitolu \ref{chpt:PrijMIDI}) je veškeré směrování dokončeno již na straně odesílatele. Přijímač může obdrženou zprávu tedy rovnou poslat do \acs{MIDI} výstupu.
 
 
 
