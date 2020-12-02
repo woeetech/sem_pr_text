@@ -2,15 +2,15 @@
 V~této kapitole bude skrz ukázkový příklad popsáno automatické rozpoznání přípravků na lokální síti, směrování \acs{MIDI} zpráv a konstrukce UDP datagramů.
 
 \section{Připojení k lokální síti}
-\subsection{Přiřazení MAC adresy a připojení k síti}
 Každému přípravku byla do prvních šesti bajtů \texttt{EEPROM} paměti uložena unikátní MAC adresa. Při zapnutí a následné inicializaci je adresa načtena a přiřazena. Nejprve proběhne pokus o získání IP adresy pomocí DHCP serveru sítě. V případě neúspěchu použije přípravek uživatelem napevno nastavenou IP adresu. 
 
 Díky knihovně \texttt{EthernetUdp.h} jsou tyto výše zmíněné operace otázkou pouze několika málo řádků:
-\begin{lstlisting}[
+\lstset{
     frame=single,
     keywordstyle=\color{blue},
     commentstyle=\color{olive}
-]
+    }
+\begin{lstlisting}
 if (Ethernet.begin())
 {
     //DHCP server zdárně přidělil zařízení IP adresu
@@ -24,22 +24,29 @@ else
 }
 \end{lstlisting}
 
-\subsection{}
-Ihned po zdárném připojení k lokální síti,
+
+\newcommand{\bytes}[4]{
+    \begin{center}
+        \large{\texttt{0x#1, 0x#2, 0x#3, 0x#4}}
+    \end{center}
+}
 
 
-%\begin{lstlisting}[
-%    frame=single,
-%    numbers=left,
-%    caption={},
-%    label=lst:priklad.vypis.kodu.C,%basicstyle=\ttfamily\small, 
-%    keywordstyle=\color{blue}
-%    ]
-%void Controller::macLoad(byte *mac)
-%{
-%    for (byte i = 0; i < 6; i++)
-%    {
-%        mac[i] = EEPROM.read(i);
-%    }
-%}
-%\end{lstlisting}
+
+\section{Upozornění na vlastní přítomnost}
+Ihned po zdárném připojení k lokální síti je vyslána zpráva  \texttt{beacon}, jejíž účel je upozornit všechna zařízení v lokální síti na vlastní přítomnost. Zpráva se skládá ze čtyř bajtů:
+\bytes{FF}{FF}{FF}{FF}
+a je poslána na broadcast adresu sítě.
+
+\begin{lstlisting}
+_broadcastIP = Ethernet.localIP();
+_broadcastIP[3] = 255;
+EthernetUdp eUDP;
+eUDP.begin(MOE_PORT);
+eUDP.beginPacket(_broadcastIP, MOE_PORT);
+eUDP.write(_beacon, sizeof(_beacon));
+eUDP.endPacket();
+\end{lstlisting}
+
+
+

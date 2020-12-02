@@ -496,6 +496,7 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.tex
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.tex
@@ -561,7 +562,6 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang3.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang3.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstmisc.sty
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtti10.tfm
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex
@@ -573,7 +573,6 @@ INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtti10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtk10.tfm
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/uvod.aux
@@ -622,4 +621,3 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtk10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt12.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtti10.pfb
