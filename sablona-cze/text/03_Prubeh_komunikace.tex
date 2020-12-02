@@ -48,5 +48,6 @@ eUDP.write(_beacon, sizeof(_beacon));
 eUDP.endPacket();
 \end{lstlisting}
 
-
+\section{Rozpoznání zařízení na síti}
+V případě přijetí zprávy \texttt{beacon} je rozpoznána IP adresa odesílatele a vytvořen nový záznam do databáze \texttt{sub\-scrip\-tions}. 
 
