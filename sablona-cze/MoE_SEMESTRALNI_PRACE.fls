@@ -290,10 +290,6 @@ INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/vysledky.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/vysledky.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/literatura.aux
@@ -497,12 +493,6 @@ OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.tex
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm
-OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.tex
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.tex
-OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/vysledky.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/vysledky.tex
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/vysledky.tex
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.tex
@@ -583,10 +573,6 @@ INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/vysledky.aux
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/vysledky.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/literatura.aux

@@ -8,7 +8,8 @@ Díky knihovně \texttt{EthernetUdp.h} jsou tyto výše zmíněné operace otáz
 \lstset{
     frame=single,
     keywordstyle=\color{blue},
-    commentstyle=\color{olive}
+    commentstyle=\color{olive},
+    basicstyle=\ttfamily\small
     }
 \begin{lstlisting}
 if (Ethernet.begin())
@@ -62,8 +63,12 @@ switch(_incomingUDP[0])
 }
 \end{lstlisting}
 
-\section{Přijetí \acs{MIDI} zprávy}
-Při přijímání \acs{MIDI} zpráv je nejdříve třeba rozlišit, jedná-li se o zprávou dvoubajtovou, nebo tříbajtovou. Toto lze vyřešit jednoduchým větvením \texttt{switch}. V dalším kroku je nutné dekódovat kanál \acs{MIDI} zprávy z \texttt{DATA BAJTU}~-- tuto \uv{extrakci} lze vyřešit pomocí bitového maskování. Takto získaný kanál je pak porovnáván s prvním nibblem bajtu \texttt{srcdstChannel} každého záznamu databáze \texttt{sub\-scrip\-tions}.
+\section{Přijetí \acs{MIDI} zprávy}\label{chpt:PrijMIDI}
+Při přijímání \acs{MIDI} zpráv je nejdříve třeba rozlišit, jedná-li se o zprávou dvoubajtovou, nebo tříbajtovou. Toto lze vyřešit jednoduchým větvením \texttt{switch}. V dalším kroku je nutné dekódovat kanál \acs{MIDI} zprávy z \texttt{DATA BAJTU}~-- tuto \uv{extrakci} lze vyřešit pomocí bitového maskování. Takto získaný bajt je pak porovnáván s prvním nibblem bajtu \texttt{srcdstChannel} každého záznamu databáze \texttt{sub\-scrip\-tions}. Dojde-li ke shodě, začíná konstrukce odchozí zprávy podle dalších informací v odpovídajícím záznamu databáze spojení. Výpis kódu je k dispozici jako příloha \ref{code:handleMIDI}
+
+\section{Přijetí UDP zprávy}
+Díky architektuře odesílané zprávy (viz podkapitolu \ref{chpt:PrijMIDI})
 
 
-Nyní je procházena databáze připojení \texttt{sub\-scrip\-tions} a porovnáván první nibble bajtu \texttt{srcdstChannel} každého záznamu s 
+
+%Nyní je procházena databáze připojení \texttt{sub\-scrip\-tions} a porovnáván první nibble bajtu \texttt{srcdstChannel} každého záznamu s 
