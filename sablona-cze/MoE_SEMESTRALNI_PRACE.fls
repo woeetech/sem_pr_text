@@ -288,6 +288,8 @@ INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/vysledky.aux
@@ -491,6 +493,9 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/lmmi10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/lmsy10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cbfonts/grmn1095.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm
+OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.tex
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.tex
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.tex
@@ -577,6 +582,8 @@ INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/reseni.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/vysledky.aux
