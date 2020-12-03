@@ -43,7 +43,7 @@ Aktualizační norma \cite{MIDIupd} pak umožňuje přidání feritových jader 
 
 Bude-li do~tohoto vstupu připojen výstup jiného zařízení, které vyšle \linebreak \texttt{logickou~1} objeví se na~\texttt{pinech~4} a~\texttt{5} stejné napětí, v~obvodu tedy neprochází žádný proud~--~\acs{LED}\footnote{\acl{LED}} v~optočlenu nesvítí. Vstupní UART čip přijímá \texttt{logickou~1}. Vyšle-li jiné zařízení \texttt{logickou 0}, na \texttt{pinu~5} poklesne napětí oproti \texttt{pinu~4}, \acs{LED} v optočlenu se rozsvítí, obvodem prochází proud a UART čip přijímá \texttt{logickou~1}.
 
-\section{Softwarová vrstva}
+\section{Softwarová vrstva}\label{chpt:MIDIsw}
 
 \acs{MIDI} protokol přenáší informace (příkazy) po sériové lince přenosovou rychlostí $31 250\,\unit{bps}$. Komunikace je jednosměrná, pro obousměrnou komunikaci je třeba využít dvou rozhraní (vstupu a výstupu) na všech zúčastněných zařízeních. %\cite{MIDIspecs}
 

@@ -49,23 +49,23 @@ Toto pole struktur \texttt{subscription} je pro celý \acs{MoE} protokol zásadn
 
 Každý záznam je tvořen dvěma bajty:
 \begin{itemize}
-    \item \texttt{srcdstChannel}: v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového. \uv{Kódování} je uskutečněno následujícím způsobem:
-    \begin{figure}[h]
-        \centering
-        \begin{tabular}{|c|c|c|c|c|c|c|c|}
-            \hline
-            \multicolumn{8}{|c|}{\texttt{srcdstChannel}} \\
-            \hline
-            0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 \\
-            \hline 
-            \multicolumn{4}{c}{\upbracefill} & \multicolumn{4}{c}{\upbracefill} \\
-            \multicolumn{4}{c}{\footnotesize zdroj} & \multicolumn{4}{c}{\footnotesize cíl} \\
-        \end{tabular}
-        \caption{}
-        \label{}
-    \end{figure}
-    \item \texttt{dstIPnib}:
+    \item \texttt{srcdstChannel} v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového. \uv{Kódování} je uskutečněno způsobem vyobrazeným na obr. \ref{fig:srcdstChannel}. Jeden kanál je vyjádřen pomocí čtyř bitů (viz kapitolu \ref{chpt:MIDIsw}), jeden bajt tedy \uv{pojme} akorát dva kanály.
+    \item \texttt{dstIPnib} vyjadřuje část IP adresy cílového zařízení (více v \textcolor{red}{TODO!})
 \end{itemize}
+\begin{figure}[b]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        \multicolumn{8}{|c|}{\texttt{srcdstChannel}} \\
+        \hline
+        0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 \\
+        \hline 
+        \multicolumn{4}{c}{\upbracefill} & \multicolumn{4}{c}{\upbracefill} \\
+        \multicolumn{4}{c}{\footnotesize zdroj} & \multicolumn{4}{c}{\footnotesize cíl} \\
+    \end{tabular}
+    \caption{Kódování zdrojového a cílového kanálu v bajtu \texttt{srcdstChannel}}
+    \label{fig:srcdstChannel}
+\end{figure}
 \subsection{Logická vrstva}
 
 Jedna \acs{MoE} zpráva obsahuje \emph{čtyři bajty}. První bajt určuje 
