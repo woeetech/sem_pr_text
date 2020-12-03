@@ -584,6 +584,7 @@ INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/prilohy.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.out
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.out
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
@@ -592,6 +593,7 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/cbfonts/grmn1200.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb
