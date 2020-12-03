@@ -36,7 +36,7 @@ Přípravek je v~této fázi vývoje napájen skrz \acs{USB} sběrnici Arduina n
 \section{Software}
 Software přípravku byl vyvíjen za účelem maximalizace variability směřování \acs{MIDI} příkazů. Na funkční rovině je inspirován systémem \emph{Dante}, který se používá pro přenos zvukového signálu přes počítačovou síť. \emph{Dante} umožňuje pokročilé směřování signálů napříč síťovými zařízeními, ovládané pomocí přehledné matice na kontrolním PC. Do této fáze by měl být vyvinut i systém \acs{MoE}\footnote{\acl{MoE}}.
 %Pro spolehlivou komunikaci mezi zařízeními bylo třeba vyvinout protokol, který bude zapouzdřovat a směřovat samotné \acs{MIDI} zprávy. S tímto cílem byl implementován protokol \acs{MoE}\footnote{\acl{MoE}}. 
-\subsection{Databáze spojení}
+\subsection{Databáze spojení}\label{chpt:DatSpoj}
 S cílem docílit již zmiňované velké variability ve směřování zpráv napříč přípravky byla do zdrojového kódu implementována tzv. databáze spojení \texttt{sub\-scrip\-tions[]}:
 \begin{lstlisting}
 typedef struct subscription
@@ -49,8 +49,8 @@ Toto pole struktur \texttt{subscription} je pro celý \acs{MoE} protokol zásadn
 
 Každý záznam je tvořen dvěma bajty:
 \begin{itemize}
-    \item \texttt{srcdstChannel} v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového. \uv{Kódování} je uskutečněno způsobem vyobrazeným na obr. \ref{fig:srcdstChannel}. Jeden kanál je vyjádřen pomocí čtyř bitů (viz kapitolu \ref{chpt:MIDIsw}), jeden bajt tedy \uv{pojme} akorát dva kanály.
-    \item \texttt{dstIPnib} vyjadřuje část IP adresy cílového zařízení (více v \textcolor{red}{TODO!})
+    \item \texttt{srcdstChannel} v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového. \uv{Kódování} je uskutečněno způsobem vyobrazeným na obr. \ref{fig:srcdstChannel}. Jeden kanál je vyjádřen pomocí čtyř bitů (viz kapitolu \ref{chpt:MIDIsw}), jeden bajt tedy \uv{pojme} přesně dva kanály.
+    \item \texttt{dstIPnib} vyjadřuje poslední bajt IP adresy cílového zařízení (viz též sekci \ref{chpt:NetworkLayer}) 
 \end{itemize}
 \begin{figure}[b]
     \centering
@@ -66,11 +66,13 @@ Každý záznam je tvořen dvěma bajty:
     \caption{Kódování zdrojového a cílového kanálu v bajtu \texttt{srcdstChannel}}
     \label{fig:srcdstChannel}
 \end{figure}
-\subsection{Logická vrstva}
 
-Jedna \acs{MoE} zpráva obsahuje \emph{čtyři bajty}. První bajt určuje 
+\subsection{Formát zprávy}
+Pro optimální komunikaci zařízení mezi sebou bylo nutné zapouzdřit \acs{MIDI} příkazy do \acs{MoE} datagramu. Tento datagram se skládá ze \emph{čtyř} bajtů, z čehož první je vyhrazen \acs{MoE} značce a zbylé tři samotné \acs{MIDI} zprávě nebo jiným datům. Tabulku všech dosavadně implementovaných \acs{MoE} značek lze nalézt v příloze \ref{chpt:MoEZnacky}.
 
-
+\subsection{Síťová komunikace}\label{chpt:NetworkLayer}
+Pro síťovou komunikaci byl vybrán protokol \acs{UDP}\footnote{\acl{UDP}}. Jeho \uv{peer2peer} architektura je k tomuto projektu mnohem vhodnější než ta, kterou poskytuje protokol TCP. Komunikace probíhá na portu 50\,000.
+\acs{MoE} zařízení jsou schopna se do lokální sítě připojit s pevně nestavenou IP adresou, nebo zažádat o přidělení IP adresy DHCP server. Tato síť však musí mít masku 255.255.255.0~-- zařízení se z úsporných důvodů navzájem rozlišují \emph{pouze} posledním bajtem IP adresy (jak je popsáno v sekci \ref{chpt:DatSpoj}).
 
 
 

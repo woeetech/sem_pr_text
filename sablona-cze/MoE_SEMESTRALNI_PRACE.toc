@@ -14,23 +14,27 @@
 \contentsline {section}{\numberline {2.1}Hardware}{14}{section.31}%
 \contentsline {section}{\numberline {2.2}Software}{15}{section.34}%
 \contentsline {subsection}{\numberline {2.2.1}Databáze spojení}{15}{subsection.36}%
-\contentsline {subsection}{\numberline {2.2.2}Logická vrstva}{15}{subsection.44}%
-\contentsline {chapter}{\numberline {3}Průběh komunikace}{16}{chapter.45}%
-\contentsline {section}{\numberline {3.1}Připojení k lokální síti}{16}{section.46}%
-\contentsline {section}{\numberline {3.2}Upozornění na vlastní přítomnost}{16}{section.59}%
-\contentsline {section}{\numberline {3.3}Rozpoznání zařízení na síti}{17}{section.68}%
-\contentsline {section}{\numberline {3.4}Přijetí \acs {MIDI} zprávy}{17}{section.78}%
-\contentsline {section}{\numberline {3.5}Přijetí UDP zprávy}{17}{section.79}%
-\contentsline {chapter}{Závěr}{18}{section*.81}%
-\contentsline {chapter}{Literatura}{19}{section*.83}%
-\contentsline {chapter}{Seznam symbol\r {u}, veli\v {c}in a zkratek}{21}{section*.85}%
-\contentsline {chapter}{Seznam p\v {r}\'{\i }loh}{22}{section*.87}%
-\contentsline {chapter}{\numberline {A}\acs {MIDI} STATUS BAJTY }{23}{chapter.88}%
-\contentsline {chapter}{\numberline {B}Výpis kódu pro příjem a zpracování \acs {MIDI} zprávy }{24}{chapter.90}%
-\contentsline {chapter}{\numberline {C}Některé příkazy balíčku \texttt {thesis} }{26}{chapter.136}%
-\contentsline {section}{\numberline {C.1}Příkazy pro sazbu veličin a jednotek }{26}{section.137}%
-\contentsline {section}{\numberline {C.2}Příkazy pro sazbu symbolů }{26}{section.139}%
-\contentsline {chapter}{\numberline {D}Druhá příloha }{27}{chapter.141}%
-\contentsline {chapter}{\numberline {E}Příklad sazby zdrojových kódů }{28}{chapter.143}%
-\contentsline {section}{\numberline {E.1}Balíček \texttt {listings} }{28}{section.144}%
-\contentsline {chapter}{\numberline {F}Obsah přiloženého CD }{32}{chapter.235}%
+\contentsline {subsection}{\numberline {2.2.2}Formát zprávy}{16}{subsection.44}%
+\contentsline {subsection}{\numberline {2.2.3}Síťová komunikace}{16}{subsection.45}%
+\contentsline {chapter}{\numberline {3}Průběh komunikace}{17}{chapter.47}%
+\contentsline {section}{\numberline {3.1}Připojení k lokální síti}{17}{section.48}%
+\contentsline {section}{\numberline {3.2}Upozornění na vlastní přítomnost}{17}{section.61}%
+\contentsline {section}{\numberline {3.3}Rozpoznání zařízení na síti}{18}{section.70}%
+\contentsline {section}{\numberline {3.4}Přijetí \acs {MIDI} zprávy}{18}{section.80}%
+\contentsline {section}{\numberline {3.5}Přijetí UDP zprávy}{18}{section.81}%
+\contentsline {chapter}{Závěr}{19}{section*.83}%
+\contentsline {chapter}{Literatura}{20}{section*.85}%
+\contentsline {chapter}{Seznam symbol\r {u}, veli\v {c}in a zkratek}{22}{section*.87}%
+\contentsline {chapter}{Seznam p\v {r}\'{\i }loh}{23}{section*.89}%
+\contentsline {chapter}{\numberline {A}Tabulky }{24}{chapter.90}%
+\contentsline {section}{\numberline {A.1}\acs {MIDI} STATUS BAJTY }{24}{section.91}%
+\contentsline {section}{\numberline {A.2}\acs {MoE} značky }{25}{section.93}%
+\contentsline {chapter}{\numberline {B}Výpisy kódu }{26}{chapter.95}%
+\contentsline {section}{\numberline {B.1}Výpis kódu pro příjem a zpracování \acs {MIDI} zprávy }{26}{section.96}%
+\contentsline {chapter}{\numberline {C}Některé příkazy balíčku \texttt {thesis} }{28}{chapter.142}%
+\contentsline {section}{\numberline {C.1}Příkazy pro sazbu veličin a jednotek }{28}{section.143}%
+\contentsline {section}{\numberline {C.2}Příkazy pro sazbu symbolů }{28}{section.145}%
+\contentsline {chapter}{\numberline {D}Druhá příloha }{29}{chapter.147}%
+\contentsline {chapter}{\numberline {E}Příklad sazby zdrojových kódů }{30}{chapter.149}%
+\contentsline {section}{\numberline {E.1}Balíček \texttt {listings} }{30}{section.150}%
+\contentsline {chapter}{\numberline {F}Obsah přiloženého CD }{34}{chapter.243}%

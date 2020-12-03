@@ -1,24 +1,63 @@
-\chapter{\acs{MIDI} STATUS BAJTY}
+\chapter{Tabulky}
+
+\section{\acs{MIDI} STATUS BAJTY}
 \begin{table}[h]
     \centering
-    \begin{tabular}{|l|l|c|c|}
+    \begin{tabular}{|l|l|>{\ttfamily}c|>{\ttfamily}c|}
      \hline
-     \multicolumn{2}{|c|}{Název} & Hex. hodnota & Bin. hodnota \\  
+     \multicolumn{2}{|c|}{Název} & \textnormal{Hex. hodnota} & \textnormal{Bin. hodnota} \\  
      \hline\hline 
-     Note-Off & Nota vypnuta & 8n & 1000 nnnn \\
-     Note-On & Nota zapnuta & 9n & 1001 nnnn \\
-     Poly Key Pressure & Polyfonický tlakový ovladač & An & 1010 nnnn \\
-     Control Change & Změna kontroléru & Bn & 1011 nnnn \\
-     Program Change & Změna programu & Cn & 1100 nnnn \\
-     Channel Pressure & Monofonický tlakový ovladač & Dn & 1101 nnnn \\
-     Pitch Bend & Ohyb výšky tónu & En & 1110 nnnn \\
+     Note-Off & Nota vypnuta & 0x8n & 1000\,nnnn \\
+     Note-On & Nota zapnuta & 0x9n & 1001\,nnnn \\
+     Poly Key Pressure & Polyfonický tlakový ovladač & 0xAn & 1010\,nnnn \\
+     Control Change & Změna kontroléru & 0xBn & 1011\,nnnn \\
+     Program Change & Změna programu & 0xCn & 1100\,nnnn \\
+     Channel Pressure & Monofonický tlakový ovladač & 0xDn & 1101\,nnnn \\
+     Pitch Bend & Ohyb výšky tónu & 0xEn & 1110\,nnnn \\
      \hline
-\end{tabular}
+	\end{tabular}
     \caption{Tabulka \acs{MIDI} \texttt{STATUS BAJTŮ} \cite{MIDIspecs}.}
     \label{tab:MIDIsts}
 \end{table}
+\newpage
 
-\chapter{Výpis kódu pro příjem a zpracování \acs{MIDI} zprávy}\label{code:handleMIDI}
+\section{\acs{MoE} značky}\label{chpt:MoEZnacky}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|  >{\ttfamily} c | p{0.7\textwidth} |}
+		\hline
+		\textnormal{Bajt} & \multicolumn{1}{|c|}{Popis} \\
+		\hline \hline
+		\vdots & \\
+		
+		0x08 & Broadcast zpráva od řídícího PC, která sonduje účastníky sítě \\
+		
+		\vdots & \\
+		
+		0x0F & Unicast zpráva od řídícího PC, která zařízení vkládá nový záznam do databáze \texttt{subscriptions}, který je obsahem datagramu \\
+		
+		\vdots & \\
+		
+		0x80 & Unicast odpověď na sondáž PC, součástí datagramu je i jeden záznam databáze \texttt{subscriptions} \\
+
+		\vdots & \\
+
+		0xA2 & Dvoubajtová \acs{MIDI} zpráva pro port A \\
+		0xA3 & Tříbajtová \acs{MIDI} zpráva pro port A \\
+		0xB2 & Dvoubajtová \acs{MIDI} zpráva pro port B \\
+		0xB3 & Tříbajtová \acs{MIDI} zpráva pro port B \\
+		
+		\vdots & \\
+		
+		0xFF & Zpráva \texttt{beacon} sloužící pro upozornění na vlastní přítomnost \\
+		\hline
+	\end{tabular}
+	\caption{Tabulka prvních bajtů \acs{MoE} zpráv.}
+\end{table}
+
+
+\chapter{Výpisy kódu}
+\section{Výpis kódu pro příjem a zpracování \acs{MIDI} zprávy}\label{code:handleMIDI}
 \begin{lstlisting}
 void handleMIDI()
 {
@@ -65,6 +104,8 @@ void sendUDP(byte data0, byte data1, bool threeByte,
 	}
 }
 \end{lstlisting}
+
+
 
 
 

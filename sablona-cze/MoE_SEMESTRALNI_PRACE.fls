@@ -245,6 +245,10 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption3.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/tools/array.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/tools/array.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/multirow/multirow.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/multirow/multirow.sty
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/nastaveni.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/nastaveni.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/thesis.sty
