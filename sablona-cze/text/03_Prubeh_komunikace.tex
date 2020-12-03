@@ -5,12 +5,7 @@ V~této kapitole bude popsán průběh připojení přípravku k síti, automati
 Každému přípravku byla do prvních šesti bajtů \texttt{EEPROM} paměti uložena unikátní MAC adresa. Při zapnutí a následné inicializaci je adresa načtena a přiřazena. Nejprve proběhne pokus o získání IP adresy pomocí DHCP serveru sítě. V případě neúspěchu použije přípravek uživatelem napevno nastavenou IP adresu. 
 
 Díky knihovně \texttt{EthernetUdp.h} jsou výše zmíněné operace otázkou pouze několika málo řádků:
-\lstset{
-    frame=single,
-    keywordstyle=\color{blue},
-    commentstyle=\color{olive},
-    basicstyle=\ttfamily\small
-    }
+
 \begin{lstlisting}
 if (Ethernet.begin())
 {

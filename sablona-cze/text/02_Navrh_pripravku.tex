@@ -1,3 +1,12 @@
+\lstset{
+    frame=single,
+    keywordstyle=\color{blue},
+    commentstyle=\color{olive},
+    basicstyle=\ttfamily\small,
+    emph={byte},
+    emphstyle=\color{blue}
+    }
+
 \chapter{Návrh přípravku}
 V~rámci semestrální práce byl vytvořen prototyp zařízení na platformě Arduino~UNO, která disponuje čipem ATMEL ATmega 328P. Arduinu sekunduje \linebreak Ethernet~Shield~V1, který je osazen čipem WizNet W5100. 
 
@@ -27,6 +36,22 @@ Přípravek je v~této fázi vývoje napájen skrz \acs{USB} sběrnici Arduina n
 \section{Software}
 Software přípravku byl vyvíjen za účelem maximalizace variability směřování \acs{MIDI} příkazů. Na funkční rovině je inspirován systémem \emph{Dante}, který se používá pro přenos zvukového signálu přes počítačovou síť. \emph{Dante} umožňuje pokročilé směřování signálů napříč síťovými zařízeními, ovládané pomocí přehledné matice na kontrolním PC. Do této fáze by měl být vyvinut i systém \acs{MoE}\footnote{\acl{MoE}}.
 %Pro spolehlivou komunikaci mezi zařízeními bylo třeba vyvinout protokol, který bude zapouzdřovat a směřovat samotné \acs{MIDI} zprávy. S tímto cílem byl implementován protokol \acs{MoE}\footnote{\acl{MoE}}. 
+\subsection{Databáze spojení}
+S cílem docílit již zmiňované velké variability ve směřování zpráv napříč přípravky byla do zdrojového kódu implementována tzv. databáze spojení \texttt{sub\-scrip\-tions[]}:
+\begin{lstlisting}
+typedef struct subscription
+{
+    byte srcdstChannel;
+    byte dstIPnib;
+} _subscriptions[MAX_SUBS];
+\end{lstlisting}
+Toto pole struktur \texttt{subscription} je pro celý \acs{MoE} protokol zásadní. Jedno \uv{spojení}, tedy jeden prvek v tomto poli, propojuje jeden \acs{MIDI} kanál lokálního zařízení s jedním \acs{MIDI} kanálem cílového zařízení. Toto pole si lze představit jako virtuální patchbay. Jeden patch-kabel odpovídá jednomu prvku v poli (záznamu v databázi). 
+
+Každý záznam je tvořen dvěma bajty:
+\begin{itemize}
+    \item \texttt{srcdstChannel}: v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového.
+    \item \texttt{dstIPnib}:
+\end{itemize}
 \subsection{Logická vrstva}
 
 Jedna \acs{MoE} zpráva obsahuje \emph{čtyři bajty}. První bajt určuje 

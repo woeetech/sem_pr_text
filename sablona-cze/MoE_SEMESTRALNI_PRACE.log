@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.26)  3 DEC 2020 18:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.26)  3 DEC 2020 18:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1113,7 +1113,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
  ABD: EveryShipout initializing macros
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<pdf/MoE-Desky.pdf, id=128, 597.51233pt x 845.0471pt>
+<pdf/MoE-Desky.pdf, id=132, 597.51233pt x 845.0471pt>
 File: pdf/MoE-Desky.pdf Graphic file (type pdf)
 <use pdf/MoE-Desky.pdf>
 Package pdftex.def Info: pdf/MoE-Desky.pdf  used on input line 143.
@@ -1122,7 +1122,7 @@ File: pdf/MoE-Desky.pdf Graphic file (type pdf)
 <use pdf/MoE-Desky.pdf>
 Package pdftex.def Info: pdf/MoE-Desky.pdf  used on input line 143.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
-<pdf/MoE-Desky.pdf, id=131, page=1, 597.51233pt x 845.0471pt>
+<pdf/MoE-Desky.pdf, id=135, page=1, 597.51233pt x 845.0471pt>
 File: pdf/MoE-Desky.pdf Graphic file (type pdf)
 <use pdf/MoE-Desky.pdf, page 1>
 Package pdftex.def Info: pdf/MoE-Desky.pdf , page1 used on input line 143.
@@ -1146,7 +1146,7 @@ Package pdftex.def Info: pdf/MoE-Desky.pdf , page1 used on input line 143.
  [1
 
  </Repos/SemestralProject/00_TEXT/sablona-cze/pdf/MoE-Desky.pdf>]
-<pdf/MoE-TitulniList.pdf, id=147, 597.51233pt x 845.0471pt>
+<pdf/MoE-TitulniList.pdf, id=151, 597.51233pt x 845.0471pt>
 File: pdf/MoE-TitulniList.pdf Graphic file (type pdf)
 <use pdf/MoE-TitulniList.pdf>
 Package pdftex.def Info: pdf/MoE-TitulniList.pdf  used on input line 153.
@@ -1155,7 +1155,7 @@ File: pdf/MoE-TitulniList.pdf Graphic file (type pdf)
 <use pdf/MoE-TitulniList.pdf>
 Package pdftex.def Info: pdf/MoE-TitulniList.pdf  used on input line 153.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
-<pdf/MoE-TitulniList.pdf, id=150, page=1, 597.51233pt x 845.0471pt>
+<pdf/MoE-TitulniList.pdf, id=154, page=1, 597.51233pt x 845.0471pt>
 File: pdf/MoE-TitulniList.pdf Graphic file (type pdf)
 <use pdf/MoE-TitulniList.pdf, page 1>
 Package pdftex.def Info: pdf/MoE-TitulniList.pdf , page1 used on input line 153.
@@ -1177,7 +1177,7 @@ File: pdf/MoE-TitulniList.pdf Graphic file (type pdf)
 Package pdftex.def Info: pdf/MoE-TitulniList.pdf , page1 used on input line 153.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
  [1 </Repos/SemestralProject/00_TEXT/sablona-cze/pdf/MoE-TitulniList.pdf>]
-<pdf/MoE-zadani.pdf, id=169, 597.51233pt x 845.0471pt>
+<pdf/MoE-zadani.pdf, id=173, 597.51233pt x 845.0471pt>
 File: pdf/MoE-zadani.pdf Graphic file (type pdf)
 <use pdf/MoE-zadani.pdf>
 Package pdftex.def Info: pdf/MoE-zadani.pdf  used on input line 161.
@@ -1186,7 +1186,7 @@ File: pdf/MoE-zadani.pdf Graphic file (type pdf)
 <use pdf/MoE-zadani.pdf>
 Package pdftex.def Info: pdf/MoE-zadani.pdf  used on input line 161.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
-<pdf/MoE-zadani.pdf, id=172, page=1, 597.51233pt x 845.0471pt>
+<pdf/MoE-zadani.pdf, id=176, page=1, 597.51233pt x 845.0471pt>
 File: pdf/MoE-zadani.pdf Graphic file (type pdf)
 <use pdf/MoE-zadani.pdf, page 1>
 Package pdftex.def Info: pdf/MoE-zadani.pdf , page1 used on input line 161.
@@ -1222,4 +1222,287 @@ File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )<<oml.cmap>>
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 189.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2009/10/30 v1.6 Font defs for 
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)<<oms.cmap>>
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 189.
+ (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 189.
+<<omx.cmap>>
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 189.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 189.
+<<lgr.cmap>> [3
+
+] (/Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.toc
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 30.
+ (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 30.
+ [4
+
+])
+\tf@toc=\write5
+\openout5 = `MoE_SEMESTRALNI_PRACE.toc'.
+
+ [5] (/Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lof)
+\tf@lof=\write6
+\openout6 = `MoE_SEMESTRALNI_PRACE.lof'.
+
+ [6
+
+] (/Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lot)
+\tf@lot=\write7
+\openout7 = `MoE_SEMESTRALNI_PRACE.lot'.
+
+ [7
+
+] (/Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lol)
+\tf@lol=\write8
+\openout8 = `MoE_SEMESTRALNI_PRACE.lol'.
+
+ [8
+
+]
+\openout2 = `text/uvod.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/uvod.tex
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 5.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 5.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 5.
+Package acronym Info: Label `acro:symfvz' newly defined as it shall be overridden
+although it is yet undefined on input line 12.
+) [9
+
+
+
+]
+\openout2 = `text/01_ProtokolMIDI.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.tex (/Repos/SemestralProject/00_TEXT/sablona-cze/schemata/schMIDIout.tex
+\realshift=\dimen307
+\realshift=\dimen308
+)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10
+
+
+
+] (/Repos/SemestralProject/00_TEXT/sablona-cze/schemata/schMIDIin.tex
+\realshift=\dimen309
+\realshift=\dimen310
+)
+Underfull \hbox (badness 2875) in paragraph at lines 44--45
+[]\T1/lmr/m/n/12 Bude-li do to-hoto vstupu p°i-po-jen vý-stup ji-ného za-°í-zení, které vy-²le
+ []
+
+[11]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 52.
+ (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Overfull \hbox (1.00723pt too wide) in paragraph at lines 52--53
+[]\T1/lmtt/m/n/12 STATUS BAJT \T1/lmr/m/n/12 v sob¥ kó-duje druh p°í-kazu (\T1/lmr/m/it/12 Nota stla-£ena, Zm¥na kon-t-ro-léru...\T1/lmr/m/n/12 )
+ []
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 122.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 122.
+
+[12]) [13]
+\openout2 = `text/02_Navrh_pripravku.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.tex
+Overfull \hbox (2.52313pt too wide) in paragraph at lines 11--12
+\T1/lmr/m/n/12 V rámci se-mest-rální práce byl vy-tvo-°en pro-to-typ za-°í-zení na plat-form¥ Ar-duino UNO,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+\T1/lmr/m/n/12 která dis-po-nuje £i-pem AT-MEL AT-mega 328P. Ar-duinu sekun-duje
+ []
+
+(/Repos/SemestralProject/00_TEXT/sablona-cze/schemata/schPrototype.tex
+\realshift=\dimen311
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 20.
+\realshift=\dimen312
+\realshift=\dimen313
+\realshift=\dimen314
+) [14
+
+
+
+]) [15]
+\openout2 = `text/03_Prubeh_komunikace.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.tex [16
+
+
+
+]) [17]
+\openout2 = `text/zaver.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.tex) [18
+
+
+
+]
+\openout2 = `text/literatura.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/literatura.tex
+Underfull \hbox (badness 2426) in paragraph at lines 15--16
+[]\T1/lmr/m/n/12 GHASSAEI, Amanda. \T1/lmr/m/it/12 Send and Re-ce-ive MIDI With Ar-duino \T1/lmr/m/n/12 [on-line].
+ []
+
+
+Overfull \hbox (22.77873pt too wide) in paragraph at lines 15--16
+\T1/lmr/m/n/12 <[]$\T1/lmtt/m/n/12 https : / / www . instructables . com / Send-[]and-[]Receive-[]MIDI-[]with-[]Arduino/$[]\T1/lmr/m/n/12 >. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--24
+\T1/lmr/m/n/12 <[]$\T1/lmtt/m/n/12 https : / / www . vutbr . cz / uredni-[]deska / vnitrni-[]predpisy-[]a-[]dokumenty /
+ []
+
+[19
+
+
+
+]) [20]
+\openout2 = `text/zkratky.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex) [21
+
+
+
+
+] (/Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.toa)
+\tf@toa=\write9
+\openout9 = `MoE_SEMESTRALNI_PRACE.toa'.
+
+ [22
+
+
+]
+\openout2 = `text/prilohy.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/prilohy.tex
+Overfull \hbox (2.38142pt too wide) in paragraph at lines 4--17
+ [][] 
+ []
+
+[23
+
+
+] [24
+
+] [25]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 72.
+ [26
+
+]
+<obrazky/ZlepseneWilsonovoZrcadloNPN.png, id=583, 556.0775pt x 434.62375pt>
+File: obrazky/ZlepseneWilsonovoZrcadloNPN.png Graphic file (type png)
+<use obrazky/ZlepseneWilsonovoZrcadloNPN.png>
+Package pdftex.def Info: obrazky/ZlepseneWilsonovoZrcadloNPN.png  used on input line 132.
+(pdftex.def)             Requested size: 278.03807pt x 217.31134pt.
+ [27
+
+ </Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/ZlepseneWilsonovoZrcadloNPN.png>]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 146.
+ (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex
+consecutive:
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 175.
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex
+consecutive:
+) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex
+consecutive:
+
+Overfull \hbox (159.58607pt too wide) in paragraph at lines 26--27
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (401.03578pt too wide) in paragraph at lines 27--28
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (7.81789pt too wide) in paragraph at lines 35--36
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[28
+
+]) [29] (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 245.
+ [30
+
+] [31]) [32
+
+]
+\c@page@count=\count326
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 247.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 247.
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.aux (/Repos/SemestralProject/00_TEXT/sablona-cze/text/uvod.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/literatura.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/prilohy.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 247.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 247.
+Package rerunfilecheck Info: File `MoE_SEMESTRALNI_PRACE.out' has not changed.
+(rerunfilecheck)             Checksum: 1B27EAFC550904B6991944DC2BF3D531;4885.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 247.
+ ) 
+Here is how much of TeX's memory you used:
+ 42367 strings out of 480608
+ 884526 string characters out of 5903629
+ 1457113 words of memory out of 5000000
+ 57190 multiletter control sequences out of 15000+600000
+ 702226 words of font info for 104 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 68i,18n,75p,823b,2350s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/cbfonts/grmn1200.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
+Output written on /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.pdf (33 pages, 615115 bytes).
+PDF statistics:
+ 835 PDF objects out of 1000 (max. 8388607)
+ 730 compressed objects within 8 object streams
+ 279 named destinations out of 1000 (max. 500000)
+ 350 words of extra memory for PDF output out of 10000 (max. 10000000)
+
