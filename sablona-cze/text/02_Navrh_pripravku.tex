@@ -3,7 +3,7 @@ V~rámci semestrální práce byl vytvořen prototyp zařízení na platformě A
 
 Přípravek umožňuje výměnu \acs{MIDI} příkazů přes lokální síť, využívá první čtyři vrstvy ISO/OSI modelu. Zároveň poskytuje pokročilé možnosti směrování jednotlivých \acs{MIDI} kanálů.
 
-\section{Schéma}\label{chpt:Schema}
+\section{Hardware}\label{chpt:Schema}
 \begin{figure}[h]
     \centering
     \input{schemata/schPrototype}
@@ -24,7 +24,13 @@ Přípravek je v~této fázi vývoje napájen skrz \acs{USB} sběrnici Arduina n
 
 %...%
 
-\section{Protokol}
+\section{Software}
+Software přípravku byl vyvíjen za účelem maximalizace variability směřování \acs{MIDI} příkazů. Na funkční rovině je inspirován systémem \emph{Dante}, který se používá pro přenos zvukového signálu přes počítačovou síť. \emph{Dante} umožňuje pokročilé směřování signálů napříč síťovými zařízeními, ovládané pomocí přehledné matice na kontrolním PC. Do této fáze by měl být vyvinut i systém \acs{MoE}\footnote{\acl{MoE}}.
+%Pro spolehlivou komunikaci mezi zařízeními bylo třeba vyvinout protokol, který bude zapouzdřovat a směřovat samotné \acs{MIDI} zprávy. S tímto cílem byl implementován protokol \acs{MoE}\footnote{\acl{MoE}}. 
+\subsection{Logická vrstva}
+
+Jedna \acs{MoE} zpráva obsahuje \emph{čtyři bajty}. První bajt určuje 
+
 
 
 
