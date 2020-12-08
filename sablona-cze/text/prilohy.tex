@@ -33,6 +33,8 @@
 		0x08 & Broadcast zpráva od řídícího PC, která sonduje účastníky sítě \\
 		
 		\vdots & \\
+
+		0x0E & Unicast zpráva od řídícího  PC, která zařízení maže záznam z databáze \texttt{subscriptions}. \\
 		
 		0x0F & Unicast zpráva od řídícího PC, která zařízení vkládá nový záznam do databáze \texttt{subscriptions}, který je obsahem datagramu \\
 		
@@ -58,7 +60,7 @@
 
 \chapter{Výpisy kódu}
 \section{Výpis kódu pro příjem a zpracování \acs{MIDI} zprávy}\label{code:handleMIDI}
-\begin{lstlisting}
+\begin{lstlisting}[caption=Výpis kódu pro příjem a zpracování MIDI zprávy]
 void handleMIDI()
 {
 	int numIncBytes = midiSerial.available();
@@ -94,7 +96,10 @@ void sendUDP(byte data0, byte data1, bool threeByte,
 			IPAddress remoteIP = Ethernet.localIP();
 			remoteIP[3] = _subscriptions[i].dstIPnib;
 			eUDP.beginPacket(remoteIP, MOE_PORT);
-			eUDP.write(0xAA);
+			if (threeByte)
+				eUDP.write(0xA3);
+			else
+				eUDP.write(0xA2);
 			eUDP.write(data0);
 			eUDP.write(data1);
 			if (threeByte)
@@ -165,116 +170,116 @@ void sendUDP(byte data0, byte data1, bool threeByte,
 Všechny symboly jsou určeny pro matematický mód, vyjma \verb|\mikro|, jenž je\\ použitelný rovněž v~textovém módu.
 %$\upmikro$
 
-
-\chapter{Druhá příloha}
-
-\begin{figure}[!h]
-  \begin{center}
-    \includegraphics[scale=0.5]{obrazky/ZlepseneWilsonovoZrcadloNPN}
-  \end{center}
-  \caption[Alenčino zrcadlo]{Zlepšené Wilsonovo proudové zrcadlo.}
-\end{figure}
-
-Pro sazbu vektorových obrázků přímo v~\LaTeX{}u je možné doporučit balíček \href{https://www.ctan.org/pkg/pgf}{\texttt{TikZ}}.
-Příklady sazby je možné najít na \href{http://www.texample.net/tikz/examples/}{\TeX{}ample}.
-Pro vyzkoušení je možné použít programy QTikz nebo TikzEdt.
-
-
-
-
-\chapter{Příklad sazby zdrojových kódů}
-
-\section{Balíček \texttt{listings}}
-
-Pro vysázení zdrojových souborů je možné použít balíček \href{https://www.ctan.org/pkg/listings}{\texttt{listings}}.
-Balíček zavádí nové prostředí \texttt{lstlisting} pro sazbu zdrojových kódů, jako například:
 %
-\begin{lstlisting}[language={[LaTeX]TeX}]
-\section{Balíček lstlistings}
-Pro vysázení zdrojových souborů je možné použít
-	balíček \href{https://www.ctan.org/pkg/listings}%
-	{\texttt{listings}}.
-Balíček zavádí nové prostředí \texttt{lstlisting} pro
-	sazbu zdrojových kódů.
-\end{lstlisting}
+%\chapter{Druhá příloha}
 %
-Podporuje množství programovacích jazyků.
-Kód k~vysázení může být načítán přímo ze zdrojových souborů.
-Umožňuje vkládat čísla řádků nebo vypisovat jen vybrané úseky kódu.
-Např.:
-
-\noindent
-Zkratky jsou sázeny v~prostředí \texttt{acronym}:
-\label{lst:zkratky}
-\lstinputlisting[language={[LaTeX]TeX},nolol,numbers=left, firstnumber=6, firstline=6,lastline=6]{text/zkratky.tex}
+%\begin{figure}[!h]
+%  \begin{center}
+%    \includegraphics[scale=0.5]{obrazky/ZlepseneWilsonovoZrcadloNPN}
+%  \end{center}
+%  \caption[Alenčino zrcadlo]{Zlepšené Wilsonovo proudové zrcadlo.}
+%\end{figure}
 %
-Šířka textu volitelného parametru \verb|KolikMista| udává šířku prvního sloupce se zkratkami.
-Proto by měla být zadávána nejdelší zkratka nebo symbol.
-Příklad definice zkratky \acs{symfvz} je na výpisu \ref{lst:symfvz}.
+%Pro sazbu vektorových obrázků přímo v~\LaTeX{}u je možné doporučit %balíček \href{https://www.ctan.org/pkg/pgf}{\texttt{TikZ}}.
+%Příklady sazby je možné najít na \href{http://www.texample.net/tikz/%examples/}{\TeX{}ample}.
+%Pro vyzkoušení je možné použít programy QTikz nebo TikzEdt.
+%
 
-\shorthandoff{-}
-\lstinputlisting[language={[LaTeX]TeX},frame=single,caption={Ukázka sazby zkratek},label=lst:symfvz,numbers=left,linerange={bsymfvz-\%\%\%\ esymfvz},includerangemarker=false]{text/zkratky.tex}
-\shorthandon{-}
-
-\noindent
-Ukončení seznamu je provedeno ukončením prostředí:
-\lstinputlisting[language={[LaTeX]TeX},nolol,numbers=left,firstnumber=26,linerange=26]{text/zkratky.tex}
-
-\vspace{\fill}
-
-\noindent
-{\bf Poznámka k~výpisům s~použitím volby jazyka \verb|czech| nebo \verb|slovak|:}\newline
-Pokud Váš zdrojový kód obsahuje znak spojovníku \verb|-|, pak překlad může skončit chybou.
-Ta je způsobená tím, že znak \verb|-| je v~českém nebo slovenském nastavení balíčku \verb|babel| tzv.\ aktivním znakem.
-Přepněte znak \verb|-| na neaktivní příkazem \verb|\shorthandoff{-}| těsně před výpisem a hned za ním jej vraťte na aktivní příkazem \verb|\shorthandon{-}|.
-Podobně jako to je ukázáno ve zdrojovém kódu šablony.
-
-
-\clearpage
-
+%
+%
+%\chapter{Příklad sazby zdrojových kódů}
+%
+%\section{Balíček \texttt{listings}}
+%
+%Pro vysázení zdrojových souborů je možné použít balíček \href{https://%www.ctan.org/pkg/listings}{\texttt{listings}}.
+%Balíček zavádí nové prostředí \texttt{lstlisting} pro sazbu zdrojových %kódů, jako například:
+%%
+%\begin{lstlisting}[language={[LaTeX]TeX}]
+%\section{Balíček lstlistings}
+%Pro vysázení zdrojových souborů je možné použít
+%	balíček \href{https://www.ctan.org/pkg/listings}%
+%	{\texttt{listings}}.
+%Balíček zavádí nové prostředí \texttt{lstlisting} pro
+%	sazbu zdrojových kódů.
+%\end{lstlisting}
+%%
+%Podporuje množství programovacích jazyků.
+%Kód k~vysázení může být načítán přímo ze zdrojových souborů.
+%Umožňuje vkládat čísla řádků nebo vypisovat jen vybrané úseky kódu.
+%Např.:
+%
+%\noindent
+%Zkratky jsou sázeny v~prostředí \texttt{acronym}:
+%\label{lst:zkratky}
+%\lstinputlisting[language={[LaTeX]TeX},nolol,numbers=left, firstnumber=6, %firstline=6,lastline=6]{text/zkratky.tex}
+%%
+%Šířka textu volitelného parametru \verb|KolikMista| udává šířku prvního %sloupce se zkratkami.
+%Proto by měla být zadávána nejdelší zkratka nebo symbol.
+%Příklad definice zkratky \acs{symfvz} je na výpisu \ref{lst:symfvz}.
+%
+%\shorthandoff{-}
+%\lstinputlisting[language={[LaTeX]TeX},frame=single,caption={Ukázka sazby %zkratek},label=lst:symfvz,numbers=left,linerange={bsymfvz-\%\%\%\ esymfvz}%,includerangemarker=false]{text/zkratky.tex}
+%\shorthandon{-}
+%
+%\noindent
+%Ukončení seznamu je provedeno ukončením prostředí:
+%\lstinputlisting[language={[LaTeX]TeX},nolol,numbers=left,firstnumber=26,%linerange=26]{text/zkratky.tex}
+%
+%\vspace{\fill}
+%
+%\noindent
+%{\bf Poznámka k~výpisům s~použitím volby jazyka \verb|czech| nebo \verb|%slovak|:}\newline
+%Pokud Váš zdrojový kód obsahuje znak spojovníku \verb|-|, pak překlad %může skončit chybou.
+%Ta je způsobená tím, že znak \verb|-| je v~českém nebo slovenském %nastavení balíčku \verb|babel| tzv.\ aktivním znakem.
+%Přepněte znak \verb|-| na neaktivní příkazem \verb|\shorthandoff{-}| %těsně před výpisem a hned za ním jej vraťte na aktivní příkazem \verb|%\shorthandon{-}|.
+%Podobně jako to je ukázáno ve zdrojovém kódu šablony.
+%
+%
+%clearpage
+%
 %\section{Výpis kódu prostředí Matlab}
-Na výpisu \ref{lst:priklad.vypis.kodu.Matlab} naleznete příklad kódu pro Matlab, na výpisu \ref{lst:priklad.vypis.kodu.C} zase pro jazyk~C.
-
-\lstnewenvironment{matlab}[1][]{%
-\iflanguage{czech}{\shorthandoff{-}}{}%
-\iflanguage{slovak}{\shorthandoff{-}}{}%
-\lstset{language=Matlab,numbers=left,#1}%
-}{%
-\iflanguage{slovak}{\shorthandon{-}}{}%
-\iflanguage{czech}{\shorthandon{-}}{}%
-}
-
-\begin{matlab}[frame=single,float=htbp,caption={Příklad Schur-Cohnova testu stability v~prostředí Matlab.},label=lst:priklad.vypis.kodu.Matlab,numberstyle=\scriptsize, numbersep=7pt]
+%a výpisu \ref{lst:priklad.vypis.kodu.Matlab} naleznete příklad kódu pro %atlab, na výpisu \ref{lst:priklad.vypis.kodu.C} zase pro jazyk~C.
+%
+%lstnewenvironment{matlab}[1][]{%
+%iflanguage{czech}{\shorthandoff{-}}{}%
+%iflanguage{slovak}{\shorthandoff{-}}{}%
+%lstset{language=Matlab,numbers=left,#1}%
+%{%
+%iflanguage{slovak}{\shorthandon{-}}{}%
+%iflanguage{czech}{\shorthandon{-}}{}%
+%
+%
+%begin{matlab}[frame=single,float=htbp,caption={Příklad Schur-Cohnova %estu stability v~prostředí Matlab.},label=lst:priklad.vypis.kodu.Matlab,%umberstyle=\scriptsize, numbersep=7pt]
 %% Priklad testovani stability filtru
-
+%
 % koeficienty polynomu ve jmenovateli
-a = [ 5, 11.2, 5.44, -0.384, -2.3552, -1.2288];
-disp( 'Polynom:'); disp(poly2str( a, 'z'))
-
-disp('Kontrola pomoci korenu polynomu:');
-zx = roots( a);
-if( all( abs( zx) < 1))
-    disp('System je stabilni')
-else
-    disp('System je nestabilni nebo na mezi stability');
-end
-
-disp(' '); disp('Kontrola pomoci Schur-Cohn:');
-ma = zeros( length(a)-1,length(a));
-ma(1,:) = a/a(1);
-for( k = 1:length(a)-2)
-    aa = ma(k,1:end-k+1);
-    bb = fliplr( aa);
-    ma(k+1,1:end-k+1) = (aa-aa(end)*bb)/(1-aa(end)^2);
-end
-
-if( all( abs( diag( ma.'))))
-    disp('System je stabilni')
-else
-    disp('System je nestabilni nebo na mezi stability');
-end
-\end{matlab}
-
+% = [ 5, 11.2, 5.44, -0.384, -2.3552, -1.2288];
+%isp( 'Polynom:'); disp(poly2str( a, 'z'))
+%
+%isp('Kontrola pomoci korenu polynomu:');
+%x = roots( a);
+%f( all( abs( zx) < 1))
+%   disp('System je stabilni')
+%lse
+%   disp('System je nestabilni nebo na mezi stability');
+%nd
+%
+%isp(' '); disp('Kontrola pomoci Schur-Cohn:');
+%a = zeros( length(a)-1,length(a));
+%a(1,:) = a/a(1);
+%or( k = 1:length(a)-2)
+%   aa = ma(k,1:end-k+1);
+%   bb = fliplr( aa);
+%   ma(k+1,1:end-k+1) = (aa-aa(end)*bb)/(1-aa(end)^2);
+%nd
+%
+%f( all( abs( diag( ma.'))))
+%   disp('System je stabilni')
+%lse
+%   disp('System je nestabilni nebo na mezi stability');
+%nd
+%end{matlab}
+%
 \noindent
 \begin{minipage}{\linewidth}
 

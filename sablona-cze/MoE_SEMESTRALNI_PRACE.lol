@@ -1,3 +1,2 @@
-\contentsline {lstlisting}{\numberline {E.1}Ukázka sazby zkratek}{30}{lstlisting.160}%
-\contentsline {lstlisting}{\numberline {E.2}Příklad Schur-Cohnova testu stability v~prostředí Matlab.}{32}{lstlisting.187}%
-\contentsline {lstlisting}{\numberline {E.3}Příklad implementace první kanonické formy v~jazyce C.}{33}{lstlisting.216}%
+\contentsline {lstlisting}{\numberline {B.1}Výpis kódu pro příjem a zpracování MIDI zprávy}{27}{lstlisting.98}%
+\contentsline {lstlisting}{\numberline {C.1}Příklad implementace první kanonické formy v~jazyce C.}{30}{lstlisting.151}%
