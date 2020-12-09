@@ -23,16 +23,16 @@
 \contentsline {section}{\numberline {3.4}Přijetí \acs {MIDI} zprávy}{18}{section.80}%
 \contentsline {section}{\numberline {3.5}Přijetí UDP zprávy}{18}{section.81}%
 \contentsline {chapter}{\numberline {4}Síťový ovladač}{19}{chapter.82}%
-\contentsline {chapter}{Závěr}{20}{section*.84}%
-\contentsline {chapter}{Literatura}{21}{section*.86}%
-\contentsline {chapter}{Seznam symbol\r {u}, veli\v {c}in a zkratek}{23}{section*.88}%
-\contentsline {chapter}{Seznam p\v {r}\'{\i }loh}{24}{section*.90}%
-\contentsline {chapter}{\numberline {A}Tabulky }{25}{chapter.91}%
-\contentsline {section}{\numberline {A.1}\acs {MIDI} STATUS BAJTY }{25}{section.92}%
-\contentsline {section}{\numberline {A.2}\acs {MoE} značky }{26}{section.94}%
-\contentsline {chapter}{\numberline {B}Výpisy kódu }{27}{chapter.96}%
-\contentsline {section}{\numberline {B.1}Výpis kódu pro příjem a zpracování \acs {MIDI} zprávy }{27}{section.97}%
-\contentsline {chapter}{\numberline {C}Některé příkazy balíčku \texttt {thesis} }{29}{chapter.146}%
-\contentsline {section}{\numberline {C.1}Příkazy pro sazbu veličin a jednotek }{29}{section.147}%
-\contentsline {section}{\numberline {C.2}Příkazy pro sazbu symbolů }{29}{section.149}%
-\contentsline {chapter}{\numberline {D}Obsah přiloženého CD }{31}{chapter.178}%
+\contentsline {chapter}{Závěr}{20}{section*.86}%
+\contentsline {chapter}{Literatura}{21}{section*.88}%
+\contentsline {chapter}{Seznam symbol\r {u}, veli\v {c}in a zkratek}{23}{section*.90}%
+\contentsline {chapter}{Seznam p\v {r}\'{\i }loh}{24}{section*.92}%
+\contentsline {chapter}{\numberline {A}Tabulky }{25}{chapter.93}%
+\contentsline {section}{\numberline {A.1}\acs {MIDI} STATUS BAJTY }{25}{section.94}%
+\contentsline {section}{\numberline {A.2}\acs {MoE} značky }{26}{section.96}%
+\contentsline {chapter}{\numberline {B}Výpisy kódu }{27}{chapter.98}%
+\contentsline {section}{\numberline {B.1}Výpis kódu pro příjem a zpracování \acs {MIDI} zprávy }{27}{section.99}%
+\contentsline {chapter}{\numberline {C}Některé příkazy balíčku \texttt {thesis} }{29}{chapter.148}%
+\contentsline {section}{\numberline {C.1}Příkazy pro sazbu veličin a jednotek }{29}{section.149}%
+\contentsline {section}{\numberline {C.2}Příkazy pro sazbu symbolů }{29}{section.151}%
+\contentsline {chapter}{\numberline {D}Obsah přiloženého CD }{31}{chapter.180}%
