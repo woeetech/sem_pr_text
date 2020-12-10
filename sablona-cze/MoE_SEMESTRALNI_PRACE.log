@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.26)  10 DEC 2020 14:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.26)  10 DEC 2020 15:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1358,7 +1358,11 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 
 
-] [15]) [16]
+]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15]) [16]
 \openout2 = `text/03_Prubeh_komunikace.aux'.
 
  (/Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.tex [17
@@ -1369,7 +1373,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 \openout2 = `text/04_Sitovy_ovladac.aux'.
 
  (/Repos/SemestralProject/00_TEXT/sablona-cze/text/04_Sitovy_ovladac.tex
-<obrazky/MoE_editor_1.png, id=495, 781.92125pt x 502.87875pt>
+<obrazky/MoE_editor_1.png, id=498, 781.92125pt x 502.87875pt>
 File: obrazky/MoE_editor_1.png Graphic file (type png)
 <use obrazky/MoE_editor_1.png>
 Package pdftex.def Info: obrazky/MoE_editor_1.png  used on input line 6.
@@ -1458,18 +1462,18 @@ Package rerunfilecheck Info: File `MoE_SEMESTRALNI_PRACE.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 250.
  ) 
 Here is how much of TeX's memory you used:
- 40194 strings out of 480608
- 856836 string characters out of 5903629
- 1233600 words of memory out of 5000000
- 55085 multiletter control sequences out of 15000+600000
+ 40195 strings out of 480608
+ 856855 string characters out of 5903629
+ 1233729 words of memory out of 5000000
+ 55086 multiletter control sequences out of 15000+600000
  701908 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,18n,71p,823b,1946s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,18n,71p,855b,1946s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/cbfonts/grmn1200.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.pdf (32 pages, 641744 bytes).
+Output written on /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.pdf (32 pages, 642552 bytes).
 PDF statistics:
- 792 PDF objects out of 1000 (max. 8388607)
- 688 compressed objects within 7 object streams
+ 795 PDF objects out of 1000 (max. 8388607)
+ 691 compressed objects within 7 object streams
  229 named destinations out of 1000 (max. 500000)
  366 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,5 @@
 \chapter{Průběh komunikace}
-V~této kapitole bude popsán průběh připojení přípravku k síti, automatické rozpoznání a zacházení s přijatými \acs{MIDI} a UDP zprávami.
+V~této kapitole bude popsán průběh připojení přípravku k síti, automatické rozpoznání a zacházení s přijatými \acs{MIDI} a \acs{UDP} zprávami, spolu s reakcemi na příkazy odeslané síťovým editorem.
 
 \section{Připojení k lokální síti}
 Každému přípravku byla do prvních šesti bajtů \texttt{EEPROM} paměti uložena unikátní MAC adresa. Při zapnutí a následné inicializaci je adresa načtena a přiřazena. Nejprve proběhne pokus o získání IP adresy pomocí DHCP serveru sítě. V případě neúspěchu použije přípravek uživatelem napevno nastavenou IP adresu. 
@@ -21,11 +21,7 @@ else
 \end{lstlisting}
 
 
-\newcommand{\bytes}[4]{
-    \begin{center}
-        \large{\texttt{0x#1, 0x#2, 0x#3, 0x#4}}
-    \end{center}
-}
+
 
 
 
