@@ -462,7 +462,6 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cbfonts/grmn1000.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cbfonts/grmn0700.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/cbfonts/grmn0500.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr7.tfm
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbxi10.tfm
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.tex
@@ -554,7 +553,6 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
