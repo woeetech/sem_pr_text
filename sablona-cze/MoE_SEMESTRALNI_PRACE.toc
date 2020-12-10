@@ -20,15 +20,15 @@
 \contentsline {section}{\numberline {3.1}Připojení k lokální síti}{16}{section.51}%
 \contentsline {section}{\numberline {3.2}Upozornění na vlastní přítomnost}{16}{section.64}%
 \contentsline {section}{\numberline {3.3}Rozpoznání zařízení na síti}{17}{section.73}%
-\contentsline {section}{\numberline {3.4}Přijetí \acs {MIDI} zprávy}{17}{section.83}%
-\contentsline {section}{\numberline {3.5}Přijetí UDP zprávy}{18}{section.84}%
-\contentsline {chapter}{\numberline {4}Síťový ovladač}{19}{chapter.85}%
-\contentsline {chapter}{Závěr}{20}{section*.89}%
-\contentsline {chapter}{Literatura}{21}{section*.91}%
-\contentsline {chapter}{Seznam symbol\r {u}, veli\v {c}in a zkratek}{22}{section*.93}%
-\contentsline {chapter}{Seznam p\v {r}\'{\i }loh}{23}{section*.95}%
-\contentsline {chapter}{\numberline {A}Tabulky }{24}{chapter.96}%
-\contentsline {section}{\numberline {A.1}\acs {MIDI} status bajty }{24}{section.97}%
-\contentsline {section}{\numberline {A.2}\acs {MoE} značky }{25}{section.99}%
-\contentsline {chapter}{\numberline {B}Výpisy kódu }{26}{chapter.101}%
-\contentsline {section}{\numberline {B.1}Výpis kódu pro příjem a zpracování \acs {MIDI} zprávy }{26}{section.102}%
+\contentsline {section}{\numberline {3.4}Přijetí \acs {MIDI} zprávy}{17}{section.74}%
+\contentsline {section}{\numberline {3.5}Přijetí UDP zprávy}{17}{section.75}%
+\contentsline {chapter}{\numberline {4}Síťový ovladač}{19}{chapter.96}%
+\contentsline {chapter}{Závěr}{20}{section*.100}%
+\contentsline {chapter}{Literatura}{21}{section*.102}%
+\contentsline {chapter}{Seznam symbol\r {u}, veli\v {c}in a zkratek}{22}{section*.104}%
+\contentsline {chapter}{Seznam p\v {r}\'{\i }loh}{23}{section*.106}%
+\contentsline {chapter}{\numberline {A}Tabulky }{24}{chapter.107}%
+\contentsline {section}{\numberline {A.1}\acs {MIDI} status bajty }{24}{section.108}%
+\contentsline {section}{\numberline {A.2}\acs {MoE} značky }{25}{section.110}%
+\contentsline {chapter}{\numberline {B}Výpisy kódu }{26}{chapter.112}%
+\contentsline {section}{\numberline {B.1}Výpis kódu pro příjem a zpracování \acs {MIDI} zprávy }{26}{section.113}%

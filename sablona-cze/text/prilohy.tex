@@ -45,8 +45,8 @@
 
 		\vdots & \\
 
-		0xA2 & Dvoubajtová \acs{MIDI} zpráva pro port A \\
-		0xA3 & Tříbajtová \acs{MIDI} zpráva pro port A \\
+		%0xA2 & Dvoubajtová \acs{MIDI} zpráva pro port A \\
+		0xA3 & Tříbajtová \acs{MIDI} zpráva \\
 		%0xB2 & Dvoubajtová \acs{MIDI} zpráva pro port B \\
 		%0xB3 & Tříbajtová \acs{MIDI} zpráva pro port B \\
 		
@@ -111,11 +111,11 @@ void sendUDP(byte data0, byte data1, byte data2)
 %  	\small
 %	  \begin{tabular}{|c|c|c|c|}
 %	    \hline
-%	    Příkaz    						& Příklad 					& Zdroj příkladu  							& Význam  %\\
+%	    Příkaz    						& Příklad 					& Zdroj příkladu  							& Význam  \\
 %	    \hline\hline
 %	    \verb|\textind{...}|	& $\beta_\textind{max}$ 	& \verb|$\beta_\textind{max}$|	& textový index \\
 %	    \hline
-%	    \verb|\const{...}| 		& $\const{U}_\textind{in}$ 				& \verb|$\const{U}_\textind{in}$|		& %konstantní veličina \\
+%eličina \\
 %	    \hline
 %	    \verb|\var{...}| 		& $\var{u}_\textind{in}$ & \verb|$\var{u}_\textind{in}$| & proměnná veličina \\
 %	    \hline
@@ -125,12 +125,12 @@ void sendUDP(byte data0, byte data1, byte data2)
 %	    \hline
 %	    \verb|\mat{...}| 	& $\mat{Z}$ 						& \verb|$\mat{Z}$| & matice \\
 %	    \hline
-%	    \verb|\unit{...}| 		& $\unit{kV}$ 						& \verb|$\unit{kV}$|\quad či\ \, \verb|\unit{kV}| & %jednotka \\
+%	    \verb|\unit{...}| 		& $\unit{kV}$ 						& \verb|$\unit{kV}$|\quad či\ \, \verb|\unit{kV}| & jednotka \\
 %	    \hline
 %	  \end{tabular}
 %  \end{center}
 %\end{table}
-%
+
 
 
 %%\newpage
