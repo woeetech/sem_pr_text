@@ -6,4 +6,6 @@
 \contentsline {figure}{\numberline {1.4}{\ignorespaces Struktura zprávy \emph {Změna kontroléru} \cite {MIDIspecs}.\relax }}{11}{figure.caption.23}%
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Schéma prototypu \cite {Indest}\relax }}{13}{figure.caption.32}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Kódování zdrojového a cílového kanálu v bajtu \texttt {srcdstChannel}\relax }}{15}{figure.caption.44}%
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Terminálová aplikace \emph {MoE Matrix Editor.}\relax }}{19}{figure.caption.97}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Konzolová aplikace \emph {MoE Matrix Editor}~-- úvodní obrazovka.\relax }}{19}{figure.caption.97}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Konzolová aplikace \emph {MoE Matrix Editor}~-- vytváření spojení.\relax }}{20}{figure.caption.99}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Konzolová aplikace \emph {MoE Matrix Editor}~-- využití vkládacího makra.\relax }}{20}{figure.caption.100}%
