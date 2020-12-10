@@ -502,6 +502,9 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/04_Sitovy_ovladac.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/04_Sitovy_ovladac.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/04_Sitovy_ovladac.tex
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/MoE_editor_1.png
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/MoE_editor_1.png
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/MoE_editor_1.png
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.tex

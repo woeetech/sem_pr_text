@@ -12,10 +12,10 @@
 \contentsline {subsubsection}{Zprávy SysEx}{13}{section*.28}%
 \contentsline {chapter}{\numberline {2}Návrh přípravku}{14}{chapter.30}%
 \contentsline {section}{\numberline {2.1}Hardware}{14}{section.31}%
-\contentsline {section}{\numberline {2.2}Software}{15}{section.34}%
+\contentsline {section}{\numberline {2.2}Software}{14}{section.34}%
 \contentsline {subsection}{\numberline {2.2.1}Databáze spojení}{15}{subsection.36}%
 \contentsline {subsection}{\numberline {2.2.2}Formát zprávy}{16}{subsection.44}%
-\contentsline {subsection}{\numberline {2.2.3}Síťová komunikace}{16}{subsection.45}%
+\contentsline {subsection}{\numberline {2.2.3}Síťová vrstva}{16}{subsection.45}%
 \contentsline {chapter}{\numberline {3}Průběh komunikace}{17}{chapter.47}%
 \contentsline {section}{\numberline {3.1}Připojení k lokální síti}{17}{section.48}%
 \contentsline {section}{\numberline {3.2}Upozornění na vlastní přítomnost}{17}{section.61}%

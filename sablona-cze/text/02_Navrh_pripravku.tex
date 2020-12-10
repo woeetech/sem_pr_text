@@ -8,9 +8,9 @@
     }
 
 \chapter{Návrh přípravku}
-V~rámci semestrální práce byl vytvořen prototyp zařízení na platformě Arduino~UNO, která disponuje čipem ATMEL ATmega 328P. Arduinu sekunduje \linebreak Ethernet~Shield~V1, který je osazen čipem WizNet W5100. 
+V~rámci semestrální práce byl vytvořen prototyp zařízení na platformě Ar\-du\-ino UNO, která disponuje čipem ATMEL ATmega 328P. Ar\-du\-inu sekunduje Ether\-net Shield V1, který je osazen čipem WizNet W5100. 
 
-Přípravek umožňuje výměnu \acs{MIDI} příkazů přes lokální síť, využívá první čtyři vrstvy ISO/OSI modelu. Zároveň poskytuje pokročilé možnosti směrování jednotlivých \acs{MIDI} kanálů.
+Přípravek umožňuje výměnu \acs{MIDI} příkazů přes lokální síť, využívá první čtyři vrstvy ISO/OSI modelu. Zároveň, pomocí síťového editoru, poskytuje pokročilé možnosti směrování jednotlivých \acs{MIDI} kanálů.
 
 \section{Hardware}\label{chpt:Schema}
 \begin{figure}[h]
@@ -25,9 +25,9 @@ Přípravek umožňuje výměnu \acs{MIDI} příkazů přes lokální síť, vyu
     \label{fig:schPrototype}
 \end{figure}
 
-Z obr. \ref{fig:schPrototype} je patrné zapojení přípravku. Je využito standardní zapojení \acs{MIDI} vstupu a~výstupu v souladu se schématy na obr.~\ref{fig:schMIDIout} a~\ref{fig:schMIDIin}. Jak již bylo řečeno v kapitole~\ref{chpt:MIDI}, \acs{MIDI} využívá pro komunikaci sériovou linku. V tomto případě je vstupní linka zapojena k~Arduinu na \texttt{pinu~2} a výstupní k~\texttt{pinu~3}\footnote{Arduino umožňuje softwarové přepnutí \texttt{pinů} z režimu výstupu na režim vstup a naopak.}. 
+Z obr. \ref{fig:schPrototype} je patrné zapojení přípravku. Je využito standardní zapojení \acs{MIDI} vstupu a~výstupu v souladu se schématy na obr.~\ref{fig:schMIDIout} a~\ref{fig:schMIDIin}. Jak již bylo řečeno v kapitole~\ref{chpt:MIDI}, \acs{MIDI} využívá pro komunikaci sériovou linku. V tomto případě je vstupní linka zapojena k~Arduinu na \texttt{pinu~4} a výstupní k~\texttt{pinu~5}\footnote{Arduino umožňuje softwarové přepnutí \texttt{pinů} z režimu výstupu na režim vstup a naopak.}. 
 
-Ve schématu na obr.~\ref{fig:schPrototype} je pro zjednodušení značka \uv{Arduino} chápána jako \uv{Arduino\,+\,Wiznet Shield}.
+%Ve schématu na obr.~\ref{fig:schPrototype} je pro zjednodušení značka \uv{Arduino} chápána jako \uv{Arduino\,+\,Wiznet Shield}.
 
 Přípravek je v~této fázi vývoje napájen skrz \acs{USB} sběrnici Arduina napětím 5\,\unit{V}. 
 
@@ -36,6 +36,8 @@ Přípravek je v~této fázi vývoje napájen skrz \acs{USB} sběrnici Arduina n
 \section{Software}
 Software přípravku byl vyvíjen za účelem maximalizace variability směřování \acs{MIDI} příkazů. Na funkční rovině je inspirován systémem \emph{Dante}, který se používá pro přenos zvukového signálu přes počítačovou síť. \emph{Dante} umožňuje pokročilé směřování signálů napříč síťovými zařízeními, ovládané pomocí přehledné matice na kontrolním PC. Do této fáze by měl být vyvinut i systém \acs{MoE}\footnote{\acl{MoE}}.
 %Pro spolehlivou komunikaci mezi zařízeními bylo třeba vyvinout protokol, který bude zapouzdřovat a směřovat samotné \acs{MIDI} zprávy. S tímto cílem byl implementován protokol \acs{MoE}\footnote{\acl{MoE}}. 
+
+Přípravek pracuje s dvěma typy zpráv: Příchozí a odchozí \acs{MIDI} zprávy, které se týkají hardwarové sběrnice (na nejnižší vrstvě přímo \texttt{pinů 1} a \texttt{5} z obr. \ref{fig:schPrototype})~-- dále jen \uv{\acs{MIDI} zprávy}~--, a příchozí a odchozí UDP zprávy, které se týkají pouze ethernetového rozhraní zprostředkovaném WizNet Shieldem~-- dále jen \uv{UDP zprávy}.
 \subsection{Databáze spojení}\label{chpt:DatSpoj}
 S cílem docílit již zmiňované velké variability ve směřování zpráv napříč přípravky byla do zdrojového kódu implementována tzv. databáze spojení \texttt{sub\-scrip\-tions[]}:
 \begin{lstlisting}
@@ -52,7 +54,7 @@ Každý záznam je tvořen dvěma bajty:
     \item \texttt{srcdstChannel} v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového. \uv{Kódování} je uskutečněno způsobem vyobrazeným na obr. \ref{fig:srcdstChannel}. Jeden kanál je vyjádřen pomocí čtyř bitů (viz kapitolu \ref{chpt:MIDIsw}), jeden bajt tedy \uv{pojme} přesně dva kanály.
     \item \texttt{dstIPnib} vyjadřuje poslední bajt IP adresy cílového zařízení (viz též sekci \ref{chpt:NetworkLayer}) 
 \end{itemize}
-\begin{figure}[b]
+\begin{figure}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|c|c|}
         \hline
@@ -68,9 +70,9 @@ Každý záznam je tvořen dvěma bajty:
 \end{figure}
 
 \subsection{Formát zprávy}
-Pro optimální komunikaci zařízení mezi sebou bylo nutné zapouzdřit \acs{MIDI} příkazy do \acs{MoE} datagramu. Tento datagram se skládá ze \emph{čtyř} bajtů, z čehož první je vyhrazen \acs{MoE} značce a zbylé tři samotné \acs{MIDI} zprávě nebo jiným datům. Tabulku všech dosavadně implementovaných \acs{MoE} značek lze nalézt v příloze \ref{chpt:MoEZnacky}.
+Pro optimální komunikaci zařízení mezi sebou bylo nutné zapouzdřit \acs{MIDI} příkazy do \acs{MoE} datagramu. Tento datagram se skládá ze čtyř bajtů, z čehož první je vyhrazen \acs{MoE} značce a zbylé tři samotné \acs{MIDI} zprávě nebo jiným datům. Tabulku všech dosavadně implementovaných \acs{MoE} značek lze nalézt v příloze \ref{chpt:MoEZnacky}.
 
-\subsection{Síťová komunikace}\label{chpt:NetworkLayer}
+\subsection{Síťová vrstva}\label{chpt:NetworkLayer}
 Pro síťovou komunikaci byl vybrán protokol \acs{UDP}\footnote{\acl{UDP}}. Jeho \uv{peer2peer} architektura je k tomuto projektu mnohem vhodnější než ta, kterou poskytuje protokol TCP. Komunikace probíhá na portu 50\,000.
 \acs{MoE} zařízení jsou schopna se do lokální sítě připojit s pevně nestavenou IP adresou, nebo zažádat o přidělení IP adresy DHCP server. Tato síť však musí mít masku 255.255.255.0~-- zařízení se z úsporných důvodů navzájem rozlišují \emph{pouze} posledním bajtem IP adresy (jak je popsáno v sekci \ref{chpt:DatSpoj}).
 
