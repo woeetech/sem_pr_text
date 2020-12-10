@@ -1,8 +1,9 @@
 \chapter{Tabulky}
 
-\section{\acs{MIDI} STATUS BAJTY}
+\section{\acs{MIDI} status bajty}
 \begin{table}[h]
-    \centering
+	\centering
+	\caption{Tabulka \acs{MIDI} \texttt{STATUS BAJTŮ} \cite{MIDIspecs}.}
     \begin{tabular}{|l|l|>{\ttfamily}c|>{\ttfamily}c|}
      \hline
      \multicolumn{2}{|c|}{Název} & \textnormal{Hex. hodnota} & \textnormal{Bin. hodnota} \\  
@@ -16,7 +17,6 @@
      Pitch Bend & Ohyb výšky tónu & 0xEn & 1110\,nnnn \\
      \hline
 	\end{tabular}
-    \caption{Tabulka \acs{MIDI} \texttt{STATUS BAJTŮ} \cite{MIDIspecs}.}
     \label{tab:MIDIsts}
 \end{table}
 \newpage
@@ -24,6 +24,7 @@
 \section{\acs{MoE} značky}\label{chpt:MoEZnacky}
 \begin{table}[h]
 	\centering
+	\caption{Tabulka prvních bajtů \acs{MoE} zpráv.}
 	\begin{tabular}{|  >{\ttfamily} c | p{0.7\textwidth} |}
 		\hline
 		\textnormal{Bajt} & \multicolumn{1}{|c|}{Popis} \\
@@ -54,7 +55,6 @@
 		0xFF & Zpráva \texttt{beacon} sloužící pro upozornění na vlastní přítomnost \\
 		\hline
 	\end{tabular}
-	\caption{Tabulka prvních bajtů \acs{MoE} zpráv.}
 \end{table}
 
 
@@ -63,47 +63,33 @@
 \begin{lstlisting}[caption=Výpis kódu pro příjem a zpracování MIDI zprávy]
 void handleMIDI()
 {
-	int numIncBytes = midiSerial.available();
-	if (numIncBytes) 
-	{
-		switch (numIncBytes)
-		{
-			//...
-			case 3:
-				byte data0, data1, data2;
-				data0 = midiSerial.read();
-				data1 = midiSerial.read();
-				data2 = midiSerial.read();
-				sendUDP(data0, data1, true, data2);
-			break;
-			//...
-		}
-	}
+	if (midiSerial.available() == 3)
+    {
+        _data0 = midiSerial.read();
+        _data1 = midiSerial.read();
+        _data2 = midiSerial.read();
+        sendUDP(_data0, _data1, _data2);
+    }
 }
 	
-void sendUDP(byte data0, byte data1, bool threeByte, 
-	byte data2)
+void sendUDP(byte data0, byte data1, byte data2)
 {
 	byte srcCh = data0 & 0x0F;
 	for (byte i = 0; i < MAX_SUBS; i++)
 	{
 		if (srcCh == (_subscriptions[i].srcdstChannel 
-			& 0xF0) >> 4)
+					       & 0xF0) >> 4)
 		{
 			data0 = data0 & 0xF0;
 			data0 = data0 | (_subscriptions[i].srcdstChannel 
 							& 0x0F);
-			IPAddress remoteIP = Ethernet.localIP();
-			remoteIP[3] = _subscriptions[i].dstIPnib;
-			eUDP.beginPacket(remoteIP, MOE_PORT);
-			if (threeByte)
-				eUDP.write(0xA3);
-			else
-				eUDP.write(0xA2);
+			IPAddress destinationIP = Ethernet.localIP();
+			destinationIP[3] = _subscriptions[i].dstIPnib;
+			eUDP.beginPacket(destinationIP, MOE_PORT);
+			eUDP.write(0xA3);
 			eUDP.write(data0);
 			eUDP.write(data1);
-			if (threeByte)
-				eUDP.write(data2);
+			eUDP.write(data2);
 			eUDP.endPacket();
 		}
 	}
@@ -115,60 +101,60 @@ void sendUDP(byte data0, byte data1, bool threeByte,
 
 
 
-\chapter{Některé příkazy balíčku \texttt{thesis}}
-
-\section{Příkazy pro sazbu veličin a jednotek}
-
-\begin{table}[!h]
-  \caption[Přehled příkazů]{Přehled příkazů pro matematické prostředí }
-  \begin{center}
-  	\small
-	  \begin{tabular}{|c|c|c|c|}
-	    \hline
-	    Příkaz    						& Příklad 					& Zdroj příkladu  							& Význam  \\
-	    \hline\hline
-	    \verb|\textind{...}|	& $\beta_\textind{max}$ 	& \verb|$\beta_\textind{max}$|	& textový index \\
-	    \hline
-	    \verb|\const{...}| 		& $\const{U}_\textind{in}$ 				& \verb|$\const{U}_\textind{in}$|		& konstantní veličina \\
-	    \hline
-	    \verb|\var{...}| 		& $\var{u}_\textind{in}$ & \verb|$\var{u}_\textind{in}$| & proměnná veličina \\
-	    \hline
-	    \verb|\complex{...}| 	& $\complex{u}_\textind{in}$ & \verb|$\complex{u}_\textind{in}$| & komplexní veličina \\
-	    \hline
-	    \verb|\vect{...}| 		& $\vect{y}$ 						& \verb|$\vect{y}$| & vektor \\
-	    \hline
-	    \verb|\mat{...}| 	& $\mat{Z}$ 						& \verb|$\mat{Z}$| & matice \\
-	    \hline
-	    \verb|\unit{...}| 		& $\unit{kV}$ 						& \verb|$\unit{kV}$|\quad či\ \, \verb|\unit{kV}| & jednotka \\
-	    \hline
-	  \end{tabular}
-  \end{center}
-\end{table}
-
-
-
-%\newpage
-\section{Příkazy pro sazbu symbolů}
-
-\begin{itemize}
-  \item
-    \verb|\E|, \verb|\eul| -- sazba Eulerova čísla: $\eul$,
-  \item
-    \verb|\J|, \verb|\jmag|, \verb|\I|, \verb|\imag| -- sazba imaginární jednotky: $\jmag$, $\imag$,
-  \item
-    \verb|\dif| -- sazba diferenciálu: $\dif$,
-  \item
-    \verb|\sinc| -- sazba funkce: $\sinc$,
-  \item
-    \verb|\mikro| -- sazba symbolu mikro stojatým písmem%
-			\footnote{znak pochází z~balíčku \texttt{textcomp}}: $\mikro$,
-	\item
-		\verb|\uppi| -- sazba symbolu $\uppi$
-			(stojaté řecké pí, na rozdíl od \verb|\pi|, což sází $\pi$).
-\end{itemize}
+%\chapter{Některé příkazy balíčku \texttt{thesis}}
 %
-Všechny symboly jsou určeny pro matematický mód, vyjma \verb|\mikro|, jenž je\\ použitelný rovněž v~textovém módu.
-%$\upmikro$
+%\section{Příkazy pro sazbu veličin a jednotek}
+%
+%\begin{table}[!h]
+%  \caption[Přehled příkazů]{Přehled příkazů pro matematické prostředí }
+%  \begin{center}
+%  	\small
+%	  \begin{tabular}{|c|c|c|c|}
+%	    \hline
+%	    Příkaz    						& Příklad 					& Zdroj příkladu  							& Význam  %\\
+%	    \hline\hline
+%	    \verb|\textind{...}|	& $\beta_\textind{max}$ 	& \verb|$\beta_\textind{max}$|	& textový index \\
+%	    \hline
+%	    \verb|\const{...}| 		& $\const{U}_\textind{in}$ 				& \verb|$\const{U}_\textind{in}$|		& %konstantní veličina \\
+%	    \hline
+%	    \verb|\var{...}| 		& $\var{u}_\textind{in}$ & \verb|$\var{u}_\textind{in}$| & proměnná veličina \\
+%	    \hline
+%	    \verb|\complex{...}| 	& $\complex{u}_\textind{in}$ & \verb|$\complex{u}_\textind{in}$| & komplexní veličina \\
+%	    \hline
+%	    \verb|\vect{...}| 		& $\vect{y}$ 						& \verb|$\vect{y}$| & vektor \\
+%	    \hline
+%	    \verb|\mat{...}| 	& $\mat{Z}$ 						& \verb|$\mat{Z}$| & matice \\
+%	    \hline
+%	    \verb|\unit{...}| 		& $\unit{kV}$ 						& \verb|$\unit{kV}$|\quad či\ \, \verb|\unit{kV}| & %jednotka \\
+%	    \hline
+%	  \end{tabular}
+%  \end{center}
+%\end{table}
+%
+
+
+%%\newpage
+%\section{Příkazy pro sazbu symbolů}
+%
+%\begin{itemize}
+%  \item
+%    \verb|\E|, \verb|\eul| -- sazba Eulerova čísla: $\eul$,
+%  \item
+%    \verb|\J|, \verb|\jmag|, \verb|\I|, \verb|\imag| -- sazba imaginární jednotky: $\jmag$, $\imag$,
+%  \item
+%    \verb|\dif| -- sazba diferenciálu: $\dif$,
+%  \item
+%    \verb|\sinc| -- sazba funkce: $\sinc$,
+%  \item
+%    \verb|\mikro| -- sazba symbolu mikro stojatým písmem%
+%			\footnote{znak pochází z~balíčku \texttt{textcomp}}: $\mikro$,
+%	\item
+%		\verb|\uppi| -- sazba symbolu $\uppi$
+%			(stojaté řecké pí, na rozdíl od \verb|\pi|, což sází $\pi$).
+%\end{itemize}
+%%
+%Všechny symboly jsou určeny pro matematický mód, vyjma \verb|\mikro|, jenž je\\ použitelný rovněž v~textovém módu.
+%%$\upmikro$
 
 %
 %\chapter{Druhá příloha}
@@ -280,41 +266,8 @@ Všechny symboly jsou určeny pro matematický mód, vyjma \verb|\mikro|, jenž 
 %nd
 %end{matlab}
 %
-\noindent
-\begin{minipage}{\linewidth}
-
-
-%\section{Výpis kódu jazyka C}
-
-\begin{lstlisting}[frame=single,numbers=right,caption={Příklad implementace první kanonické formy v~jazyce C.},label=lst:priklad.vypis.kodu.C,basicstyle=\ttfamily\small, keywordstyle=\color{black}\bfseries\underbar,]
-// první kanonická forma
-short fxdf2t( short coef[][5], short sample)
-{
-	static int v1[SECTIONS] = {0,0},v2[SECTIONS] = {0,0};
-	int x, y, accu;
-	short k;
-
-	x = sample;
-	for( k = 0; k < SECTIONS; k++){
-		accu = v1[k] >> 1;
-		y = _sadd( accu, _smpy( coef[k][0], x));
-		y = _sshl(y, 1) >> 16;
-
-		accu = v2[k] >> 1;
-		accu = _sadd( accu, _smpy( coef[k][1], x));
-		accu = _sadd( accu, _smpy( coef[k][2], y));
-		v1[k] = _sshl( accu, 1);
-
-		accu = _smpy( coef[k][3], x);
-		accu = _sadd( accu, _smpy( coef[k][4], y));
-		v2[k] = _sshl( accu, 1);
-
-		x = y;
-	}
-	return( y);
-}
-\end{lstlisting}
-\end{minipage}
+%\noindent
+%\begin{minipage}{\linewidth}
 
 
 
@@ -322,48 +275,52 @@ short fxdf2t( short coef[][5], short sample)
 
 
 
-\chapter{Obsah přiloženého CD}
-Nezapomeňte uvést, co čtenář najde na přiloženém médiu.
-Je vhodné okomentovat obsah každého adresáře, specifikovat, který soubor obsahuje důležitá nastavení, který soubor je určen ke spuštění atd.
-Také je dobře napsat, v~jaké verzi software byl kód testován (např.\ Matlab 2010b).
 
-Pokud je souborů hodně a jsou organizovány ve více složkách,  je možné pro výpis adresářové struktury použít balíček \href{https://www.ctan.org/pkg/dirtree}{\texttt{dirtree}}.
 
-{\small
+
+%\chapter{Obsah přiloženého CD}
+%Nezapomeňte uvést, co čtenář najde na přiloženém médiu.
+%Je vhodné okomentovat obsah každého adresáře, specifikovat, který soubor obsahuje důležitá nastavení, který soubor je %určen ke spuštění atd.
+%Také je dobře napsat, v~jaké verzi software byl kód testován (např.\ Matlab 2010b).
 %
-\dirtree{%.
-.1 /\DTcomment{kořenový adresář přiloženého CD}.
-.2 logo\DTcomment{loga školy a fakulty}.
-.3 BUT\_abbreviation\_color\_PANTONE\_EN.pdf.
-.3 BUT\_color\_PANTONE\_EN.pdf.
-.3 FEEC\_abbreviation\_color\_PANTONE\_EN.pdf.
-.3 FEKT\_zkratka\_barevne\_PANTONE\_CZ.pdf.
-.3 UTKO\_color\_PANTONE\_CZ.pdf.
-.3 UTKO\_color\_PANTONE\_EN.pdf.
-.3 VUT\_barevne\_PANTONE\_CZ.pdf.
-.3 VUT\_symbol\_barevne\_PANTONE\_CZ.pdf.
-.3 VUT\_zkratka\_barevne\_PANTONE\_CZ.pdf.
-.2 obrazky\DTcomment{ostatní obrázky}.
-.3 soucastky.png.
-.3 spoje.png.
-.3 ZlepseneWilsonovoZrcadloNPN.png.
-.3 ZlepseneWilsonovoZrcadloPNP.png.
-.2 pdf\DTcomment{pdf stránky generované informačním systémem}.
-.3 student-desky.pdf.
-.3 student-titulka.pdf.
-.3 student-zadani.pdf.
-.2 text\DTcomment{zdrojové textové soubory}.
-.3 literatura.tex.
-.3 prilohy.tex.
-.3 reseni.tex.
-.3 uvod.tex.
-.3 vysledky.tex.
-.3 zaver.tex.
-.3 zkratky.tex.
-%.2 navod-sablona\_FEKT.pdf\DTcomment{návod na používání šablony}.
-.2 sablona-obhaj.tex\DTcomment{hlavní soubor pro sazbu prezentace k~obhajobě}.
-%.2 readme.txt\DTcomment{soubor s~popisem obsahu CD}.
-.2 sablona-prace.tex\DTcomment{hlavní soubor pro sazbu kvalifikační práce}.
-.2 thesis.sty\DTcomment{balíček pro sazbu kvalifikačních prací}.
-}
-}
+%Pokud je souborů hodně a jsou organizovány ve více složkách,  je možné pro výpis adresářové struktury použít balíček \href%{https://www.ctan.org/pkg/dirtree}{\texttt{dirtree}}.
+%
+%{\small
+%%
+%\dirtree{%.
+%.1 /\DTcomment{kořenový adresář přiloženého CD}.
+%.2 logo\DTcomment{loga školy a fakulty}.
+%.3 BUT\_abbreviation\_color\_PANTONE\_EN.pdf.
+%.3 BUT\_color\_PANTONE\_EN.pdf.
+%.3 FEEC\_abbreviation\_color\_PANTONE\_EN.pdf.
+%.3 FEKT\_zkratka\_barevne\_PANTONE\_CZ.pdf.
+%.3 UTKO\_color\_PANTONE\_CZ.pdf.
+%.3 UTKO\_color\_PANTONE\_EN.pdf.
+%.3 VUT\_barevne\_PANTONE\_CZ.pdf.
+%.3 VUT\_symbol\_barevne\_PANTONE\_CZ.pdf.
+%.3 VUT\_zkratka\_barevne\_PANTONE\_CZ.pdf.
+%.2 obrazky\DTcomment{ostatní obrázky}.
+%.3 soucastky.png.
+%.3 spoje.png.
+%.3 ZlepseneWilsonovoZrcadloNPN.png.
+%.3 ZlepseneWilsonovoZrcadloPNP.png.
+%.2 pdf\DTcomment{pdf stránky generované informačním systémem}.
+%.3 student-desky.pdf.
+%.3 student-titulka.pdf.
+%.3 student-zadani.pdf.
+%.2 text\DTcomment{zdrojové textové soubory}.
+%.3 literatura.tex.
+%.3 prilohy.tex.
+%.3 reseni.tex.
+%.3 uvod.tex.
+%.3 vysledky.tex.
+%.3 zaver.tex.
+%.3 zkratky.tex.
+%%.2 navod-sablona\_FEKT.pdf\DTcomment{návod na používání šablony}.
+%.2 sablona-obhaj.tex\DTcomment{hlavní soubor pro sazbu prezentace k~obhajobě}.
+%%.2 readme.txt\DTcomment{soubor s~popisem obsahu CD}.
+%.2 sablona-prace.tex\DTcomment{hlavní soubor pro sazbu kvalifikační práce}.
+%.2 thesis.sty\DTcomment{balíček pro sazbu kvalifikačních prací}.
+%}
+%}
+%

@@ -1,38 +1,34 @@
 \babel@toc {czech}{}
 \babel@toc {czech}{}
-\contentsline {chapter}{Úvod}{9}{section*.5}%
-\contentsline {chapter}{\numberline {1}Protokol MIDI}{10}{chapter.9}%
-\contentsline {section}{\numberline {1.1}Hardwarová vrstva}{10}{section.11}%
-\contentsline {subsection}{\numberline {1.1.1}MIDI výstup}{10}{subsection.14}%
-\contentsline {subsection}{\numberline {1.1.2}MIDI vstup}{11}{subsection.17}%
-\contentsline {section}{\numberline {1.2}Softwarová vrstva}{12}{section.20}%
-\contentsline {subsection}{\numberline {1.2.1}Výjimky}{13}{subsection.25}%
-\contentsline {subsubsection}{Running Status}{13}{section*.26}%
-\contentsline {subsubsection}{Zprávy Real-Time}{13}{section*.27}%
-\contentsline {subsubsection}{Zprávy SysEx}{13}{section*.28}%
-\contentsline {chapter}{\numberline {2}Návrh přípravku}{14}{chapter.30}%
-\contentsline {section}{\numberline {2.1}Hardware}{14}{section.31}%
-\contentsline {section}{\numberline {2.2}Software}{15}{section.34}%
-\contentsline {subsection}{\numberline {2.2.1}Databáze spojení}{15}{subsection.36}%
-\contentsline {subsection}{\numberline {2.2.2}Formát zprávy}{16}{subsection.46}%
-\contentsline {subsection}{\numberline {2.2.3}Síťová vrstva}{16}{subsection.47}%
-\contentsline {chapter}{\numberline {3}Průběh komunikace}{17}{chapter.50}%
-\contentsline {section}{\numberline {3.1}Připojení k lokální síti}{17}{section.51}%
-\contentsline {section}{\numberline {3.2}Upozornění na vlastní přítomnost}{17}{section.64}%
-\contentsline {section}{\numberline {3.3}Rozpoznání zařízení na síti}{18}{section.73}%
-\contentsline {section}{\numberline {3.4}Přijetí \acs {MIDI} zprávy}{18}{section.83}%
+\contentsline {chapter}{Úvod}{8}{section*.5}%
+\contentsline {chapter}{\numberline {1}Protokol MIDI}{9}{chapter.9}%
+\contentsline {section}{\numberline {1.1}Hardwarová vrstva}{9}{section.11}%
+\contentsline {subsection}{\numberline {1.1.1}MIDI výstup}{9}{subsection.14}%
+\contentsline {subsection}{\numberline {1.1.2}MIDI vstup}{10}{subsection.17}%
+\contentsline {section}{\numberline {1.2}Softwarová vrstva}{11}{section.20}%
+\contentsline {subsection}{\numberline {1.2.1}Výjimky}{12}{subsection.25}%
+\contentsline {subsubsection}{Running Status}{12}{section*.26}%
+\contentsline {subsubsection}{Zprávy Real-Time}{12}{section*.27}%
+\contentsline {subsubsection}{Zprávy SysEx}{12}{section*.28}%
+\contentsline {chapter}{\numberline {2}Návrh přípravku}{13}{chapter.30}%
+\contentsline {section}{\numberline {2.1}Hardware}{13}{section.31}%
+\contentsline {section}{\numberline {2.2}Software}{14}{section.34}%
+\contentsline {subsection}{\numberline {2.2.1}Databáze spojení}{14}{subsection.36}%
+\contentsline {subsection}{\numberline {2.2.2}Formát zprávy}{15}{subsection.46}%
+\contentsline {subsection}{\numberline {2.2.3}Síťová vrstva}{15}{subsection.47}%
+\contentsline {chapter}{\numberline {3}Průběh komunikace}{16}{chapter.50}%
+\contentsline {section}{\numberline {3.1}Připojení k lokální síti}{16}{section.51}%
+\contentsline {section}{\numberline {3.2}Upozornění na vlastní přítomnost}{16}{section.64}%
+\contentsline {section}{\numberline {3.3}Rozpoznání zařízení na síti}{17}{section.73}%
+\contentsline {section}{\numberline {3.4}Přijetí \acs {MIDI} zprávy}{17}{section.83}%
 \contentsline {section}{\numberline {3.5}Přijetí UDP zprávy}{18}{section.84}%
 \contentsline {chapter}{\numberline {4}Síťový ovladač}{19}{chapter.85}%
 \contentsline {chapter}{Závěr}{20}{section*.89}%
 \contentsline {chapter}{Literatura}{21}{section*.91}%
-\contentsline {chapter}{Seznam symbol\r {u}, veli\v {c}in a zkratek}{23}{section*.93}%
-\contentsline {chapter}{Seznam p\v {r}\'{\i }loh}{24}{section*.95}%
-\contentsline {chapter}{\numberline {A}Tabulky }{25}{chapter.96}%
-\contentsline {section}{\numberline {A.1}\acs {MIDI} STATUS BAJTY }{25}{section.97}%
-\contentsline {section}{\numberline {A.2}\acs {MoE} značky }{26}{section.99}%
-\contentsline {chapter}{\numberline {B}Výpisy kódu }{27}{chapter.101}%
-\contentsline {section}{\numberline {B.1}Výpis kódu pro příjem a zpracování \acs {MIDI} zprávy }{27}{section.102}%
-\contentsline {chapter}{\numberline {C}Některé příkazy balíčku \texttt {thesis} }{29}{chapter.151}%
-\contentsline {section}{\numberline {C.1}Příkazy pro sazbu veličin a jednotek }{29}{section.152}%
-\contentsline {section}{\numberline {C.2}Příkazy pro sazbu symbolů }{29}{section.154}%
-\contentsline {chapter}{\numberline {D}Obsah přiloženého CD }{31}{chapter.183}%
+\contentsline {chapter}{Seznam symbol\r {u}, veli\v {c}in a zkratek}{22}{section*.93}%
+\contentsline {chapter}{Seznam p\v {r}\'{\i }loh}{23}{section*.95}%
+\contentsline {chapter}{\numberline {A}Tabulky }{24}{chapter.96}%
+\contentsline {section}{\numberline {A.1}\acs {MIDI} status bajty }{24}{section.97}%
+\contentsline {section}{\numberline {A.2}\acs {MoE} značky }{25}{section.99}%
+\contentsline {chapter}{\numberline {B}Výpisy kódu }{26}{chapter.101}%
+\contentsline {section}{\numberline {B.1}Výpis kódu pro příjem a zpracování \acs {MIDI} zprávy }{26}{section.102}%
