@@ -25,19 +25,19 @@ Přípravek umožňuje výměnu \acs{MIDI} příkazů přes lokální síť, vyu
     \label{fig:schPrototype}
 \end{figure}
 
-Z obr. \ref{fig:schPrototype} je patrné zapojení přípravku. Je využito standardní zapojení \acs{MIDI} vstupu a~výstupu v souladu se schématy na obr.~\ref{fig:schMIDIout} a~\ref{fig:schMIDIin}. Jak již bylo řečeno v kapitole~\ref{chpt:MIDI}, \acs{MIDI} využívá pro komunikaci sériovou linku. V tomto případě je vstupní linka zapojena k~Arduinu na \texttt{pinu~4} a výstupní k~\texttt{pinu~5}\footnote{Arduino umožňuje softwarové přepnutí \texttt{pinů} z režimu výstupu na režim vstup a naopak.}. 
+Na obr. \ref{fig:schPrototype} je patrné schéma přípravku. Je využito standardní zapojení \acs{MIDI} vstupu a~výstupu v souladu se schématy na obr.~\ref{fig:schMIDIout} a~\ref{fig:schMIDIin}. Jak již bylo řečeno v kapitole~\ref{chpt:MIDI}, \acs{MIDI} využívá pro komunikaci sériovou linku. V tomto případě je vstupní linka zapojena k~Arduinu na \texttt{pinu~4} a výstupní k~\texttt{pinu~5}\footnote{Arduino umožňuje softwarové přepnutí \texttt{pinů} z režimu výstupu na režim vstup a naopak.}. 
 
 %Ve schématu na obr.~\ref{fig:schPrototype} je pro zjednodušení značka \uv{Arduino} chápána jako \uv{Arduino\,+\,Wiznet Shield}.
 
-Přípravek je v~této fázi vývoje napájen skrz \acs{USB} sběrnici Arduina napětím 5\,\unit{V}. 
+Přípravek je v~této fázi vývoje napájen prostřednictvím \acs{USB} sběrnice Arduina napětím 5\,\unit{V}. Všechny součástky jsou zatím vsazeny do nepájivého kontaktního pole. Fotografie protoypu jsou přiloženy k nahlédnutí v \textcolor{red}{TODO!}
 
 %...%
 
 \section{Software}
-Software přípravku byl vyvíjen za účelem maximalizace variability směřování \acs{MIDI} příkazů. Na funkční rovině je inspirován systémem \emph{Dante}, který se používá pro přenos zvukového signálu přes počítačovou síť. \emph{Dante} umožňuje pokročilé směřování signálů napříč síťovými zařízeními, ovládané pomocí přehledné matice na kontrolním PC. Do této fáze by měl být vyvinut i systém \acs{MoE}\footnote{\acl{MoE}}.
+Software přípravku byl vyvíjen za účelem maximalizace variability směřování \acs{MIDI} příkazů. Na funkční rovině je inspirován systémem \emph{Dante}, který se používá pro přenos zvukového signálu přes počítačovou síť. \emph{Dante} umožňuje pokročilé směřování signálů napříč síťovými zařízeními, ovládané pomocí přehledné matice na ovládacím PC. Do této fáze by měl být vyvinut i systém \acs{MoE}\footnote{\acl{MoE}}.
 %Pro spolehlivou komunikaci mezi zařízeními bylo třeba vyvinout protokol, který bude zapouzdřovat a směřovat samotné \acs{MIDI} zprávy. S tímto cílem byl implementován protokol \acs{MoE}\footnote{\acl{MoE}}. 
 
-Přípravek pracuje s dvěma typy zpráv: Příchozí a odchozí \acs{MIDI} zprávy, které se týkají hardwarové sběrnice (na nejnižší vrstvě přímo \texttt{pinů 1} a \texttt{5} z obr. \ref{fig:schPrototype})~-- dále jen \uv{\acs{MIDI} zprávy}~--, a příchozí a odchozí UDP zprávy, které se týkají pouze ethernetového rozhraní zprostředkovaném WizNet Shieldem~-- dále jen \uv{UDP zprávy}.
+Přípravek pracuje s dvěma typy zpráv: Příchozí, odchozí \acs{MIDI} zprávy, které se týkají hardwarové sběrnice (tedy přímo \texttt{pinů 4} a \texttt{5} z obr. \ref{fig:schPrototype})~-- dále jen \uv{\acs{MIDI} zprávy}~--, a příchozí, odchozí UDP zprávy, které se týkají pouze ethernetového rozhraní zprostředkovaném WizNet Shieldem~-- dále jen \uv{UDP zprávy}.
 \subsection{Databáze spojení}\label{chpt:DatSpoj}
 S cílem docílit již zmiňované velké variability ve směřování zpráv napříč přípravky byla do zdrojového kódu implementována tzv. databáze spojení \texttt{sub\-scrip\-tions[]}:
 \begin{lstlisting}
@@ -47,34 +47,35 @@ typedef struct subscription
     byte dstIPnib;
 } _subscriptions[MAX_SUBS];
 \end{lstlisting}
-Toto pole struktur \texttt{subscription} je pro celý \acs{MoE} protokol zásadní. Jedno \uv{spojení}, tedy jeden prvek v tomto poli, propojuje jeden \acs{MIDI} kanál lokálního zařízení s jedním \acs{MIDI} kanálem cílového zařízení. Toto pole si lze představit jako virtuální patchbay. Jeden patch-kabel odpovídá jednomu prvku v poli (záznamu v databázi). 
+Toto pole struktur \texttt{subscription} je pro \acs{MoE} protokol zásadní. Jedno \uv{spojení}, tedy jeden prvek v tohoto pole, propojuje jeden \acs{MIDI} kanál lokálního zařízení s jedním \acs{MIDI} kanálem cílového zařízení. Toto pole si lze představit jako virtuální patchbay. Jeden patch-kabel odpovídá jednomu prvku v poli (záznamu v databázi). 
 
 Každý záznam je tvořen dvěma bajty:
-\begin{itemize}
-    \item \texttt{srcdstChannel} v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového. \uv{Kódování} je uskutečněno způsobem vyobrazeným na obr. \ref{fig:srcdstChannel}. Jeden kanál je vyjádřen pomocí čtyř bitů (viz kapitolu \ref{chpt:MIDIsw}), jeden bajt tedy \uv{pojme} přesně dva kanály.
+\begin{enumerate}
+    \item \texttt{srcdstChannel} v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového. \uv{Kódování} je uskutečněno způsobem vyobrazeným na obr. \ref{fig:srcdstChannel}. Jeden kanál je vyjádřen pomocí čtyř bitů (viz kapitolu \ref{chpt:MIDIsw}), jeden bajt tedy \uv{pojme} vyjadření přesně dvou kanálů.
+    \begin{figure}[h]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|c|c|}
+            \hline
+            \multicolumn{8}{|c|}{\texttt{srcdstChannel}} \\
+            \hline
+            0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 \\
+            \hline 
+            \multicolumn{4}{c}{\upbracefill} & \multicolumn{4}{c}{\upbracefill} \\
+            \multicolumn{4}{c}{\footnotesize zdroj} & \multicolumn{4}{c}{\footnotesize cíl} \\
+        \end{tabular}
+        \caption{Kódování zdrojového a cílového kanálu v bajtu \texttt{srcdstChannel}}
+        \label{fig:srcdstChannel}
+    \end{figure}
     \item \texttt{dstIPnib} vyjadřuje poslední bajt IP adresy cílového zařízení (viz též sekci \ref{chpt:NetworkLayer}) 
-\end{itemize}
-\begin{figure}[h]
-    \centering
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-        \hline
-        \multicolumn{8}{|c|}{\texttt{srcdstChannel}} \\
-        \hline
-        0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 \\
-        \hline 
-        \multicolumn{4}{c}{\upbracefill} & \multicolumn{4}{c}{\upbracefill} \\
-        \multicolumn{4}{c}{\footnotesize zdroj} & \multicolumn{4}{c}{\footnotesize cíl} \\
-    \end{tabular}
-    \caption{Kódování zdrojového a cílového kanálu v bajtu \texttt{srcdstChannel}}
-    \label{fig:srcdstChannel}
-\end{figure}
+\end{enumerate}
+
 
 \subsection{Formát zprávy}
-Pro optimální komunikaci zařízení mezi sebou bylo nutné zapouzdřit \acs{MIDI} příkazy do \acs{MoE} datagramu. Tento datagram se skládá ze čtyř bajtů, z čehož první je vyhrazen \acs{MoE} značce a zbylé tři samotné \acs{MIDI} zprávě nebo jiným datům. Tabulku všech dosavadně implementovaných \acs{MoE} značek lze nalézt v příloze \ref{chpt:MoEZnacky}.
+Pro optimální komunikaci zařízení mezi sebou bylo nutné zapouzdřit \acs{MIDI} příkazy do \acs{MoE} datagramu. Tento datagram se skládá ze čtyř bajtů, z čehož první je vyhrazen \acs{MoE} značce a zbylé tři samotné \acs{MIDI} zprávě nebo jiným datům. Tabulku všech dosavadně implementovaných \acs{MoE} značek lze nalézt v příloze \ref{chpt:MoEZnacky}. Podle této značky se přípravek k dané \acs{MoE} zprávě zachová.
 
 \subsection{Síťová vrstva}\label{chpt:NetworkLayer}
-Pro síťovou komunikaci byl vybrán protokol \acs{UDP}\footnote{\acl{UDP}}. Jeho \uv{peer2peer} architektura je k tomuto projektu mnohem vhodnější než ta, kterou poskytuje protokol TCP. Komunikace probíhá na portu 50\,000.
-\acs{MoE} zařízení jsou schopna se do lokální sítě připojit s pevně nestavenou IP adresou, nebo zažádat o přidělení IP adresy DHCP server. Tato síť však musí mít masku 255.255.255.0~-- zařízení se z úsporných důvodů navzájem rozlišují \emph{pouze} posledním bajtem IP adresy (jak je popsáno v sekci \ref{chpt:DatSpoj}).
+Tento \acs{MoE} datagram je následně zapouzdřen do \acs{UDP}\footnote{\acl{UDP}} datagramu. Pro síťovou komunikaci byl vybrán protokol \acs{UDP} z důvodu jeho \uv{peer2peer} architektury, která je k tomuto projektu mnohem vhodnější než \uv{client-server}, kterou poskytuje protokol TCP. Komunikace probíhá na portu 50\,000.
+\acs{MoE} zařízení jsou schopna připojit se do lokální sítě s pevně nestavenou IP adresou\footnote{Tato IP adresa je zatím nastavitelná pouze ve zdrojovém kódu.}, nebo zažádat o přidělení IP adresy DHCP server. Tato síť však musí mít masku 255.255.255.0~-- zařízení se z úsporných důvodů navzájem rozlišují \emph{pouze} posledním bajtem IP adresy (jak je popsáno v sekci~\ref{chpt:DatSpoj}).
 
 
 

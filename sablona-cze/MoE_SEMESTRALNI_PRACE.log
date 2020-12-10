@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.26)  10 DEC 2020 13:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.26)  10 DEC 2020 14:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1295,6 +1295,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 5.
 Package acronym Info: Label `acro:symfvz' newly defined as it shall be overridden
 although it is yet undefined on input line 12.
+
+
+Package acronym Warning: Acronym `symfvz' is not defined on input line 12.
+
+
+Package acronym Warning: Acronym `symfvz' is not defined on input line 12.
+
 ) [9
 
 
@@ -1362,7 +1369,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 \openout2 = `text/04_Sitovy_ovladac.aux'.
 
  (/Repos/SemestralProject/00_TEXT/sablona-cze/text/04_Sitovy_ovladac.tex
-<obrazky/MoE_editor_1.png, id=487, 781.92125pt x 502.87875pt>
+<obrazky/MoE_editor_1.png, id=495, 781.92125pt x 502.87875pt>
 File: obrazky/MoE_editor_1.png Graphic file (type png)
 <use obrazky/MoE_editor_1.png>
 Package pdftex.def Info: obrazky/MoE_editor_1.png  used on input line 6.
@@ -1387,12 +1394,12 @@ Underfull \hbox (badness 2426) in paragraph at lines 15--16
  []
 
 
-Overfull \hbox (22.77873pt too wide) in paragraph at lines 15--16
-\T1/lmr/m/n/12 <[]$\T1/lmtt/m/n/12 https : / / www . instructables . com / Send-[]and-[]Receive-[]MIDI-[]with-[]Arduino/$[]\T1/lmr/m/n/12 >. 
+Underfull \hbox (badness 6063) in paragraph at lines 15--16
+\T1/lmr/m/n/12 [cit.1.12.2020]. Do-stupné z URL: <[]$\T1/lmtt/m/n/12 https : / / www . instructables . com /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 18--24
+Underfull \hbox (badness 10000) in paragraph at lines 21--27
 \T1/lmr/m/n/12 <[]$\T1/lmtt/m/n/12 https : / / www . vutbr . cz / uredni-[]deska / vnitrni-[]predpisy-[]a-[]dokumenty /
  []
 
@@ -1403,11 +1410,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--24
 ]) [22]
 \openout2 = `text/zkratky.aux'.
 
- (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex
-
-LaTeX Warning: Reference `lst:zkratky' on page 23 undefined on input line 29.
-
-) [23
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex) [23
 
 
 
@@ -1451,26 +1454,22 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 250.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 250.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 250.
 Package rerunfilecheck Info: File `MoE_SEMESTRALNI_PRACE.out' has not changed.
-(rerunfilecheck)             Checksum: 8908AE4070B6F8F8DFDA76EB09CA7825;4984.
-
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: 687D468FC215F09C461C77AB18DBCF99;4987.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 250.
  ) 
 Here is how much of TeX's memory you used:
- 40191 strings out of 480608
- 856774 string characters out of 5903629
- 1233835 words of memory out of 5000000
- 55086 multiletter control sequences out of 15000+600000
+ 40194 strings out of 480608
+ 856836 string characters out of 5903629
+ 1233600 words of memory out of 5000000
+ 55085 multiletter control sequences out of 15000+600000
  701908 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,18n,71p,823b,1946s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/cbfonts/grmn1200.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.pdf (32 pages, 634334 bytes).
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/cbfonts/grmn1200.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
+Output written on /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.pdf (32 pages, 641744 bytes).
 PDF statistics:
- 781 PDF objects out of 1000 (max. 8388607)
- 677 compressed objects within 7 object streams
- 225 named destinations out of 1000 (max. 500000)
+ 792 PDF objects out of 1000 (max. 8388607)
+ 688 compressed objects within 7 object streams
+ 229 named destinations out of 1000 (max. 500000)
  366 words of extra memory for PDF output out of 10000 (max. 10000000)
 
