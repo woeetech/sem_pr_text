@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.26)  11 DEC 2020 17:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.26)  11 DEC 2020 17:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1355,4 +1355,121 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <obrazky/MoE_editor_1.png, id=498, 781.92125pt x 502.87875pt>
 File: obrazky/MoE_editor_1.png Graphic file (type png)
 <use obrazky/MoE_editor_1.png>
-P
+Package pdftex.def Info: obrazky/MoE_editor_1.png  used on input line 6.
+(pdftex.def)             Requested size: 298.75264pt x 192.13948pt.
+<obrazky/MoE_Editor_2.png, id=500, 781.92125pt x 502.87875pt>
+File: obrazky/MoE_Editor_2.png Graphic file (type png)
+<use obrazky/MoE_Editor_2.png>
+Package pdftex.def Info: obrazky/MoE_Editor_2.png  used on input line 28.
+(pdftex.def)             Requested size: 298.75264pt x 192.13948pt.
+<obrazky/MoE_editor_3.png, id=501, 781.92125pt x 683.55376pt>
+File: obrazky/MoE_editor_3.png Graphic file (type png)
+<use obrazky/MoE_editor_3.png>
+Package pdftex.def Info: obrazky/MoE_editor_3.png  used on input line 34.
+(pdftex.def)             Requested size: 298.75264pt x 261.17163pt.
+) [18
+
+
+
+ </Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/MoE_editor_1.png>] [19 </Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/MoE_Editor_2.png> </Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/MoE_editor_3.png>]
+\openout2 = `text/zaver.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.tex) [20
+
+
+
+]
+\openout2 = `text/literatura.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/literatura.tex
+Underfull \hbox (badness 2426) in paragraph at lines 9--10
+[]\T1/lmr/m/n/12 GHASSAEI, Amanda. \T1/lmr/m/it/12 Send and Re-ce-ive MIDI With Ar-duino \T1/lmr/m/n/12 [on-line].
+ []
+
+
+Underfull \hbox (badness 6063) in paragraph at lines 9--10
+\T1/lmr/m/n/12 [cit.1.12.2020]. Do-stupné z URL: <[]$\T1/lmtt/m/n/12 https : / / www . instructables . com /
+ []
+
+) [21
+
+
+
+]
+\openout2 = `text/zkratky.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.tex) [22
+
+
+
+
+] (/Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.toa)
+\tf@toa=\write7
+\openout7 = `MoE_SEMESTRALNI_PRACE.toa'.
+
+ [23
+
+
+]
+\openout2 = `text/prilohy.aux'.
+
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/text/prilohy.tex
+Overfull \hbox (4.67418pt too wide) in paragraph at lines 7--21
+ [][] 
+ []
+
+[24
+
+
+] [25]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 63.
+ [26
+
+]
+<obrazky/Mereni_1kanal.png, id=603, 1557.82pt x 993.7125pt>
+File: obrazky/Mereni_1kanal.png Graphic file (type png)
+<use obrazky/Mereni_1kanal.png>
+Package pdftex.def Info: obrazky/Mereni_1kanal.png  used on input line 102.
+(pdftex.def)             Requested size: 384.10962pt x 245.01587pt.
+<obrazky/Mereni_16kanal.png, id=604, 1557.82pt x 993.7125pt>
+File: obrazky/Mereni_16kanal.png Graphic file (type png)
+<use obrazky/Mereni_16kanal.png>
+Package pdftex.def Info: obrazky/Mereni_16kanal.png  used on input line 108.
+(pdftex.def)             Requested size: 384.10962pt x 245.01587pt.
+ [27
+
+ </Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/Mereni_1kanal.png> </Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/Mereni_16kanal.png>]
+<obrazky/Pripravek.jpg, id=611, 3595.4325pt x 2696.0725pt>
+File: obrazky/Pripravek.jpg Graphic file (type jpg)
+<use obrazky/Pripravek.jpg>
+Package pdftex.def Info: obrazky/Pripravek.jpg  used on input line 117.
+(pdftex.def)             Requested size: 384.10962pt x 288.01204pt.
+) [28
+
+ </Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/Pripravek.jpg>]
+\c@page@count=\count327
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 250.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 250.
+ (/Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.aux (/Repos/SemestralProject/00_TEXT/sablona-cze/text/uvod.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/01_ProtokolMIDI.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/02_Navrh_pripravku.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/03_Prubeh_komunikace.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/04_Sitovy_ovladac.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zaver.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/literatura.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/zkratky.aux) (/Repos/SemestralProject/00_TEXT/sablona-cze/text/prilohy.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 250.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 250.
+Package rerunfilecheck Info: File `MoE_SEMESTRALNI_PRACE.out' has not changed.
+(rerunfilecheck)             Checksum: 433E5B95CB3EA711C30C05734FD32E00;4655.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 250.
+ ) 
+Here is how much of TeX's memory you used:
+ 39958 strings out of 480608
+ 854174 string characters out of 5903629
+ 1232635 words of memory out of 5000000
+ 54922 multiletter control sequences out of 15000+600000
+ 627508 words of font info for 81 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 68i,18n,71p,1083b,1926s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
+Output written on /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.pdf (29 pages, 4842915 bytes).
+PDF statistics:
+ 718 PDF objects out of 1000 (max. 8388607)
+ 613 compressed objects within 7 object streams
+ 188 named destinations out of 1000 (max. 500000)
+ 383 words of extra memory for PDF output out of 10000 (max. 10000000)
+

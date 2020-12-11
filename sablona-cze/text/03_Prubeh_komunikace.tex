@@ -21,13 +21,8 @@ else
 }
 \end{lstlisting}
 
-
-
-
-
-
 \section{Upozornění na vlastní přítomnost}
-Ihned po zdárném připojení k lokální síti je vyslána zpráva  \texttt{beacon}, jejíž účel je upozornit všechna zařízení v lokální síti na vlastní přítomnost. Zpráva se skládá ze čtyř bajtů:
+Ihned po zdárném připojení k~síti je vyslána zpráva \texttt{beacon}, jejíž účel je upozornit všechna zařízení v lokální síti na vlastní přítomnost. Zpráva se skládá ze čtyř bajtů:
 \bytes{FF}{FF}{FF}{FF}
 a je poslána na broadcast adresu sítě.
 
@@ -42,11 +37,11 @@ eUDP.endPacket();
 \end{lstlisting}
 
 \section{Rozpoznání zařízení na síti}
-V případě přijetí zprávy \texttt{beacon} je rozpoznána IP adresa odesílatele a vytvořen nový záznam do databáze spojení \texttt{sub\-scrip\-tions}. V této fázi projektu přípravek napevno přiřazuje kanál 1  lokální příchozí \acs{MIDI} sběrnice kanálu 1 výstupní \acs{MIDI} sběrnice cílového zařízení. Unikátnost této zprávy v rámci běhu programu má však velice negativní efekt: Zařízení, keré je do sítě připojeno jako poslední nepřijme žádnou zprávu \texttt{beacon}, do své databáze si tedy žádné spojení nepřidá. Z toho důvodu byl vyvinut síťový editor, který umožňuje přidávat a mazat záznamy do databází spojení všech přípravků kdykoliv za běhu programu. 
+V~případě přijetí zprávy \texttt{beacon} je rozpoznána IP adresa odesílatele a vytvořen nový záznam do databáze spojení \texttt{sub\-scrip\-tions}. V~této fázi projektu přípravek napevno přiřazuje kanál~1 lokální příchozí \acs{MIDI} sběrnice kanálu~1 výstupní \acs{MIDI} sběrnice cílového zařízení. Unikátnost této zprávy v~rámci běhu programu má však velice negativní efekt: Zařízení, které je do sítě připojeno jako poslední nepřijme žádnou zprávu \texttt{beacon}, do své databáze si tedy žádné spojení nepřidá. Z toho důvodu byl vyvinut síťový editor, který umožňuje přidávat a mazat záznamy do databází spojení všech přípravků kdykoliv za běhu programu. 
 
 
 \section{Přijetí \acs{MIDI} zprávy}\label{chpt:PrijMIDI}
-Při přijímání \acs{MIDI} zprávy je kontrolován vstupní buffer sériové sběrnice \texttt{pinu 5}. Pokud jsou v bufferu přesně tři bajty, jsou postupně přečteny a uloženy do paměti. V dalším kroku je nutné dekódovat kanál této \acs{MIDI} zprávy z \texttt{DATA BAJTU}~-- tuto \uv{extrakci} lze vyřešit pomocí bitového maskování. Takto získaný bajt je pak porovnáván s prvním nibblem bajtu \texttt{srcdstChannel} každého záznamu databáze \texttt{sub\-scrip\-tions}. Dojde-li ke shodě, začíná konstrukce odchozí zprávy podle dalších informací v odpovídajícím záznamu databáze spojení. V tomto bodě je důležité zmínit, že druhý nibble \texttt{DATA BAJTU}~-- kanál~-- je změněn, aby bylo zaručeno, že z \acs{MIDI} sběrnice cílového zařízení budou proudit zprávy na kanálech odpovídajících databázi spojení. Výpis kódu je k dispozici jako příloha \ref{code:handleMIDI}
+Za běhu programu je kontrolován vstupní buffer sériové sběrnice \texttt{pinu~5}. Pokud jsou v bufferu přesně tři bajty, jsou postupně přečteny a uloženy do paměti. V~dalším kroku je dekódován kanál této \acs{MIDI} zprávy z \texttt{DATA BAJTU}~-- tuto \uv{extrakci} lze vyřešit pomocí bitového maskování. Takto získaná informace je pak porovnávána s prvním nibblem bajtu \texttt{srcdstChannel} každého záznamu databáze \texttt{sub\-scrip\-tions}. Dojde-li ke shodě, začíná konstrukce odchozí zprávy podle dalších informací v~odpovídajícím záznamu databáze spojení. V~tomto bodě je důležité zmínit, že druhý nibble \texttt{DATA BAJTU}~-- kanál~-- je nyní změněn, aby bylo zaručeno, že z~výstupní \acs{MIDI} sběrnice cílového zařízení budou proudit zprávy na kanálech odpovídajících databázi spojení. Výpis kódu je k dispozici jako příloha \ref{code:handleMIDI}.
 
 \section{Přijetí UDP zprávy}
 Ve okamžiku příjmu \acs{UDP} zprávy je nejprve nutné rozlišit její první bajt~-- ten určuje účel zprávy. Toto se uskutečňuje pomocí jednoduchého větvení \texttt{switch}.
