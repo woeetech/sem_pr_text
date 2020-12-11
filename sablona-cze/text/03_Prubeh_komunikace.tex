@@ -44,7 +44,7 @@ V~případě přijetí zprávy \texttt{beacon} je rozpoznána IP adresa odesíla
 Za běhu programu je kontrolován vstupní buffer sériové sběrnice \texttt{pinu~5}. Pokud jsou v bufferu přesně tři bajty, jsou postupně přečteny a uloženy do paměti. V~dalším kroku je dekódován kanál této \acs{MIDI} zprávy z \texttt{DATA BAJTU}~-- tuto \uv{extrakci} lze vyřešit pomocí bitového maskování. Takto získaná informace je pak porovnávána s prvním nibblem bajtu \texttt{srcdstChannel} každého záznamu databáze \texttt{sub\-scrip\-tions}. Dojde-li ke shodě, začíná konstrukce odchozí zprávy podle dalších informací v~odpovídajícím záznamu databáze spojení. V~tomto bodě je důležité zmínit, že druhý nibble \texttt{DATA BAJTU}~-- kanál~-- je nyní změněn, aby bylo zaručeno, že z~výstupní \acs{MIDI} sběrnice cílového zařízení budou proudit zprávy na kanálech odpovídajících databázi spojení. Výpis kódu je k dispozici jako příloha \ref{code:handleMIDI}.
 
 \section{Přijetí UDP zprávy}
-Ve okamžiku příjmu \acs{UDP} zprávy je nejprve nutné rozlišit její první bajt~-- ten určuje účel zprávy. Toto se uskutečňuje pomocí jednoduchého větvení \texttt{switch}.
+Ve okamžiku přijetí \acs{UDP} zprávy je nejprve nutné rozlišit její první bajt~-- ten určuje účel zprávy. Toto se uskutečňuje pomocí jednoduchého větvení \texttt{switch}.
 \begin{lstlisting}
 if (eUDP.parsePacket())
 {
@@ -53,7 +53,7 @@ if (eUDP.parsePacket())
 }
 \end{lstlisting}
 
-Pro příklad jsou zde uvedeny dvě reakce na dané druhy příchozích zpráv v souladu s tabulkou \ref{chpt:MoEZnacky}. Tento kód je obsahem větvení \texttt{switch} z předchozího odstavce.
+Pro příklad jsou zde uvedeny dvě reakce na dané druhy příchozích zpráv v~souladu s tabulkou \ref{chpt:MoEZnacky}. Tento kód je obsahem větvení \texttt{switch} z předchozího odstavce.
 \begin{lstlisting}
 //...
 case 0x08:          //dotaz řídícího PC na záznamy 

@@ -21,7 +21,7 @@ Tento přípravek umožňuje výměnu \acs{MIDI} příkazů přes lokální sí�
         $R_1$ & $220\,\mathrm{\Omega}$ & $R_2$ & $470\,\mathrm{\Omega}$ \\
         $R_3$ & $10\,\mathrm{k\Omega}$ & $R_4$ & $220\,\mathrm{\Omega}$
     \end{tabular}
-    \caption{Schéma prototypu \cite{Indest}.} 
+    \caption{Schéma prototypu \cite{Indest}} 
     \label{fig:schPrototype}
 \end{figure}
 
@@ -38,7 +38,7 @@ Přípravek je v~této fázi vývoje napájen prostřednictvím \acs{USB} sběrn
 Software přípravku byl vyvíjen za účelem maximalizace variability směřování \acs{MIDI} příkazů. Na funkční rovině je inspirován systémem \emph{Dante}, který se používá pro přenos zvukového signálu přes počítačovou síť. \emph{Dante} umožňuje pokročilé směřování signálů napříč síťovými zařízeními, ovládané pomocí přehledné matice na ovládacím PC. Do této fáze by měl být vyvinut i systém \acs{MoE}\footnote{\acl{MoE}}.
 %Pro spolehlivou komunikaci mezi zařízeními bylo třeba vyvinout protokol, který bude zapouzdřovat a směřovat samotné \acs{MIDI} zprávy. S tímto cílem byl implementován protokol \acs{MoE}\footnote{\acl{MoE}}. 
 
-Přípravek pracuje s dvěma typy zpráv: Příchozí, odchozí \acs{MIDI} zprávy, které se týkají hardwarové sběrnice (tedy přímo \texttt{pinů~4} a \texttt{5} z~obr.~\ref{fig:schPrototype})~-- dále jen \uv{\acs{MIDI} zprávy}~-- a příchozí, odchozí UDP zprávy, které se týkají pouze ethernetového rozhraní~-- dále jen \uv{UDP zprávy}.
+V následujícím textu budou zmiňovány dva typy zpráv: Příchozí, odchozí \acs{MIDI} zprávy, které se týkají hardwarové sběrnice (tedy přímo \texttt{pinů~4} a \texttt{5} z~obr.~\ref{fig:schPrototype})~-- dále jen \uv{\acs{MIDI} zprávy}~-- a příchozí, odchozí UDP zprávy, které se týkají pouze ethernetového rozhraní~-- dále jen \uv{UDP zprávy}.
 
 \subsection{Databáze spojení}\label{chpt:DatSpoj}
 S cílem docílit již zmiňované velké variability ve směřování zpráv napříč přípravky byla do zdrojového kódu implementována tzv.~databáze spojení \texttt{sub\-scrip\-tions[]}:
@@ -70,7 +70,7 @@ Každý záznam je tvořen dvěma bajty:
     \end{figure}
     \item \texttt{dstIPnib} vyjadřuje poslední bajt IP adresy cílového zařízení (viz též sekci \ref{chpt:NetworkLayer}) 
 \end{enumerate}
-Tato databáze je při každém přijetí \acs{MIDI} zprávy procházena. Pro přesný průběh programu viz \ref{chpt:PrijMIDI} resp. \ref{code:handleMIDI}
+Tato databáze je při každém přijetí \acs{MIDI} zprávy procházena. Pro přesný průběh programu viz kapitolu~\ref{chpt:PrijMIDI} resp. \ref{code:handleMIDI}
 
 \newcommand{\bytes}[4]{
     \begin{center}
