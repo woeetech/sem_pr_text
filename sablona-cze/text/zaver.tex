@@ -2,4 +2,8 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{Závěr}
 
+Výstupem této semestrální práce je funkční přípravek, který disponuje ethernetovým a vstupním i výstupním \acs{MIDI} rozhraním. Přípravek se automaticky připojí do počítačové sítě a dále funguje již autonomně. Dokáže přijmout \acs{MIDI} zprávu, přeformátovat ji v souladu s daným záznamem databáze spojení a s využitím \acs{UDP} protokolu poslat správnému příjemci. Databáze spojení je taktéž editovatelná na dálku pomocí programu \emph{MoE Matrix Editor}. 
 
+Stále však existuje mnoho prostoru pro optimalizaci. Pokud přípravek obdrží více než dvě \acs{MIDI} zprávy těsně za sebou, přestane přijímat jakékoliv další bajty a jeho funkčnost je do restartu přerušena. Absence implementace ošetření výjimek (dle kapitoly \ref{chpt:MIDIexcs}) zase prozatím brání využití přípravků tam, kde je příjem zpráv v módu Running Status nebo SysEx standardem.
+
+Jako uspokojivé lze však vnímat dosažené hodnoty latence mezi přijetím \acs{MIDI} zprávy na sériové sběrnici jednoho zařízení a odeslání též zprávy na sériovou sběrnici zařízení druhého. Komunikace mezi samotnými zařízeními samozřejmě probíhala prostřednictvím počítačové sítě. Dle přílohy \ref{fig:Latency1} vykazuje dolní hranice celkové latence \acs{MoE} řešení $2{,}18\,\unit{ms}$ v případě jediného záznamu v databázi spojení. S každým dalším záznamem pak latence přirozeně roste. Maximální naměřená hodnota latence (mezi první přijatou a poslední odeslanou zprávou) pak dosahovala $20{,}92\,\unit{ms}$. Při živé hudební produkci s využitím \acs{MIDI} klávesového nástroje by neměla celková latence přesáhnout 5\,ms. S touto premisou lze prohlásit, že \acs{MoE} řešení by mohlo být za určitých podmínek použitelné i pro časově náročnější podmínky.

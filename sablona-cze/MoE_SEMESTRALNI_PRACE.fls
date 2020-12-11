@@ -438,12 +438,6 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lof
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lot
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lot
-OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lot
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lol
-INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lol
-OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.lol
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/uvod.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/uvod.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/uvod.tex
@@ -525,6 +519,12 @@ OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.toa
 OUTPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/prilohy.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/prilohy.tex
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/prilohy.tex
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/Mereni_1kanal.png
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/Mereni_1kanal.png
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/Mereni_1kanal.png
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/Mereni_16kanal.png
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/Mereni_16kanal.png
+INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/obrazky/Mereni_16kanal.png
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/MoE_SEMESTRALNI_PRACE.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/uvod.aux
 INPUT /Repos/SemestralProject/00_TEXT/sablona-cze/text/uvod.aux
