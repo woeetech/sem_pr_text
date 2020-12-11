@@ -1,0 +1,598 @@
+VYSOKÉ UČENÍ TECHNICKÉ V BRNĚ Fakulta elektrotechniky a komunikačních technologií
+
+SEMESTRÁLNÍ PRÁCE
+
+Brno, 2020
+
+Vojtěch Lukáš
+
+VYSOKÉ UČENÍ TECHNICKÉ V BRNĚ
+BRNO UNIVERSITY OF TECHNOLOGY
+
+FAKULTA ELEKTROTECHNIKY A KOMUNIKAČNÍCH TECHNOLOGIÍ
+FACULTY OF ELECTRICAL ENGINEERING AND COMMUNICATION
+
+ÚSTAV TELEKOMUNIKACÍ
+DEPARTMENT OF TELECOMMUNICATIONS
+
+MIDI PO ETHERNETU
+
+SEMESTRÁLNÍ PRÁCE
+SEMESTRAL THESIS
+
+AUTOR PRÁCE
+AUTHOR
+
+Vojtěch Lukáš
+
+VEDOUCÍ PRÁCE
+SUPERVISOR
+
+Ing. Ondřej Krajsa, Ph.D.
+
+BRNO 2020
+
+Semestrální práce
+bakalářský studijní program Audio inženýrství specializace Zvuková produkce a nahrávání Ústav telekomunikací Student: Vojtěch Lukáš Ročník: 3 NÁZEV TÉMATU: ID: 211572 Akademický rok: 2020/21
+
+MIDI po Ethernetu
+POKYNY PRO VYPRACOVÁNÍ: Navrhněte a realizujte přípravek pro přenos protokolu MIDI po Ethernetu. Přípravek bude mít dva vstupní porty a dva výstupní porty s možností přepnutí do režimu Thru. Data přenášená po Ethernetu pak budou v dalším přípravku odeslána na patřičné MIDI porty. V rámci semestrální práce proveďte návrh zařízení a testování dílčích částí s využitím vývojového kitu. DOPORUČENÁ LITERATURA: [1] LINSLEY HOOD, John. Audio Electronics. Kent: Elsevier Science, 1995. ISBN 9780750621816 [2] GUÉRIN, Robert. Velká kniha MIDI: standardy, hardware, software. Brno: Computer Press, 2004, 340 s. ISBN 80-7226-985-2
+Termín zadání: 2.10.2020 Termín odevzdání: 11.12.2020
+
+Vedoucí práce:
+
+Ing. Ondřej Krajsa, Ph.D.
+
+doc. Ing. Jiří Schimmel, Ph.D. předseda rady studijního programu
+
+UPOZORNĚNÍ: Autor semestrální práce nesmí při vytváření semestrální práce porušit autorská práva třetích osob, zejména nesmí zasahovat nedovoleným způsobem do cizích autorských práv osobnostních a musí si být plně vědom následků porušení ustanovení § 11 a následujících autorského zákona č. 121/2000 Sb., včetně možných trestněprávních důsledků vyplývajících z ustanovení části druhé, hlavy VI. díl 4 Trestního zákoníku č.40/2009 Sb.
+
+Fakulta elektrotechniky a komunikačních technologií, Vysoké učení technické v Brně / Technická 3058/10 / 616 00 / Brno
+
+PROHLÁŠENÍ
+Prohlašuji, že svou semestrální práci na téma „MIDI po Ethernetu“ jsem vypracoval samostatně pod vedením vedoucího semestrální práce a s použitím odborné literatury a dalších informačních zdrojů, které jsou všechny citovány v práci a uvedeny v seznamu literatury na konci práce. Jako autor uvedené semestrální práce dále prohlašuji, že v souvislosti s vytvořením této semestrální práce jsem neporušil autorská práva třetích osob, zejména jsem nezasáhl nedovoleným způsobem do cizích autorských práv osobnostních a/nebo majetkových a jsem si plně vědom následků porušení ustanovení S 11 a následujících autorského zákona č. 121/2000 Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon), ve znění pozdějších předpisů, včetně možných trestněprávních důsledků vyplývajících z ustanovení části druhé, hlavy VI. díl 4 Trestního zákoníku č. 40/2009 Sb.
+
+Brno
+
+...............
+
+.................................. podpis autora
+
+Obsah
+Úvod 1 Protokol MIDI 1.1 Hardwarová vrstva . 1.1.1 MIDI výstup 1.1.2 MIDI vstup . 1.2 Softwarová vrstva . . 1.2.1 Výjimky . . . 7 8 8 8 9 10 11 12 12 13 13 14 14 15 15 15 16 16 16 18 20 21 22 23
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+2 Návrh přípravku 2.1 Hardware . . . . . . . . 2.2 Software . . . . . . . . . 2.2.1 Databáze spojení 2.2.2 Formát zprávy . 2.2.3 Síťová vrstva . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+3 Průběh komunikace 3.1 Připojení k lokální síti . . . . . . 3.2 Upozornění na vlastní přítomnost 3.3 Rozpoznání zařízení na síti . . . . 3.4 Přijetí MIDI zprávy . . . . . . . . 3.5 Přijetí UDP zprávy . . . . . . . . 4 Síťový ovladač Závěr Literatura Seznam symbolů, veličin a zkratek Seznam příloh
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+. . . . .
+
+A Tabulky 24 A.1 MIDI status bajty . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24 A.2 MoE značky . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25 B Výpisy kódu 26 B.1 Výpis kódu pro příjem a zpracování MIDI zprávy . . . . . . . . . . . 26
+
+C Záznamy z měření latence D Fotografie D.1 Fotografie testovacího přípravku
+
+27 28 . . . . . . . . . . . . . . . . . . . . 28
+
+Seznam obrázků
+1.1 1.2 1.3 1.4 2.1 2.2 4.1 4.2 4.3 C.1 C.2 D.1 Schéma MIDI výstupu [1]. . . . . . . . . . . . . . . . . . . . . . . . Schéma MIDI vstupu [1]. . . . . . . . . . . . . . . . . . . . . . . . . Bity obou druhů MIDI bajtů [1] . . . . . . . . . . . . . . . . . . . . Struktura zprávy Změna kontroléru [1]. . . . . . . . . . . . . . . . . Schéma prototypu [3] . . . . . . . . . . . . . . . . . . . . . . . . . . Kódování zdrojového a cílového kanálu v bajtu srcdstChannel . . . Konzolová aplikace MoE Matrix Editor – úvodní obrazovka. . . . . Konzolová aplikace MoE Matrix Editor – vytváření spojení. . . . . Konzolová aplikace MoE Matrix Editor – využití vkládacího makra. Měření latence pro jeden aktivní záznam v databázi spojení. . . . . Měření latence pro šestnáct aktivních záznamů v databázi spojení. . Fotografie testovacího přípravku. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9 9 10 10 12 14 18 19 19 27 27 28
+
+Úvod
+Protokol MIDI1 je již dlouhá léta zavedeným standardem nejen pro komunikaci mezi elektronickými hudebními nástroji, ale také pro řízení studiové nebo scénické techniky, časovou synchronizaci dvou a více zařízení a podobně. Cílem této práce je vyvinout hardwarový přípravek s vlastním softwarem, který adaptuje tento protokol pro použití v rámci počítačové sítě. Mimo elementární přesun MIDI zpráv by měl poskytnout i komplexní možnosti směřování jednotlivých vstupních a výstupních MIDI kanálů. První kapitola je ve stručnosti věnována MIDI protokolu jako takovému. Ve druhé kapitole je nastíněna konstrukce přípravku a v obrysech popsán jeho program. Třetí kapitola nabízí bližší pohled na průběh komunikace a ve čtvrté kapitole je popsána funkčnost síťového editoru, jehož hlavní deviza tkví ve schopnosti ovládat všechny přípravku v síti z jednoho místa – řídícího PC.
+
+1
+
+Musical Instrument Digital Interface – digitální rozhraní hudebního nástroje
+
+7
+
+1
+
+Protokol MIDI
+
+Tento protokol umožňuje přenos zejména hudebních informací mezi dvěma (i více) elektronickými hudebními nástroji, sekvencery, počítači a dalšími přístroji. Původně byl zamýšlen pro použití „v reálném čase“, tedy při živé produkci. [1] S nástupem moderních DAW1 ale přišla možnost povely také nahrávat, upravovat a znovu přehrávat. MIDI se však netýká výhradně hudby a hudebních dat. Umožňuje též přenos kontrolních povelů a synchronizačních značek. Přirozeně se tedy rozšířilo i do nahrávacích studií, divadel a dalších zařízení, kde umožňuje globální řízení jednotlivých přehrávačů nebo vzdálené ovládání parametrů řídících konzolí.
+
+1.1
+
+Hardwarová vrstva
+
+Pro přenos MIDI dat se tradičně používá zásuvka a vidlice DIN 52 . Kabel mezi dvěma zařízeními by neměl být delší než 15 m a tvořit by jej měla stíněná kroucená dvojlinka. Toto stínění by mělo být připojeno k pinu 2 na obou koncích. Výměna informací je realizována pomocí 5mA proudové smyčky. Při protékání proudu je zaznamenána logická 0, v opačném případě logická 1. [1] Přesná specifika obvodů pro zpracování příchozích a odchozích MIDI signálů upravuje kapitola Hardware z dokumentu [1]. Tato pasáž byla v roce 2014 aktualizována normou [2], která adaptovala protokol i pro zařízení s 3,3V logikou a přidává další prvky pro zamezení zejména RF3 interferencí. V následujících schématech bude však zobrazeno originální schéma z původní normy,
+
+1.1.1
+
+MIDI výstup
+
+Výstupní port MIDI sběrnice je ve své podstatě jednoduchý. Z UART4 čipu jsou přes napěťové sledovače nebo tranzistory vedeny logické impulzy na pin 5, zatímco na pin 4 je přivedeno stálé napětí. Pin 2 je v tomto případě uzemněn. [1] Podle aktualizační normy [2] je možné přidat za každý rezistor feritové jádro pro zamezení vysokofrekvenčních interferencí. V případě použití zařízení s 3,3V logikou jsou pak použity rezistory s menšími hodnotami odporů. Na obr. 1.1 je schéma k nahlédnutí.
+Digital Audio Workstation – digitální pracovní stanice pro náběr a úpravu vícestopého záznamu. 2 Dnes je častější využití USB sběrnice nebo technologie Bluetooth pro obousměrný přenos. 3 Radio Frequency 4 Universal Asynchronous Receiver/Transmitter – univerzální asynchronní přijímač/vysílač.
+1
+
+8
+
+220 Ω
+
+5V
+220 Ω
+
+FROM UART
+
+A
+2 5 3 4 1
+
+MIDI OUT Obr. 1.1: Schéma MIDI výstupu [1].
+
+1.1.2
+
+MIDI vstup
+
+Vstupní port MIDI sběrnice je mnohem složitější. Z obr. 1.2 je patrné, že s cílem eliminovat zemní smyčky, které jsou ve zvukové technice nepřípustné, je vstup každého MIDI zařízení skrz optočlen galvanicky oddělen. Z téhož důvodu je také pin 2 – na rozdíl od výstupního portu – zapojen naprázdno (podle [1]). Některá zařízení disponují také výstupem MIDI THRU. Ten „kopíruje“ data ze vstupu MIDI IN a tak umožňuje komplexní řetězení zařízení za sebou. Jeho schéma je totožné s tím na obr. 1.1. Aktualizační norma [2] pak umožňuje přidání feritových jader za piny 4 a 5, přes kondenzátor nízké kapacity uzemnění pinu 2 a při použití 3,3V logiky snížení odporu rezistoru na vstupu optočlenu.
+5V
+280 Ω
+
+TO UART
+220 Ω
+2 5 3 4 1 1N914 6N138
+
+MIDI IN
+
+MIDI THRU Obr. 1.2: Schéma MIDI vstupu [1].
+
+Bude-li do tohoto vstupu připojen výstup jiného zařízení, které vyšle logickou 1 objeví se na pinech 4 a 5 stejné napětí, v obvodu tedy neprochází žádný proud – LED5 v optočlenu nesvítí. Vstupní UART čip přijímá logickou 1. Vyšle-li jiné zařízení logickou 0, na pinu 5 poklesne napětí oproti pinu 4, LED v optočlenu se rozsvítí, obvodem prochází proud a UART čip přijímá logickou 1.
+5
+
+Light-Emiting Diode – Dioda, která vyzařuje viditelné světlo.
+
+9
+
+1.2
+
+Softwarová vrstva
+
+MIDI protokol přenáší informace (příkazy) po sériové lince přenosovou rychlostí 31250 bps. Komunikace je jednosměrná, pro obousměrnou komunikaci je třeba využít dvou rozhraní (vstupu a výstupu) na všech zúčastněných zařízeních. Příkazy se skládají z bajtů, jichž rozeznáváme dva typy: • STATUS BAJT v sobě kóduje druh příkazu (Nota stlačena, Změna kontroléru. . . ) a cílový kanál (1-16). • DATA BAJT vyjadřuje hodnotu s jakou je příkaz posílán (0-127). STATUS BAJT a a a b b b
+(a) Bity STATUS BAJTU
+
+1
+
+b
+
+0
+
+c
+
+DATA BAJT c c c c
+
+c
+
+c
+
+(b) Bity DATA BAJTU
+
+a b c
+
+bity pro kódování druhu zprávy bity pro kódování kanálu bity pro kódování hodnoty
+
+Obr. 1.3: Bity obou druhů MIDI bajtů [1] Na obrázku 1.3 je patrná struktura obou bajtů. Za pozornost stojí především jejich MSB6 : STATUS BAJT má MSB vždy s hodnotou 1. Naproti tomu MSB DATA BAJTU je vždy nulový. Pomineme-li výjimky, každý příkaz začíná jedním STATUS BAJTEM, za nímž následuje jeden, nebo dva DATA BAJTY. Na obr. 1.4 je uvedena struktura ukázkové zprávy.
+
+0xB0
+1011 0000
+
+0x01
+0000 0001
+
+0x36
+0011 0110
+
+Obr. 1.4: Struktura zprávy Změna kontroléru [1]. Z prvního bajtu zprávy z obr. 1.4 lze dekódovat druh a cílový kanál příkazu. Jedná se o Control Change - Změna kontroléru na kanálu 1 7 Druhý bajt představuje číslo kontroléru (2 – Modulation ) a třetí jeho hodnotu (54). Pro potřeby tohoto semestrálního projektu bude nutné, aby každý přípravek dokázal rozeznat kanál k němu příchozí MIDI zprávy, popř. jej pro další přenos pozměnil. DATA BAJTY budou jen „kopírovány“ a nebude se do nich nijak zasahováno.
+6 7
+
+Most Significant Bit – Nejvýznamnější bit (většinou v bajtu). 00002 ∼ kanál 1 . . . 11112 ∼ kanál 16.
+
+10
+
+1.2.1
+
+Výjimky
+
+Je třeba alespoň okrajově zmínit výjimečné stavy, které v rámci MIDI protokolu mohou nastat. V této fázi semestrální práce tyto výjimky zatím nejsou ošetřeny. Running Status Pracuje-li MIDI vysílač v tomto stavu, neposílá STATUS BAJT v opakující se zprávě stejného druhu. Přijímač si tedy musí uložit poslední platný STATUS BAJT do paměti, kterou přemaže, obdrží-li zprávu s jiným, novým STATUS BAJTEM. Tento mód výrazně šetří přenesená data, zejména je-li použit při odesílání zprávy Změna kontroléru kontinuálních ovladačů. [1] Zprávy Real-Time Tyto zprávy slouží pro synchronizaci MIDI zařízení, které pracují s časovou osou nebo časem obecně. Skládají se pouze z jediného bajtu a mají nejvyšší prioritu. Přijímač by měl být připraven i na to, že je obdrží uprostřed standardní zprávy nebo SysEx zprávy. [1] Zprávy SysEx SysEx (System Exlusive ) zprávy se skládají z většího a libovolného počtu bajtů. Jsou víceúčelové a univerzální, používají se například pro posun na časové ose (komplementárně ke zprávám Real-Time), MSC8 apod. [1]
+
+MIDI Show Control – subprotokol pro ovládání scénické techniky, zejména pomocí příkazů GO, STOP, popř. RESUME. [1]
+
+8
+
+11
+
+2
+
+Návrh přípravku
+
+V rámci semestrální práce byl vytvořen prototyp zařízení na platformě Arduino UNO, která disponuje čipem ATMEL ATmega 328P. Arduinu sekunduje Ethernet Shield V1, který je osazen čipem WizNet W5100. Tento přípravek umožňuje výměnu MIDI příkazů přes lokální síť, využívá první čtyři vrstvy ISO/OSI modelu. Zároveň, pomocí síťového editoru (kapitola 4), poskytuje pokročilé možnosti směrování jednotlivých MIDI kanálů napříč dalšími přípravky v síti.
+
+2.1
+
+Hardware
+5V 1 2 8 7
+
+������2 Arduino
+5
+
+������1
+
+6N138
+3 4 6 5
+
+WizNet
+GND
+
+������4
+
+������3
+
+4
+
+2 5 3 4 1 5 3
+
+2 4 1
+
+MIDI IN
+������1
+
+MIDI OUT ������3 220 Ω ������2 10 kΩ ������4 470 Ω 220 Ω
+
+Obr. 2.1: Schéma prototypu [3] Na obr. 2.1 je patrné schéma přípravku. Je využito standardní zapojení MIDI vstupu a výstupu v souladu se schématy na obr. 1.1 a 1.2. Jak již bylo řečeno v kapitole 1, MIDI využívá pro komunikaci sériovou linku. V tomto případě je vstupní linka zapojena k Arduinu na pinu 4 a výstupní k pinu 51 . WizNet Shield zprostředkovává přípravku standardní ethernetové rozhraní v podobě zásuvky typu RJ45, ovládacího mikrokontroléru a také připravených softwarových knihoven.
+1
+
+Arduino umožňuje softwarové přepnutí pinů z režimu výstupu na režim vstup a naopak.
+
+12
+
+Přípravek je v této fázi vývoje napájen prostřednictvím USB sběrnice Arduina napětím 5 V. Všechny součástky jsou zatím vsazeny do nepájivého kontaktního pole. Fotografie protoypu jsou přiloženy k nahlédnutí v TODO!
+
+2.2
+
+Software
+
+Software přípravku byl vyvíjen za účelem maximalizace variability směřování MIDI příkazů. Na funkční rovině je inspirován systémem Dante, který se používá pro přenos zvukového signálu přes počítačovou síť. Dante umožňuje pokročilé směřování signálů napříč síťovými zařízeními, ovládané pomocí přehledné matice na ovládacím PC. Do této fáze by měl být vyvinut i systém MoE2 . Přípravek pracuje s dvěma typy zpráv: Příchozí, odchozí MIDI zprávy, které se týkají hardwarové sběrnice (tedy přímo pinů 4 a 5 z obr. 2.1) – dále jen „MIDI zprávy“ – a příchozí, odchozí UDP zprávy, které se týkají pouze ethernetového rozhraní zprostředkovaném WizNet Shieldem – dále jen „UDP zprávy“.
+
+2.2.1
+
+Databáze spojení
+
+S cílem docílit již zmiňované velké variability ve směřování zpráv napříč přípravky byla do zdrojového kódu implementována tzv. databáze spojení subscriptions[]:
+typedef struct subscription { byte srcdstChannel ; byte dstIPnib ; } _subscriptions [ MAX_SUBS ];
+
+Toto pole struktur subscription je pro MoE protokol zásadní. Jedno „spojení“, tedy jeden prvek v tohoto pole, propojuje jeden MIDI kanál lokálního zařízení s jedním MIDI kanálem cílového zařízení. Toto pole si lze představit jako virtuální patchbay. Jeden patch-kabel odpovídá jednomu prvku v poli (záznamu v databázi). Každý záznam je tvořen dvěma bajty: 1. srcdstChannel v sobě kóduje zdrojový MIDI kanál, který se týká lokálního zařízení, a cílový MIDI kanál – ten se týká zařízení cílového. „Kódování“ je uskutečněno způsobem vyobrazeným na obr. 2.2. Jeden kanál je vyjádřen pomocí čtyř bitů (viz kapitolu 1.2), jeden bajt tedy „pojme“ vyjadření přesně dvou kanálů. 2. dstIPnib vyjadřuje poslední bajt IP adresy cílového zařízení (viz též sekci 2.2.3)
+2
+
+MIDI over Ethernet – MIDI po Ethernetu
+
+13
+
+0
+⏟
+
+srcdstChannel 1 1 0 1 0 1
+⏞ zdroj ⏟ ⏞ cíl
+
+1
+
+Obr. 2.2: Kódování zdrojového a cílového kanálu v bajtu srcdstChannel Tato databáze je při každém přijetí MIDI zprávy procházena. Pro přesný průběh programu viz 3.4 resp. B.1
+
+2.2.2
+
+Formát zprávy
+
+Pro optimální komunikaci zařízení mezi sebou bylo nutné zapouzdřit MIDI příkazy do MoE datagramu. Tento datagram se skládá ze čtyř bajtů, z čehož první je vyhrazen MoE značce a zbylé tři samotné MIDI zprávě nebo jiným datům. Tabulku všech dosavadně implementovaných MoE značek lze nalézt v příloze A.2. Podle hodnoty této značky se přípravek k dané MoE zprávě zachová. Ku příkladu příchozí zpráva
+
+0xA3, 0x90, 0x45, 0x7F,
+bude interpretována jako okamžité odeslání MIDI zprávy na sériovou sběrnici. Na zprávu
+
+0x08, 0x08, 0x08, 0x08,
+bude přípravek zase reagovat zasláním své databáze spojení na adresu odesílatele atp.
+
+2.2.3
+
+Síťová vrstva
+
+Tento MoE datagram je následně zapouzdřen do UDP3 datagramu. Pro síťovou komunikaci byl vybrán protokol UDP z důvodu jeho „peer2peer“ architektury, která je k tomuto projektu mnohem vhodnější než „client-server“, kterou poskytuje protokol TCP. Komunikace probíhá na portu 50 000. MoE zařízení jsou schopna připojit se do lokální sítě s pevně nestavenou IP adresou4 , nebo zažádat o přidělení IP adresy DHCP server. Tato síť však musí mít masku 255.255.255.0 – zařízení se z úsporných důvodů navzájem rozlišují pouze posledním bajtem IP adresy (jak je popsáno v sekci 2.2.1).
+User Datagram Protocol – jednoduchý síťový protokol, který umožňuje výměnu zpráv „hostto-host“ [4]. 4 Tato IP adresa je zatím nastavitelná pouze ve zdrojovém kódu.
+3
+
+14
+
+3
+
+Průběh komunikace
+
+V této kapitole bude popsán průběh připojení přípravku k síti, automatické rozpoznání a zacházení s přijatými MIDI a UDP zprávami, spolu s reakcemi na příkazy odeslané síťovým editorem.
+
+3.1
+
+Připojení k lokální síti
+
+Každému přípravku byla do prvních šesti bajtů EEPROM paměti uložena unikátní MAC adresa. Při zapnutí a následné inicializaci je adresa načtena a přiřazena. Nejprve proběhne pokus o získání IP adresy pomocí DHCP serveru sítě. V případě neúspěchu použije přípravek napevno nastavenou IP adresu. Díky knihovně EthernetUdp.h jsou výše zmíněné operace otázkou pouze několika málo řádků:
+if ( Ethernet . begin ()) { // DHCP server zd á rn ě p ř id ě lil za ř í zen í IP adresu Serial . println ( Ethernet . localIP ()); } else { Ethernet . begin ( _myMac , _userIP ); // P ř id ě len í IP adresy napevno Serial . println ( Ethernet . localIP ()); }
+
+3.2
+
+Upozornění na vlastní přítomnost
+
+Ihned po zdárném připojení k lokální síti je vyslána zpráva beacon, jejíž účel je upozornit všechna zařízení v lokální síti na vlastní přítomnost. Zpráva se skládá ze čtyř bajtů:
+
+0xFF, 0xFF, 0xFF, 0xFF
+a je poslána na broadcast adresu sítě.
+_broadcastIP = Ethernet . localIP (); _broadcastIP [3] = 255; EthernetUdp eUDP ; eUDP . begin ( MOE_PORT );
+
+15
+
+eUDP . beginPacket ( _broadcastIP , MOE_PORT ); eUDP . write ( _beacon , sizeof ( _beacon )); eUDP . endPacket ();
+
+3.3
+
+Rozpoznání zařízení na síti
+
+V případě přijetí zprávy beacon je rozpoznána IP adresa odesílatele a vytvořen nový záznam do databáze spojení subscriptions. V této fázi projektu přípravek napevno přiřazuje kanál 1 lokální příchozí MIDI sběrnice kanálu 1 výstupní MIDI sběrnice cílového zařízení. Unikátnost této zprávy v rámci běhu programu má však velice negativní efekt: Zařízení, keré je do sítě připojeno jako poslední nepřijme žádnou zprávu beacon, do své databáze si tedy žádné spojení nepřidá. Z toho důvodu byl vyvinut síťový editor, který umožňuje přidávat a mazat záznamy do databází spojení všech přípravků kdykoliv za běhu programu.
+
+3.4
+
+Přijetí MIDI zprávy
+
+Při přijímání MIDI zprávy je kontrolován vstupní buffer sériové sběrnice pinu 5. Pokud jsou v bufferu přesně tři bajty, jsou postupně přečteny a uloženy do paměti. V dalším kroku je nutné dekódovat kanál této MIDI zprávy z DATA BAJTU – tuto „extrakci“ lze vyřešit pomocí bitového maskování. Takto získaný bajt je pak porovnáván s prvním nibblem bajtu srcdstChannel každého záznamu databáze subscriptions. Dojde-li ke shodě, začíná konstrukce odchozí zprávy podle dalších informací v odpovídajícím záznamu databáze spojení. V tomto bodě je důležité zmínit, že druhý nibble DATA BAJTU – kanál – je změněn, aby bylo zaručeno, že z MIDI sběrnice cílového zařízení budou proudit zprávy na kanálech odpovídajících databázi spojení. Výpis kódu je k dispozici jako příloha B.1
+
+3.5
+
+Přijetí UDP zprávy
+
+Ve okamžiku příjmu UDP zprávy je nejprve nutné rozlišit její první bajt – ten určuje účel zprávy. Toto se uskutečňuje pomocí jednoduchého větvení switch.
+if ( eUDP . parsePacket ()) { eUDP . readByte ( _incomingUDP . 4); switch ( _incomingUDP [0]) {...} }
+
+16
+
+Pro příklad jsou zde uvedeny dvě reakce na dané druhy příchozích zpráv v souladu s tabulkou A.2. Tento kód je obsahem větvení switch z předchozího odstavce.
+// ... case 0 x08 : // dotaz ř í d í c í ho PC na z á znamy // v datab á zi spojen í sendSubs ( eUDP . remoteIP ()); break ;
+
+// P ř í jem t ř í bajtov é MIDI zpr á vy // a z á pis na sb ě rnici midiSerial . write ( _incomingUDP [1]); midiSerial . write ( _incomingUDP [2]); midiSerial . write ( _incomingUDP [3]); break ; // ...
+
+case 0 xA3 :
+
+17
+
+4
+
+Síťový ovladač
+
+Pro centrální dálkové ovládání databází spojení na jednotlivých přípravcích v síti byl vytvořen jednoduchý program v jazyce Python, který je nutné spustit na PC, který je připojen ve stejné síti jako všechny přípravky. V době odevzdávání této semestrální práce existuje ovladač pouze jako konzolový skript, v plánu je však vytvořit i uživatelsky mnohem přívětivější aplikaci s grafickým rozhraním.
+
+Obr. 4.1: Konzolová aplikace MoE Matrix Editor – úvodní obrazovka. Za běhu programu má uživatel na výběr ze čtyř příkazů. Na konzoli vytiskne všechna zařízení v síti a jejich aktuální spojení. add Přidá vybranému zařízení záznam do databáze spojení subscriptions. del Vymaže vybranému zařízení záznam z databáze spojení. reload Vyžádá si po všech zařízeních na síti aktualizaci jejich databází spojení. print Pro zjednodušení je přidáno „makro“, které se spouští zadáním hodnoty 255 do pole pro cílový kanál zařízení. V tomto případě bude namísto jediného spojení vytvořeno šestnáct unikátních spojení tak, aby jeden MIDI kanál zdrojového zařízení přijímalo všech šestnáct kanálů zařízení cílového. Je třeba dodat, že toto makro reálně využitelné není, velice však usnadní práci při testovacích a měřících aktivitách. Analogicky k tomuto makru funduje i příkaz del s parametrem 255 u hodnoty destinationChannel.
+
+18
+
+Obr. 4.2: Konzolová aplikace MoE Matrix Editor – vytváření spojení.
+
+Obr. 4.3: Konzolová aplikace MoE Matrix Editor – využití vkládacího makra.
+
+19
+
+Závěr
+Výstupem této semestrální práce je funkční přípravek, který disponuje ethernetovým a vstupním i výstupním MIDI rozhraním. Přípravek se automaticky připojí do počítačové sítě a dále funguje již autonomně. Dokáže přijmout MIDI zprávu, přeformátovat ji v souladu s daným záznamem databáze spojení a s využitím UDP protokolu poslat správnému příjemci. Databáze spojení je taktéž editovatelná na dálku pomocí programu MoE Matrix Editor. Stále však existuje mnoho prostoru pro optimalizaci. Pokud přípravek obdrží více než dvě MIDI zprávy těsně za sebou, přestane přijímat jakékoliv další bajty a jeho funkčnost je do restartu přerušena. Absence implementace ošetření výjimek (dle kapitoly 1.2.1) zase prozatím brání využití přípravků tam, kde je příjem zpráv v módu Running Status nebo SysEx standardem. Jako uspokojivé lze však vnímat dosažené hodnoty latence mezi přijetím MIDI zprávy na sériové sběrnici jednoho zařízení a odeslání též zprávy na sériovou sběrnici zařízení druhého. Komunikace mezi samotnými zařízeními samozřejmě probíhala prostřednictvím počítačové sítě. Dle přílohy C.1 vykazuje dolní hranice celkové latence MoE řešení 2,18 ms v případě jediného záznamu v databázi spojení. S každým dalším záznamem pak latence přirozeně roste. Maximální naměřená hodnota latence (mezi první přijatou a poslední odeslanou zprávou) pak dosahovala 20,92 ms. Při živé hudební produkci s využitím MIDI klávesového nástroje by neměla celková latence přesáhnout 5 ms. S touto premisou lze prohlásit, že MoE řešení by mohlo být za určitých podmínek použitelné i pro časově náročnější podmínky.
+
+20
+
+Literatura
+[1] THE MIDI MANUFACTURERS ASSOCIATION. MIDI 1.0 Detailed Specification. Document Version 4.2.1. Los Angeles, CA: MMA, 1996. [2] MMA TECHNICAL STANDARDS BOARD/AMEI MIDI COMMITTEE. MIDI 1.0 Electrical Specification Update. 2014. [3] GHASSAEI, Amanda. Send and Receive MIDI With Arduino [online]. [cit. 1. 12. 2020]. Dostupné z URL: <https://www.instructables.com/ Send-and-Receive-MIDI-with-Arduino/>. [4] MNEIMNEH, Saad. Computer Networks UDP and TCP. Hunter College of CUNY. New York. 2008.
+
+21
+
+Seznam symbolů, veličin a zkratek
+MIDI Musical Instrument Digital Interface – digitální rozhraní hudebního nástroje Digital Audio Workstation – digitální pracovní stanice pro náběr a úpravu vícestopého záznamu. Universal Serial Bus – univerzální sériová sběrnice pro komunikace s periferními zařízeními. Radio Frequency Universal Asynchronous Receiver/Transmitter – univerzální asynchronní přijímač/vysílač. Light-Emiting Diode – Dioda, která vyzařuje viditelné světlo. Most Significant Bit – Nejvýznamnější bit (většinou v bajtu). MIDI Show Control – subprotokol pro ovládání scénické techniky, zejména pomocí příkazů GO, STOP, popř. RESUME. [1] MIDI over Ethernet – MIDI po Ethernetu User Datagram Protocol – jednoduchý síťový protokol, který umožňuje výměnu zpráv „host-to-host“ [4].
+
+DAW
+
+USB
+
+RF UART
+
+LED MSB MSC
+
+MoE UDP
+
+22
+
+Seznam příloh
+A Tabulky 24 A.1 MIDI status bajty . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24 A.2 MoE značky . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25 B Výpisy kódu 26 B.1 Výpis kódu pro příjem a zpracování MIDI zprávy . . . . . . . . . . . 26 C Záznamy z měření latence D Fotografie D.1 Fotografie testovacího přípravku 27 28 . . . . . . . . . . . . . . . . . . . . 28
+
+23
+
+A
+A.1
+
+Tabulky
+MIDI status bajty
+Tab. A.1: Tabulka MIDI STATUS BAJTŮ [1]. Název Hex. hodnota 0x8n 0x9n 0xAn 0xBn 0xCn 0xDn 0xEn Bin. hodnota 1000 nnnn 1001 nnnn 1010 nnnn 1011 nnnn 1100 nnnn 1101 nnnn 1110 nnnn
+
+Note-Off Note-On Poly Key Pressure Control Change Program Change Channel Pressure Pitch Bend
+
+Nota vypnuta Nota zapnuta Polyfonický tlakový ovladač Změna kontroléru Změna programu Monofonický tlakový ovladač Ohyb výšky tónu
+
+24
+
+A.2
+
+MoE značky
+Tab. A.2: Tabulka prvních bajtů MoE zpráv. Bajt . . . 0x08 . . . 0x0E 0x0F Popis Broadcast zpráva od řídícího PC, která sonduje účastníky sítě Unicast zpráva od řídícího PC, která zařízení maže záznam z databáze subscriptions. Unicast zpráva od řídícího PC, která zařízení vkládá nový záznam do databáze subscriptions, který je obsahem datagramu Unicast odpověď na sondáž PC, součástí datagramu je i jeden záznam databáze subscriptions Tříbajtová MIDI zpráva Zpráva beacon sloužící pro upozornění na vlastní přítomnost
+
+. . . 0x80 . . . 0xA3 . . . 0xFF
+
+25
+
+B
+B.1
+
+Výpisy kódu
+Výpis kódu pro příjem a zpracování MIDI zprávy
+Výpis B.1: Výpis kódu pro příjem a zpracování MIDI zprávy
+
+void handleMIDI () { if ( midiSerial . available () == 3) { _data0 = midiSerial . read (); _data1 = midiSerial . read (); _data2 = midiSerial . read (); sendUDP ( _data0 , _data1 , _data2 ); } } void sendUDP ( byte data0 , byte data1 , byte data2 ) { byte srcCh = data0 & 0 x0F ; for ( byte i = 0; i < MAX_SUBS ; i ++) { if ( srcCh == ( _subscriptions [ i ]. srcdstChannel & 0 xF0 ) >> 4) { data0 = data0 & 0 xF0 ; data0 = data0 | ( _subscriptions [ i ]. srcdstChannel & 0 x0F ); IPAddress destinationIP = Ethernet . localIP (); destinationIP [3] = _subscriptions [ i ]. dstIPnib ; eUDP . beginPacket ( destinationIP , MOE_PORT ); eUDP . write (0 xA3 ); eUDP . write ( data0 ); eUDP . write ( data1 ); eUDP . write ( data2 ); eUDP . endPacket (); } } }
+
+26
+
+C
+
+Záznamy z měření latence
+
+Obr. C.1: Měření latence pro jeden aktivní záznam v databázi spojení.
+
+Obr. C.2: Měření latence pro šestnáct aktivních záznamů v databázi spojení.
+
+27
+
+D
+D.1
+
+Fotografie
+Fotografie testovacího přípravku
+
+Obr. D.1: Fotografie testovacího přípravku.
+
+28
+
+

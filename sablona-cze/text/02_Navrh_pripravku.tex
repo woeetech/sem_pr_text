@@ -81,8 +81,9 @@ Tato databáze je při každém přijetí \acs{MIDI} zprávy procházena. Pro p�
 
 \subsection{Formát zprávy}\label{chpt:FormatZpravy}
 Pro optimální komunikaci zařízení mezi sebou bylo nutné zapouzdřit \acs{MIDI} příkazy do \acs{MoE} datagramu. Tento datagram se skládá ze čtyř bajtů, z čehož první je vyhrazen \acs{MoE} značce a zbylé tři samotné \acs{MIDI} zprávě nebo jiným datům. Tabulku všech dosavadně implementovaných \acs{MoE} značek lze nalézt v příloze \ref{chpt:MoEZnacky}. Podle hodnoty této značky se přípravek k dané \acs{MoE} zprávě zachová. Ku příkladu příchozí zpráva \bytes{A3}{90}{45}{7F,} bude interpretována jako okamžité odeslání \acs{MIDI} zprávy na sériovou sběrnici. Na zprávu \bytes{08}{08}{08}{08,} bude přípravek zase reagovat zasláním své databáze spojení na adresu odesílatele atp.
+
 \subsection{Síťová vrstva}\label{chpt:NetworkLayer}
-Tento \acs{MoE} datagram je následně zapouzdřen do \acs{UDP}\footnote{\acl{UDP}} datagramu. Pro síťovou komunikaci byl vybrán protokol \acs{UDP} z důvodu jeho \uv{peer2peer} architektury, která je k tomuto projektu mnohem vhodnější než \uv{client-server}, kterou poskytuje protokol TCP. Komunikace probíhá na portu 50\,000.
+Tento \acs{MoE} datagram je následně zapouzdřen do \acs{UDP}\footnote{\acl{UDP}} datagramu. Pro síťovou komunikaci byl vybrán protokol \acs{UDP} z důvodu jeho \uv{peer2peer} architektury, která je k tomuto projektu mnohem vhodnější než \uv{client-server}, kterou poskytuje protokol TCP \cite{UDPpaper}. Komunikace probíhá na portu 50\,000.
 \acs{MoE} zařízení jsou schopna připojit se do lokální sítě s pevně nestavenou IP adresou\footnote{Tato IP adresa je zatím nastavitelná pouze ve zdrojovém kódu.}, nebo zažádat o přidělení IP adresy DHCP server. Tato síť však musí mít masku 255.255.255.0~-- zařízení se z úsporných důvodů navzájem rozlišují \emph{pouze} posledním bajtem IP adresy (jak je popsáno v sekci~\ref{chpt:DatSpoj}).
 
 
