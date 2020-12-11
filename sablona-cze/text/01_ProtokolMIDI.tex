@@ -2,12 +2,12 @@
 
 Tento protokol umožňuje přenos zejména hudebních informací mezi dvěma (i~více) elektronickými hudebními nástroji, sekvencery, počítači a~dalšími přístroji. Původně byl zamýšlen pro použití \uv{v~reálném čase}, tedy při živé produkci. \cite{MIDIspecs} S~nástupem moderních \acs{DAW}\footnote{\acl{DAW}} ale přišla možnost povely také nahrávat, upravovat a znovu přehrávat. 
 
-\acs{MIDI} se však netýká výhradně hudby a~hudebních dat. Umožňuje též přenos kontrolních povelů a~synchronizačních značek. Přirozeně se tedy rozšířilo i~do nahrávacích studií, divadel a~dalších zařízení, kde umožňuje globální řízení jednotlivých přehrávačů nebo vzdálené ovládání parametrů řídících konzolí \cite{vkMIDI}.
+\acs{MIDI} se však netýká výhradně hudby a~hudebních dat. Umožňuje též přenos kontrolních povelů a~synchronizačních značek. Přirozeně se tedy rozšířilo i~do nahrávacích studií, divadel a~dalších zařízení, kde umožňuje globální řízení jednotlivých přehrávačů nebo vzdálené ovládání řídících konzolí \cite{vkMIDI}.
 
 \section{Hardwarová vrstva}
-Pro přenos \acs{MIDI} dat se tradičně používá zásuvka a~vidlice \texttt{DIN~5}\footnote{Dnes je častější využití USB sběrnice nebo technologie Bluetooth pro obousměrný přenos.}.  Kabel mezi dvěma zařízeními by neměl být delší než 15\,\unit{m} a~tvořit by jej měla stíněná kroucená dvojlinka. Toto stínění by mělo být připojeno k~\texttt{pinu~2} na obou koncích. 
+Pro přenos \acs{MIDI} dat se tradičně používá zásuvka a~vidlice \texttt{DIN~5}\footnote{Dnes je však častější využití USB sběrnice nebo technologie Bluetooth pro obousměrný přenos.}.  Kabel mezi dvěma zařízeními by neměl být delší než 15\,\unit{m} a~tvořit by jej měla stíněná kroucená dvojlinka. Toto stínění by mělo být připojeno k~\texttt{pinu~2} na obou koncích. 
 
-Výměna informací je realizována pomocí 5\unit{mA} proudové smyčky. Při protékání proudu je zaznamenána \texttt{logická~0}, v~opačném případě \texttt{logická~1}. \cite{MIDIspecs}
+Výměna informací je realizována pomocí 5\unit{mA} proudové smyčky. Při protékání proudu je zaznamenána \texttt{logická~0}, v~opačném případě \texttt{logická~1} \cite{MIDIspecs}.
 
 Přesná specifika obvodů pro zpracování příchozích a~odchozích \acs{MIDI} signálů upravuje kapitola \emph{Hardware} z~dokumentu \cite{MIDIspecs}. Tato pasáž byla v roce 2014 aktualizována normou \cite{MIDIupd}, která adaptovala protokol i~pro zařízení s~3,3\unit{V} logikou a přidává další prvky pro zamezení zejména \acs{RF}\footnote{\acl{RF}} interferencí. V~následujících schématech bude však zobrazeno originální schéma z~původní normy.
 
@@ -30,9 +30,9 @@ Podle aktualizační normy \cite{MIDIupd} je možné přidat za každý rezistor
 
 Vstupní port \acs{MIDI} sběrnice je mnohem složitější. Na~obr.~\ref{fig:schMIDIin} je patrné, že s~cílem eliminovat zemní smyčky, které jsou ve zvukové technice nepřípustné, je vstup každého \acs{MIDI} zařízení skrz optočlen galvanicky oddělen. Z~téhož důvodu je také \texttt{pin~2}~--~na~rozdíl od  výstupního portu~--~zapojen naprázdno (podle~\cite{MIDIspecs}). 
 
-Některá zařízení disponují také výstupem \acs{MIDI} THRU. Ten \uv{kopíruje} data ze vstupu \acs{MIDI} IN a tak umožňuje komplexní řetězení zařízení za sebou. Jeho schéma je totožné s tím na obr. \ref{fig:schMIDIout}.
+Některá zařízení disponují také výstupem \acs{MIDI} THRU. Ten \uv{kopíruje} data ze vstupu \acs{MIDI} IN a tak umožňuje řetězení zařízení za sebou. Jeho schéma je totožné s tím na obr. \ref{fig:schMIDIout}.
 
-Aktualizační norma \cite{MIDIupd} pak umožňuje přidání feritových jader za \texttt{piny 4} a \texttt{5}, přes kondenzátor nízké kapacity uzemnění \texttt{pinu 2} a při použití 3,3\unit{V} logiky snížení odporu rezistoru na vstupu optočlenu.
+Aktualizační norma \cite{MIDIupd} pak umožňuje přidání feritových jader za \texttt{piny~4} a \texttt{5}, přes kondenzátor nízké kapacity uzemnění \texttt{pinu~2} a při použití 3,3\unit{V} logiky snížení odporu rezistoru na vstupu optočlenu.
 
 \begin{figure}[h]
     \centering
@@ -41,16 +41,16 @@ Aktualizační norma \cite{MIDIupd} pak umožňuje přidání feritových jader 
     \label{fig:schMIDIin}
 \end{figure}
 
-Bude-li do~tohoto vstupu připojen výstup jiného zařízení, které vyšle \linebreak \texttt{logickou~1}, objeví se na~\texttt{pinech~4} a~\texttt{5} stejné napětí, v~obvodu tedy neprochází žádný proud~--~\acs{LED}\footnote{\acl{LED}} v~optočlenu nesvítí. Vstupní UART čip přijímá \texttt{logickou~1}. Vyšle-li jiné zařízení \texttt{logickou 0}, na \texttt{pinu~5} poklesne napětí oproti \texttt{pinu~4}, \acs{LED} v optočlenu se rozsvítí, obvodem prochází proud a UART čip přijímá \texttt{logickou~1}.
+Bude-li do~tohoto vstupu připojen výstup jiného zařízení, které vyšle \linebreak \texttt{logickou~1}, objeví se na~\texttt{pinech~4} a~\texttt{5} stejné napětí, v~obvodu tedy neprochází žádný proud~--~\acs{LED}\footnote{\acl{LED}} v~optočlenu nesvítí. Vstupní UART čip přijímá \texttt{logickou~1}. Vyšle-li jiné zařízení \texttt{logickou~0}, na \texttt{pinu~5} poklesne napětí oproti \texttt{pinu~4}, \acs{LED} v optočlenu se rozsvítí, obvodem prochází proud a UART čip přijímá \texttt{logickou~1}.
 
 \section{Softwarová vrstva}\label{chpt:MIDIsw}
 
-\acs{MIDI} protokol přenáší informace (příkazy) po sériové lince přenosovou rychlostí $31 250\,\unit{bps}$. Komunikace je jednosměrná, pro obousměrnou komunikaci je třeba využít dvou rozhraní (vstupu a výstupu) na všech zúčastněných zařízeních. %\cite{MIDIspecs}
+\acs{MIDI} protokol přenáší informace (příkazy) po sériové lince přenosovou rychlostí $31\,250\,\unit{bps}$. Komunikace je jednosměrná, pro obousměrnou komunikaci je třeba využít dvou rozhraní (vstupu a výstupu) na všech zúčastněných zařízeních. %\cite{MIDIspecs}
 
 Příkazy se skládají z~následujících dvou typů bajtů:
 \begin{itemize}
-    \item \texttt{STATUS~BAJT} v~sobě kóduje druh příkazu (\emph{Nota stlačena, Změna kontroléru\ldots}) a~cílový kanál (1-16). 
-    \item \texttt{DATA~BAJT} vyjadřuje hodnotu s jakou je příkaz posílán (0-127).
+    \item \texttt{STATUS~BAJT} v~sobě kóduje druh příkazu (\emph{Nota stlačena, Změna kontroléru\,\ldots}) a~cílový kanál (1--16). 
+    \item \texttt{DATA~BAJT} vyjadřuje hodnotu s jakou je příkaz posílán (0--127).
 \end{itemize}
 
 \begin{figure}[h]
@@ -119,21 +119,21 @@ Pomineme-li výjimky, každý příkaz začíná jedním \texttt{STATUS BAJTEM},
     \label{fig:MIDImsg}
 \end{figure}
 
-Z prvního bajtu zprávy z obr. \ref{fig:MIDImsg} lze dekódovat druh a cílový kanál příkazu. Jedná se o \emph{Control Change - Změna kontroléru} na \emph{kanálu 1}\footnote{$0000_2 \sim \mathrm{kanál\ 1}\,\ldots\,1111_2\sim\mathrm{kanál\ 16}$.} Druhý bajt představuje číslo kontroléru (2 -- \emph{Modulation}) a třetí jeho hodnotu (54).
+Z prvního bajtu zprávy z~obr. \ref{fig:MIDImsg} lze dekódovat druh a cílový kanál příkazu. Jedná se o~\emph{Control Change~-- Změna kontroléru} na \emph{kanálu 1}\footnote{$0000_2 \sim \mathrm{kanál\ 1,\ } 0001_2 \sim \mathrm{kanál\ 2}\,\ldots\,1111_2\sim\mathrm{kanál\ 16}$.} Druhý bajt představuje číslo kontroléru (2 -- \emph{Modulation}) a třetí jeho hodnotu (54).
 
-Pro potřeby tohoto semestrálního projektu bude nutné, aby každý přípravek dokázal rozeznat kanál k němu příchozí \acs{MIDI} zprávy, popř. jej pro další přenos pozměnil. \texttt{DATA~BAJTY} budou jen \uv{kopírovány} a nebude se do nich nijak zasahováno.
+Pro potřeby tohoto semestrálního projektu bude nutné, aby každý přípravek dokázal rozeznat kanál k němu příchozí \acs{MIDI} zprávy, popř. jej pro další přenos pozměnil. \texttt{DATA~BAJTY} budou jen \uv{kopírovány} a nebude do nich nijak zasahováno.
 
 \subsection{Výjimky}\label{chpt:MIDIexcs}
-Je třeba alespoň okrajově zmínit výjimečné stavy, které v rámci \acs{MIDI} protokolu mohou nastat. V této fázi semestrální práce tyto výjimky zatím nejsou ošetřeny.
+Je třeba alespoň okrajově zmínit výjimečné stavy, které v rámci \acs{MIDI} protokolu mohou nastat. V této fázi semestrální práce nejsou tyto výjimky zatím ošetřeny.
 
 \subsubsection{Running Status}
-Pracuje-li \acs{MIDI} vysílač v tomto stavu, neposílá \texttt{STATUS BAJT} v~opakující se zprávě stejného druhu. Přijímač si tedy musí uložit poslední platný \texttt{STATUS BAJT} do paměti, kterou přemaže, obdrží-li zprávu s jiným, novým \texttt{STATUS BAJTEM}. Tento mód výrazně šetří přenesená data, zejména je-li použit při odesílání zprávy \emph{Změna kontroléru} kontinuálních ovladačů. \cite{MIDIspecs}
+Pracuje-li \acs{MIDI} vysílač v tomto stavu, neposílá \texttt{STATUS BAJT} v~opakující se zprávě stejného druhu. Přijímač si tedy musí uložit poslední platný \texttt{STATUS BAJT} do paměti, kterou přemaže, obdrží-li zprávu s jiným, novým \texttt{STATUS BAJTEM}. Tento mód výrazně šetří přenesená data, zejména je-li použit při odesílání zprávy \emph{Změna kontroléru} kontinuálních ovladačů \cite{MIDIspecs}.
 
 \subsubsection{Zprávy Real-Time}
-Tyto zprávy slouží pro synchronizaci \acs{MIDI} zařízení, které pracují s časovou osou nebo časem obecně. Skládají se pouze z jediného bajtu a mají nejvyšší prioritu. Přijímač by měl být připraven i na to, že je obdrží uprostřed standardní zprávy nebo SysEx zprávy. \cite{MIDIspecs}
+Tyto zprávy slouží pro synchronizaci \acs{MIDI} zařízení, které pracují s časovou osou nebo časem obecně. Skládají se pouze z jediného bajtu a mají nejvyšší prioritu. Přijímač by měl být připraven i na to, že je obdrží uprostřed standardní zprávy nebo SysEx zprávy \cite{MIDIspecs}.
 
 \subsubsection{Zprávy SysEx}
-SysEx (\emph{System Exlusive}) zprávy se skládají z většího a libovolného počtu bajtů. Jsou víceúčelové a univerzální, používají se například pro posun na časové ose (komplementárně ke zprávám \textbf{Real-Time}), \acs{MSC}\footnote{\acl{MSC}} apod. \cite{MIDIspecs}
+SysEx (\emph{System Exlusive}) zprávy se skládají z většího a libovolného počtu bajtů. Jsou víceúčelové a univerzální, používají se například pro posun na časové ose (komplementárně ke zprávám \emph{Real-Time}), \acs{MSC}\footnote{\acl{MSC}} a podobně \cite{MIDIspecs}.
 
 %\section{Softwarová vrstva}
 %\input{sablona-cze/schemata/schMIDIout}
