@@ -39,8 +39,9 @@ Software přípravku byl vyvíjen za účelem maximalizace variability směřov�
 %Pro spolehlivou komunikaci mezi zařízeními bylo třeba vyvinout protokol, který bude zapouzdřovat a směřovat samotné \acs{MIDI} zprávy. S tímto cílem byl implementován protokol \acs{MoE}\footnote{\acl{MoE}}. 
 
 Přípravek pracuje s dvěma typy zpráv: Příchozí, odchozí \acs{MIDI} zprávy, které se týkají hardwarové sběrnice (tedy přímo \texttt{pinů~4} a \texttt{5} z~obr.~\ref{fig:schPrototype})~-- dále jen \uv{\acs{MIDI} zprávy}~-- a příchozí, odchozí UDP zprávy, které se týkají pouze ethernetového rozhraní~-- dále jen \uv{UDP zprávy}.
+
 \subsection{Databáze spojení}\label{chpt:DatSpoj}
-S cílem docílit již zmiňované velké variability ve směřování zpráv napříč přípravky byla do zdrojového kódu implementována tzv. databáze spojení \texttt{sub\-scrip\-tions[]}:
+S cílem docílit již zmiňované velké variability ve směřování zpráv napříč přípravky byla do zdrojového kódu implementována tzv.~databáze spojení \texttt{sub\-scrip\-tions[]}:
 \begin{lstlisting}
 typedef struct subscription
 {
@@ -48,11 +49,11 @@ typedef struct subscription
     byte dstIPnib;
 } _subscriptions[MAX_SUBS];
 \end{lstlisting}
-Toto pole struktur \texttt{subscription} je pro \acs{MoE} protokol zásadní. Jedno \uv{spojení}, tedy jeden prvek v tohoto pole, propojuje jeden \acs{MIDI} kanál lokálního zařízení s jedním \acs{MIDI} kanálem cílového zařízení. Toto pole si lze představit jako virtuální patchbay. Jeden patch-kabel odpovídá jednomu prvku v poli (záznamu v databázi). 
+Toto pole struktur \texttt{subscription} je pro \acs{MoE} protokol zásadní. Jedno \uv{spojení}, tedy jeden prvek v tohoto pole, propojuje jeden \acs{MIDI} kanál lokálního zařízení s~jedním \acs{MIDI} kanálem cílového zařízení. Toto pole si lze představit jako virtuální patchbay. Jeden patch-kabel odpovídá jednomu prvku v poli (záznamu v databázi). 
 
 Každý záznam je tvořen dvěma bajty:
 \begin{enumerate}
-    \item \texttt{srcdstChannel} v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového. \uv{Kódování} je uskutečněno způsobem vyobrazeným na obr. \ref{fig:srcdstChannel}. Jeden kanál je vyjádřen pomocí čtyř bitů (viz kapitolu \ref{chpt:MIDIsw}), jeden bajt tedy \uv{pojme} vyjadření přesně dvou kanálů.
+    \item \texttt{srcdstChannel} v sobě kóduje zdrojový \acs{MIDI} kanál, který se týká lokálního zařízení, a cílový \acs{MIDI} kanál~-- ten se týká zařízení cílového. \uv{Kódování} je uskutečněno způsobem vyobrazeným na obr.~\ref{fig:srcdstChannel}. Jeden kanál je vyjádřen pomocí čtyř bitů (viz kapitolu \ref{chpt:MIDIsw}), jeden bajt tedy \uv{pojme} vyjádření přesně dvou kanálů.
     \begin{figure}[h]
         \centering
         \begin{tabular}{|c|c|c|c|c|c|c|c|}
@@ -79,11 +80,11 @@ Tato databáze je při každém přijetí \acs{MIDI} zprávy procházena. Pro p�
 
 
 \subsection{Formát zprávy}\label{chpt:FormatZpravy}
-Pro optimální komunikaci zařízení mezi sebou bylo nutné zapouzdřit \acs{MIDI} příkazy do \acs{MoE} datagramu. Tento datagram se skládá ze čtyř bajtů, z čehož první je vyhrazen \acs{MoE} značce a zbylé tři samotné \acs{MIDI} zprávě nebo jiným datům. Tabulku všech dosavadně implementovaných \acs{MoE} značek lze nalézt v příloze \ref{chpt:MoEZnacky}. Podle hodnoty této značky se přípravek k dané \acs{MoE} zprávě zachová. Ku příkladu příchozí zpráva \bytes{A3}{90}{45}{7F,} bude interpretována jako okamžité odeslání \acs{MIDI} zprávy na sériovou sběrnici. Na zprávu \bytes{08}{08}{08}{08,} bude přípravek zase reagovat zasláním své databáze spojení na adresu odesílatele atp.
+Pro optimální komunikaci zařízení mezi sebou bylo nutné zapouzdřit \acs{MIDI} příkazy do \acs{MoE} datagramu. Tento datagram se skládá ze čtyř bajtů, z~čehož první je vyhrazen \acs{MoE} značce a zbylé tři samotné \acs{MIDI} zprávě nebo jiným datům. Tabulku všech dosavadně implementovaných \acs{MoE} značek lze nalézt v~příloze~\ref{chpt:MoEZnacky}. Podle hodnoty této značky se přípravek k dané \acs{MoE} zprávě zachová. Ku příkladu příchozí zpráva \bytes{A3}{90}{45}{7F} bude interpretována jako okamžité odeslání \acs{MIDI} zprávy na sériovou sběrnici. Na zprávu \bytes{08}{08}{08}{08} bude přípravek zase reagovat zasláním své databáze spojení na adresu odesílatele a~tak podobně.
 
 \subsection{Síťová vrstva}\label{chpt:NetworkLayer}
 Tento \acs{MoE} datagram je následně zapouzdřen do \acs{UDP}\footnote{\acl{UDP}} datagramu. Pro síťovou komunikaci byl vybrán protokol \acs{UDP} z důvodu jeho \uv{peer2peer} architektury, která je k tomuto projektu mnohem vhodnější než \uv{client-server}, kterou poskytuje protokol TCP \cite{UDPpaper}. Komunikace probíhá na portu 50\,000.
-\acs{MoE} zařízení jsou schopna připojit se do lokální sítě s pevně nestavenou IP adresou\footnote{Tato IP adresa je zatím nastavitelná pouze ve zdrojovém kódu.}, nebo zažádat o přidělení IP adresy DHCP server. Tato síť však musí mít masku 255.255.255.0~-- zařízení se z úsporných důvodů navzájem rozlišují \emph{pouze} posledním bajtem IP adresy (jak je popsáno v sekci~\ref{chpt:DatSpoj}).
+\acs{MoE} zařízení jsou schopna připojit se do lokální sítě s pevně nestavenou IP adresou\footnote{Tato IP adresa je zatím nastavitelná pouze ve zdrojovém kódu.}, nebo zažádat o přidělení IP adresy DHCP server. Tato síť však musí mít za všech okolností masku 255.255.255.0~-- zařízení se z úsporných důvodů navzájem rozlišují \emph{pouze} posledním bajtem IP adresy (jak je popsáno v sekci~\ref{chpt:DatSpoj}).
 
 
 
