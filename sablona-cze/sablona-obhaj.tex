@@ -89,24 +89,34 @@
 	% nadpis snímku
 	\frametitle{Cíle práce}
 	\begin{itemize}
-			\item Nastudovat
-			\item Popsat
-				\begin{itemize}
-					\item nastudované
-				\end{itemize}
-			\item Implementovat
-				\begin{itemize}
-					\item nastudované
-					\item nové
-				\end{itemize}
-			\item Porovnat a vyhodnotit
-				\begin{itemize}
-						\item výsledky
-				\end{itemize}
+		\item Navrhnout a zkonstruovat testovací přípravek (HW i SW)
+		\item Navrhnout komunikační protokol
+		\item Naprogramovat síťový editor pro pohodlnou správu všech přípravků na síti
 	\end{itemize}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Testovací přípravek -- HW}
+	\begin{itemize}
+		\item Platforma \textbf{Arduino UNO} + \textbf{WizNet Shield}
+		\item Vyvinuto na nepájivém kontaktním poli
+		\item Využito standardních vstupních a výstupních obvodů v souladu s MIDI normou
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.4\textheight ]{obrazky/Pripravek.jpg}
+		\caption{Fotografie přípravku}
+	\end{figure}
+\end{frame}
 
+\begin{frame}
+	\frametitle{Testovací přípravek -- SW}
+	\begin{itemize}
+		\item Program v jazyce \texttt{C/C++}
+		\item Využito knihovny \texttt{EthernetUdp.h} rozšířené pro účely projektu
+		\item 
+	\end{itemize}
+\end{frame}
 %%%%%%%%%%%%%
 \begin{frame} 
 	\frametitle{Klíčové nástroje}
@@ -148,7 +158,7 @@
 			\begin{figure}%	
 				\centering
 				\vspace{1cm}	              % horizontální mezera
-				\includegraphics[width=0.8\columnwidth]{obrazky/soucastky}
+				\includegraphics[width=0.8\columnwidth]{obrazky/MoE_editor_1.png}
 				%lze vložit popisek, ale povetšinou je to v prezentaci zbytečné
 				%\caption{Popisek obrázku}%
 				%\label{obr:ukazka}
