@@ -72,7 +72,15 @@
 %\usetheme{Darmstadt} \usecolortheme{default2}
 \logoheader					% vytvoření zkráceného loga VUT FEKT v hlavičce slajdu, nechte odkomentované
 
-
+\usepackage[formats]{listings}
+\lstset{
+    frame=single,
+    keywordstyle=\color{blue},
+    commentstyle=\color{olive},
+    basicstyle=\ttfamily\small,
+    emph={byte, bool},
+    emphstyle=\color{blue}
+    }
 
 \begin{document}
 
@@ -82,6 +90,12 @@
 % titulní snímek, vysazen bez horních, dolních a postranních lišt (volba plain),
 % není tak vysazen ani nadpis snímku
 \maketitle
+
+\newcommand{\bytes}[4]{
+    \begin{center}
+        \large{\texttt{0x#1, 0x#2, 0x#3, 0x#4}}
+    \end{center}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 1. snímek s cíli (zadaním) práce
@@ -114,6 +128,58 @@
 	\begin{itemize}
 		\item Program v jazyce \texttt{C/C++}
 		\item Využito knihovny \texttt{EthernetUdp.h} rozšířené pro účely projektu
+		\item Rozšířené možnosti směrování docíleny implementací \textbf{databáze spojení}
+		\item 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{MoE Protokol}
+	\begin{itemize}
+		\item Mezi zařízeními jsou vyměňovány 4-bajtové zprávy
+		\item První bajt~--\textbf{MoE značka} definuje účel zprávy
+	\end{itemize}
+	\vspace{3ex}
+	\begin{block}{Ukázkové zprávy}
+		\bytes{A3}{90}{45}{7F}
+		\bytes{08}{08}{08}{08}
+	\end{block}
+	\vspace{3ex}
+	\begin{itemize}
+		\item Zprávy jsou odesílány pomocí \textbf{UDP protokolu} na síti s maskou \textbf{255.255.255.0} na portu \textbf{50\,000}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Síťový editor}
+	\begin{columns}[T]
+		\begin{column}{0.4\textwidth}
+			\begin{itemize}
+				\item Slouží ke správě všech MoE zařízení v~lokální síti
+				\item Běží na PC/Mac, který je k~síti připojen fyzickým rozhraním nebo pomocí Wi-Fi
+				\item Příkazy
+				\begin{itemize}
+					\item \texttt{print}
+					\item \texttt{add}
+					\item \texttt{del}
+					\item \texttt{reload}
+				\end{itemize}
+				\item \uv{Makra} pro hromadné přidání/smazání
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{figure}
+				\includegraphics[width=\linewidth]{obrazky/MoE_Editor_2.png}
+				\caption{Konzolová aplikace \textbf{MoE Matrix Editor}}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Výsledky \& prostor pro optimalizaci}
+	\begin{itemize}
+		\item Prototyp je funkční, k síti se připojí buď s napevno nastavenou IP adresou, nebo s pomocí DHCP serveru
 		\item 
 	\end{itemize}
 \end{frame}
