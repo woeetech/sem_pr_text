@@ -178,10 +178,23 @@
 
 \begin{frame}
 	\frametitle{Výsledky \& prostor pro optimalizaci}
-	\begin{itemize}
-		\item Prototyp je funkční, k síti se připojí buď s napevno nastavenou IP adresou, nebo s pomocí DHCP serveru
-		\item 
-	\end{itemize}
+	\begin{columns}[T]
+		\begin{column}{.6\textwidth}
+			\begin{figure}
+				\includegraphics[width=\linewidth]{obrazky/Mereni_1kanal.png}
+				\caption{Měření latence mezi dvěma přípravky}
+			\end{figure}
+		\end{column}
+		\begin{column}{.4\textwidth}
+			\begin{itemize}
+				\item Prototyp je funkční, k síti se připojí buď s napevno nastavenou IP adresou, nebo s pomocí DHCP serveru
+				\item Zatím pouze \textbf{tříbajtové MIDI}
+				\item Latence \textbf{2,18--20,92\,ms}
+				\item Příjem maximálně dvou MIDI zprávy za sebou
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	
 \end{frame}
 %%%%%%%%%%%%%
 \begin{frame} 
