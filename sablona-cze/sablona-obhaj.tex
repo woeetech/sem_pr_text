@@ -73,6 +73,52 @@
 \logoheader					% vytvoření zkráceného loga VUT FEKT v hlavičce slajdu, nechte odkomentované
 
 \usepackage[formats]{listings}
+
+
+\lstset{              % nastavení
+%	Definice jazyka použitého ve výpisech
+%    language=[LaTeX]{TeX},	% LaTeX
+%	language={Matlab},		% Matlab
+	language={C},           % jazyk C
+	basicstyle=\ttfamily,	% definice základního stylu písma
+	tabsize=2,			% definice velikosti tabulátoru
+	inputencoding=utf8,         % pro soubory uložené v kódování UTF-8
+		columns=fixed,  %fixed nebo flexible,
+		fontadjust=true %licovani sloupcu
+	extendedchars=true,
+	literate=%  definice symbolů s diakritikou
+	{á}{{\'a}}1
+	{č}{{\v{c}}}1
+	{ď}{{\v{d}}}1
+	{é}{{\'e}}1
+	{ě}{{\v{e}}}1
+	{í}{{\'i}}1
+	{ň}{{\v{n}}}1
+	{ó}{{\'o}}1
+	{ř}{{\v{r}}}1
+	{š}{{\v{s}}}1
+	{ť}{{\v{t}}}1
+	{ú}{{\'u}}1
+	{ů}{{\r{u}}}1
+	{ý}{{\'y}}1
+	{ž}{{\v{z}}}1
+	{Á}{{\'A}}1
+	{Č}{{\v{C}}}1
+	{Ď}{{\v{D}}}1
+	{É}{{\'E}}1
+	{Ě}{{\v{E}}}1
+	{Í}{{\'I}}1
+	{Ň}{{\v{N}}}1
+	{Ó}{{\'O}}1
+	{Ř}{{\v{R}}}1
+	{Š}{{\v{S}}}1
+	{Ť}{{\v{T}}}1
+	{Ú}{{\'U}}1
+	{Ů}{{\r{U}}}1
+	{Ý}{{\'Y}}1
+	{Ž}{{\v{Z}}}1
+}
+	
 \lstset{
     frame=single,
     keywordstyle=\color{blue},
@@ -80,7 +126,8 @@
     basicstyle=\ttfamily\small,
     emph={byte, bool},
     emphstyle=\color{blue}
-    }
+	}
+	
 
 \begin{document}
 
@@ -102,11 +149,11 @@
 \begin{frame} 
 	% nadpis snímku
 	\frametitle{Cíle práce}
-	\begin{itemize}
+	\begin{enumerate}
 		\item Navrhnout a zkonstruovat testovací přípravek (HW i SW)
 		\item Navrhnout komunikační protokol
 		\item Naprogramovat síťový editor pro pohodlnou správu všech přípravků na síti
-	\end{itemize}
+	\end{enumerate}
 \end{frame}
 
 \begin{frame}
@@ -123,21 +170,28 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Testovací přípravek -- SW}
 	\begin{itemize}
 		\item Program v jazyce \texttt{C/C++}
 		\item Využito knihovny \texttt{EthernetUdp.h} rozšířené pro účely projektu
-		\item Rozšířené možnosti směrování docíleny implementací \textbf{databáze spojení}
-		\item 
+		\item Pokročilé možnosti směrování docíleny implementací \textbf{databáze spojení}
 	\end{itemize}
+	\begin{lstlisting}
+typedef struct subscription
+{
+	byte srcdstChannel;
+	byte dstIPnib;
+}
+subscription subscriptions[MAX_SUBS];
+	\end{lstlisting}
 \end{frame}
 
 \begin{frame}
 	\frametitle{MoE Protokol}
 	\begin{itemize}
-		\item Mezi zařízeními jsou vyměňovány 4-bajtové zprávy
-		\item První bajt~--\textbf{MoE značka} definuje účel zprávy
+		\item Mezi zařízeními jsou posílány 4-bajtové zprávy
+		\item První bajt~-- \textbf{MoE značka}~-- definuje účel zprávy
 	\end{itemize}
 	\vspace{3ex}
 	\begin{block}{Ukázkové zprávy}
@@ -146,7 +200,7 @@
 	\end{block}
 	\vspace{3ex}
 	\begin{itemize}
-		\item Zprávy jsou odesílány pomocí \textbf{UDP protokolu} na síti s maskou \textbf{255.255.255.0} na portu \textbf{50\,000}
+		\item Zprávy jsou odesílány pomocí \textbf{UDP protokolu} v síti s maskou \textbf{255.255.255.0} na portu \textbf{50\,000}
 	\end{itemize}
 \end{frame}
 
@@ -188,92 +242,26 @@
 		\begin{column}{.4\textwidth}
 			\begin{itemize}
 				\item Prototyp je funkční, k síti se připojí buď s napevno nastavenou IP adresou, nebo s pomocí DHCP serveru
+				\item Síťový editor také funguje
 				\item Zatím pouze \textbf{tříbajtové MIDI}
 				\item Latence \textbf{2,18--20,92\,ms}
-				\item Příjem maximálně dvou MIDI zprávy za sebou
+				\item Příjem maximálně dvou MIDI příkazů za sebou
 			\end{itemize}
 		\end{column}
 	\end{columns}
 	
 \end{frame}
 %%%%%%%%%%%%%
-\begin{frame} 
-	\frametitle{Klíčové nástroje}
 
-	% prostředí 'alertblock', které slouží pro zdůraznění informace
-	\begin{alertblock}{Pro práci je klíčový Eulerův vzorec}
-		$$\eul^{\jmag x}=\cos x + \jmag\sin x$$
-	\end{alertblock}
+%%%%%%%%%%%%%
 
-	\vspace{4ex}
-	Eulerova identita je speciálním případem tohoto vzorce, jestliže dosadíme $x=\uppi$\,:
 
-	% prostředí 'block', které slouží jako informativní
-	\begin{block}{Eulerova identita}
-		$$\eul^{\jmag \uppi}=\cos \uppi + \jmag\sin \uppi,$$\\
-		odkud vyplývá
-		$$\eul^{\jmag \uppi}+1=0.$$
-	\end{block}
-\end{frame} 
 
 
 %%%%%%%%%%%%%
-\begin{frame} 
-	\frametitle{Plošný spoj}
-	
-	\begin{columns}[T] 								% prostředí sloupce s umístěním nahoře
-		\begin{column}{0.4\textwidth}		% první sloupec
-			Obrázek znázorňuje model:\\[2ex]
-			%
-			\begin{itemize}
-				\item Deska
-				\item Součástky
-				\item Signály
-				\item Napájení
-			\end{itemize}
-		\end{column}
-		%
-		\begin{column}{0.6\textwidth}		% druhý sloupec
-			\begin{figure}%	
-				\centering
-				\vspace{1cm}	              % horizontální mezera
-				\includegraphics[width=0.8\columnwidth]{obrazky/MoE_editor_1.png}
-				%lze vložit popisek, ale povetšinou je to v prezentaci zbytečné
-				%\caption{Popisek obrázku}%
-				%\label{obr:ukazka}
-			\end{figure}
-		\end{column}
-	\end{columns}											% ukončení prostředí sloupce
-\end{frame}
 
 
 %%%%%%%%%%%%%
-\begin{frame} 
-	\frametitle{Výsledky}
-	\vspace{1cm}
-	\begin{table}[]
-		\centering
-		\caption{Výsledky měření mobilních sítí}
-		\label{tab:tabulka}
-			\begin{tabular}{lcc}
-				\toprule
-					Technologie  & Rychlost stahování [kB/s] & Rychlost nahrávání [kB/s] \\
-				\midrule
-					GPRS (2,5G)	& 7,2 	& 3,6\\
-					UMTS 3G     & 48 		& 48\\
-					HSPA (3,5G)	&	1\,706	&	720\\
-					LTE (4G) 		& 40\,750 & 10\,750\\
-				\bottomrule                                       
-			\end{tabular}
-	\end{table}
-\end{frame}
-
-
-%%%%%%%%%%%%%
-\begin{frame} 
-	\frametitle{Závěr}
-	\dots
-\end{frame}
 
 
 % podekovani
@@ -286,11 +274,6 @@
 \end{frame}
 
 % otázky oponenta
-\frame{
-\frametitle{Otázky oponenta}
-	\emph{Jaká je souvislost Vašeho vzorce (1.2) s~Maxwellovými rovnicemi v~integrálním tvaru?}\\[2ex]
-	%
-	Již staří Římané\,\dots
-}
+
 
 \end{document}

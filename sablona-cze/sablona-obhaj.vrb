@@ -1,0 +1,14 @@
+\frametitle{Testovací přípravek -- SW}
+	\begin{itemize}
+		\item Program v jazyce \texttt{C/C++}
+		\item Využito knihovny \texttt{EthernetUdp.h} rozšířené pro účely projektu
+		\item Pokročilé možnosti směrování docíleny implementací \textbf{databáze spojení}
+	\end{itemize}
+	\begin{lstlisting}
+typedef struct subscription
+{
+	byte srcdstChannel;
+	byte dstIPnib;
+}
+subscription subscriptions[MAX_SUBS];
+	\end{lstlisting}
